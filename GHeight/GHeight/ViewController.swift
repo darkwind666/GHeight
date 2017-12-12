@@ -10,6 +10,8 @@ import UIKit
 import SceneKit
 import ARKit
 
+// todo: get the lower plain on z
+
 class ViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
