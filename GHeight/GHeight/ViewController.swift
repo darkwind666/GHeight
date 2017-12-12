@@ -10,46 +10,38 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    fileprivate lazy var session = ARSession()
+    fileprivate lazy var sessionConfiguration = ARWorldTrackingConfiguration()
+    fileprivate var planeExist = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-        sceneView.scene = scene
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGesture))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
-        // Run the view's session
+        configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Pause the view's session
         sceneView.session.pause()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
+    @objc func tapGesture(sender: UITapGestureRecognizer)
+    {
+        print("tap")
     }
 
     // MARK: - ARSCNViewDelegate
@@ -62,19 +54,60 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         return node
     }
 */
+}
+
+extension ViewController: ARSCNViewDelegate {
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        let planeNode = createPlaneNode(anchor: planeAnchor)
+        node.addChildNode(planeNode)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        
+    }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
         
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
         
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
+        
+    }
+    
+    func createPlaneNode(anchor: ARPlaneAnchor) -> SCNNode {
+        // Create a SceneKit plane to visualize the node using its position and extent.
+        
+        // Create the geometry and its materials
+        let plane = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
+        
+        let lavaImage = UIImage(named: "Lava")
+        let lavaMaterial = SCNMaterial()
+        lavaMaterial.diffuse.contents = lavaImage
+        lavaMaterial.isDoubleSided = true
+        
+        plane.materials = [lavaMaterial]
+        
+        // Create a node with the plane geometry we created
+        let planeNode = SCNNode(geometry: plane)
+        planeNode.position = SCNVector3Make(anchor.center.x, anchor.center.y, anchor.center.z)
+        
+        // SCNPlanes are vertically oriented in their local coordinate space.
+        // Rotate it to match the horizontal orientation of the ARPlaneAnchor.
+        planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
+        
+        return planeNode
     }
 }
