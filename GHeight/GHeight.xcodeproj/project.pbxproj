@@ -13,6 +13,8 @@
 		CE5C880E1FDF324200D68F8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C880C1FDF324200D68F8A /* Main.storyboard */; };
 		CE5C88101FDF324200D68F8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C880F1FDF324200D68F8A /* Assets.xcassets */; };
 		CE5C88131FDF324200D68F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C88111FDF324200D68F8A /* LaunchScreen.storyboard */; };
+		CE793B4D1FE87AC700A1CC53 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */; };
+		CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB65B31FE6A30700D6AA48 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		CE5C880F1FDF324200D68F8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5C88121FDF324200D68F8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5C88141FDF324200D68F8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
+		CEBB65B31FE6A30700D6AA48 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		CE5C88051FDF324200D68F8A /* GHeight */ = {
 			isa = PBXGroup;
 			children = (
+				CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */,
+				CEBB65B21FE6A2E500D6AA48 /* Utils */,
 				CE5C88061FDF324200D68F8A /* AppDelegate.swift */,
 				CE5C88081FDF324200D68F8A /* art.scnassets */,
 				CE5C880A1FDF324200D68F8A /* ViewController.swift */,
@@ -65,6 +71,14 @@
 				CE5C88141FDF324200D68F8A /* Info.plist */,
 			);
 			path = GHeight;
+			sourceTree = "<group>";
+		};
+		CEBB65B21FE6A2E500D6AA48 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB65B31FE6A30700D6AA48 /* Utilities.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +154,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE793B4D1FE87AC700A1CC53 /* VirtualPlane.swift in Sources */,
+				CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */,
 				CE5C880B1FDF324200D68F8A /* ViewController.swift in Sources */,
 				CE5C88071FDF324200D68F8A /* AppDelegate.swift in Sources */,
 			);
