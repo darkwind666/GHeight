@@ -10,43 +10,9 @@ import UIKit
 import SceneKit
 import ARKit
 
-enum DistanceUnit: String {
-    case centimeter = "centimeter"
-    case inch = "inch"
-    case meter = "meter"
-    
-    var fator: Float {
-        switch self {
-        case .centimeter:
-            return 100.0
-        case .inch:
-            return 39.3700787
-        case .meter:
-            return 1.0
-        }
-    }
-    
-    var unit: String {
-        switch self {
-        case .centimeter:
-            return "cm"
-        case .inch:
-            return "inch"
-        case .meter:
-            return "m"
-        }
-    }
-    
-    var title: String {
-        switch self {
-        case .centimeter:
-            return "Centimeter"
-        case .inch:
-            return "Inch"
-        case .meter:
-            return "Meter"
-        }
-    }
+class HeightMeasure {
+    var line: RulerLine?
+    var length = Float(0.0)
 }
 
 class ViewController: UIViewController {
@@ -65,6 +31,7 @@ class ViewController: UIViewController {
     var unit: DistanceUnit!
     var measurements = [SCNVector3]()
     var startMeasurement = false
+    var lines = [HeightMeasure]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +66,75 @@ class ViewController: UIViewController {
                 self?.timer = Timer.scheduledTimer(timeInterval: (self?.measureTime)!, target: self,   selector: (#selector(ViewController.finishTimer)), userInfo: nil, repeats: false)
             }
         }
+    }
+    
+    @IBAction func undoPressed(_ sender: Any) {
+        if let finalLine = lines.last {
+            finalLine.line?.removeFromParentNode()
+            lines.removeLast()
+            
+            if let nextLine = lines.last {
+                showMessageLabelForLength(length: nextLine.length)
+            }
+        }
+    }
+    
+    @IBAction func clearPressed(_ sender: Any) {
+        for line in lines {
+            line.line?.removeFromParentNode()
+        }
+        
+        lines.removeAll()
+        lines = [HeightMeasure]()
+        messageLabel.text = ""
+    }
+    
+    @IBAction func turnLightPressed(_ sender: Any) {
+        guard let device = AVCaptureDevice.default(for: AVMediaType.video)
+            else {return}
+        
+        if device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+                
+                if device.torchMode == .off {
+                    device.torchMode = .on
+                } else {
+                    device.torchMode = .off
+                }
+                
+                device.unlockForConfiguration()
+            } catch {
+                print("Torch could not be used")
+            }
+        } else {
+            print("Torch is not available")
+        }
+    }
+    
+    @IBAction func rateAppPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func buyButtonPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func showSettings(_ sender: Any) {
+        
+    }
+    
+    @IBAction func galleryButtonPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func takeScreenshot() {
+        
+    }
+    
+    func showMessageLabelForLength(length: Float) {
+        let measureText = String(format: "%.2f %@", length, unit.unit)
+        messageLabel.text = measureText
     }
 }
 
@@ -139,20 +175,39 @@ extension ViewController: ARSCNViewDelegate {
         
         let avarageY = Float(sumY / Float(measurements.count))
         
-        guard let frame = sceneView.session.currentFrame else {
-            return
-        }
-        
         guard let plane = lowestPlane else {
             return
         }
         
-        let cameraPos2 = SCNVector3.positionFromTransform(frame.camera.transform)
         let distance = avarageY - (plane.worldPosition.y)
         
         DispatchQueue.main.async { [weak self] in
             self?.messageLabel.text = String(format: "%.2f%@", distance * (self?.unit.fator)!, (self?.unit.unit)!)
         }
+        
+        guard let frame = sceneView.session.currentFrame else {
+            return
+        }
+        
+        let currentPosition = SCNVector3.positionFromTransform(frame.camera.transform)
+        var endPosition = SCNVector3()
+        endPosition.x = currentPosition.x
+        endPosition.y = avarageY
+        endPosition.z = currentPosition.z
+        
+        var startPosition = SCNVector3()
+        startPosition.x = currentPosition.x
+        startPosition.y = (lowestPlane?.worldPosition.y)!
+        startPosition.z = currentPosition.z
+        
+        let line = RulerLine(sceneView: sceneView, startVector: startPosition, unit: unit)
+        line.update(to: endPosition)
+        
+        let newMeasure = HeightMeasure()
+        newMeasure.line = line
+        newMeasure.length = distance
+        lines.append(newMeasure)
+        
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
@@ -188,50 +243,6 @@ extension ViewController: ARSCNViewDelegate {
     }
     
     func createPlaneNode(anchor: ARPlaneAnchor) -> SCNNode {
-//        // Create a SceneKit plane to visualize the node using its position and extent.
-//
-//        // Create the geometry and its materials
-//        let plane = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
-//
-//        let lavaImage = UIImage(named: "Lava")
-//        let lavaMaterial = SCNMaterial()
-//        lavaMaterial.diffuse.contents = lavaImage
-//        lavaMaterial.isDoubleSided = true
-//
-//        plane.materials = [lavaMaterial]
-//
-//        // Create a node with the plane geometry we created
-//        let planeNode = SCNNode(geometry: plane)
-//        planeNode.position = SCNVector3Make(anchor.center.x, anchor.center.y, anchor.center.z)
-//
-//        // SCNPlanes are vertically oriented in their local coordinate space.
-//        // Rotate it to match the horizontal orientation of the ARPlaneAnchor.
-//        planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
-        
         return VirtualPlane(anchor: anchor)
     }
-    
-//    func createPlaneNode(anchor: ARPlaneAnchor) -> SCNNode {
-//        // Create a SceneKit plane to visualize the node using its position and extent.
-//
-//        // Create the geometry and its materials
-//        let plane = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
-//
-//        let lavaImage = UIImage(named: "Lava")
-//        let lavaMaterial = SCNMaterial()
-//        lavaMaterial.diffuse.contents = lavaImage
-//        lavaMaterial.isDoubleSided = true
-//
-//        plane.materials = [lavaMaterial]
-//
-//        // Create a node with the plane geometry we created
-//        let planeNode = SCNNode(geometry: plane)
-//        planeNode.position = SCNVector3Make(anchor.center.x, anchor.center.y, anchor.center.z)
-//
-//        // SCNPlanes are vertically oriented in their local coordinate space.
-//        // Rotate it to match the horizontal orientation of the ARPlaneAnchor.
-//        planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
-//
-//        return planeNode
-//    }
 }
