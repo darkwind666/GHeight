@@ -14,6 +14,7 @@
 		CE5C88101FDF324200D68F8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C880F1FDF324200D68F8A /* Assets.xcassets */; };
 		CE5C88131FDF324200D68F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C88111FDF324200D68F8A /* LaunchScreen.storyboard */; };
 		CE793B4D1FE87AC700A1CC53 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */; };
+		CEA793D51FFBE02400F3E6C4 /* ARHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */; };
 		CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB65B31FE6A30700D6AA48 /* Utilities.swift */; };
 		CEF510A41FEFADE800D9DEEE /* RulerLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF510A31FEFADE800D9DEEE /* RulerLine.swift */; };
 		CEF510A61FEFAE6B00D9DEEE /* SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF510A51FEFAE6B00D9DEEE /* SCNVector3.swift */; };
@@ -29,6 +30,7 @@
 		CE5C88121FDF324200D68F8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5C88141FDF324200D68F8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
+		CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARHelper.swift; sourceTree = "<group>"; };
 		CEBB65B31FE6A30700D6AA48 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CEF510A31FEFADE800D9DEEE /* RulerLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerLine.swift; sourceTree = "<group>"; };
 		CEF510A51FEFAE6B00D9DEEE /* SCNVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
@@ -64,20 +66,27 @@
 		CE5C88051FDF324200D68F8A /* GHeight */ = {
 			isa = PBXGroup;
 			children = (
+				CEA793D31FFBE00C00F3E6C4 /* Helpers */,
 				CEF510A21FEFA84E00D9DEEE /* Models */,
 				CEF510A11FEFA84700D9DEEE /* Views */,
 				CEF510A01FEFA83C00D9DEEE /* Controllers */,
-				CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */,
 				CEBB65B21FE6A2E500D6AA48 /* Utils */,
 				CE5C88061FDF324200D68F8A /* AppDelegate.swift */,
 				CE5C88081FDF324200D68F8A /* art.scnassets */,
-				CE5C880A1FDF324200D68F8A /* ViewController.swift */,
 				CE5C880C1FDF324200D68F8A /* Main.storyboard */,
 				CE5C880F1FDF324200D68F8A /* Assets.xcassets */,
 				CE5C88111FDF324200D68F8A /* LaunchScreen.storyboard */,
 				CE5C88141FDF324200D68F8A /* Info.plist */,
 			);
 			path = GHeight;
+			sourceTree = "<group>";
+		};
+		CEA793D31FFBE00C00F3E6C4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		CEBB65B21FE6A2E500D6AA48 /* Utils */ = {
@@ -92,6 +101,7 @@
 		CEF510A01FEFA83C00D9DEEE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE5C880A1FDF324200D68F8A /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -99,6 +109,7 @@
 		CEF510A11FEFA84700D9DEEE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */,
 				CEF510A31FEFADE800D9DEEE /* RulerLine.swift */,
 			);
 			path = Views;
@@ -186,6 +197,7 @@
 			files = (
 				CE793B4D1FE87AC700A1CC53 /* VirtualPlane.swift in Sources */,
 				CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */,
+				CEA793D51FFBE02400F3E6C4 /* ARHelper.swift in Sources */,
 				CEF510A41FEFADE800D9DEEE /* RulerLine.swift in Sources */,
 				CE5C880B1FDF324200D68F8A /* ViewController.swift in Sources */,
 				CE5C88071FDF324200D68F8A /* AppDelegate.swift in Sources */,

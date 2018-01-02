@@ -32,10 +32,14 @@ class ViewController: UIViewController {
     var measurements = [SCNVector3]()
     var startMeasurement = false
     var lines = [HeightMeasure]()
+    var selectedLineNode:SCNNode?
+    
+    var arHelper = ARHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        arHelper.measureScreen = self
         sceneView.delegate = self
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGesture))
@@ -215,6 +219,11 @@ extension ViewController: ARSCNViewDelegate {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.arHelper.selectNearestLine()
+        }
+        
         if startMeasurement == true {
             
             guard let frame = sceneView.session.currentFrame else {

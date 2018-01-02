@@ -10,6 +10,14 @@ import ARKit
 
 // - MARK: UIImage extensions
 
+extension ARSCNView {
+    func realWorldVector(screenPosition: CGPoint) -> SCNVector3? {
+        let results = self.hitTest(screenPosition, types: [.featurePoint])
+        guard let result = results.first else { return nil }
+        return SCNVector3.positionFromTransform(result.worldTransform)
+    }
+}
+
 extension UIImage {
 	func inverted() -> UIImage? {
         guard let ciImage = CIImage(image: self) else {
