@@ -133,7 +133,7 @@ class ViewController: UIViewController {
     }
     
     func showMessageLabelForLength(length: Float) {
-        let measureText = String(format: "%.2f %@", length, unit.unit)
+        let measureText = String(format: "%.2f%@", length * (self.unit.fator), (self.unit.unit))
         messageLabel.text = measureText
     }
 }
