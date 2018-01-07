@@ -35,11 +35,13 @@ class ViewController: UIViewController {
     var selectedLineNode:SCNNode?
     
     var arHelper = ARHelper()
+    var screenshotHelper = ScreenshotHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         arHelper.measureScreen = self
+        screenshotHelper.measureScreen = self
         sceneView.delegate = self
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGesture))
@@ -133,7 +135,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func takeScreenshot() {
+        let alertVC = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        alertVC.addAction(UIAlertAction(title: "Save height", style: .default) { [weak self] _ in
+            
+        })
+        alertVC.addAction(UIAlertAction(title: "Take photo", style: .default) { [weak self] _ in
+            self?.screenshotHelper.takeJustScreenshot()
+        })
         
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
     }
     
     func showMessageLabelForLength(length: Float) {
