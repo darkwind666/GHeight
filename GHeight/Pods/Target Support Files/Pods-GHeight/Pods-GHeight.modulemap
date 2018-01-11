@@ -1,0 +1,6 @@
+framework module Pods_GHeight {
+  umbrella header "Pods-GHeight-umbrella.h"
+
+  export *
+  module * { export * }
+}

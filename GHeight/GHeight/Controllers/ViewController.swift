@@ -137,7 +137,7 @@ class ViewController: UIViewController {
     @IBAction func takeScreenshot() {
         let alertVC = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         alertVC.addAction(UIAlertAction(title: "Save height", style: .default) { [weak self] _ in
-            
+            self?.saveUserHeight()
         })
         alertVC.addAction(UIAlertAction(title: "Take photo", style: .default) { [weak self] _ in
             self?.screenshotHelper.takeJustScreenshot()
@@ -145,6 +145,35 @@ class ViewController: UIViewController {
         
         alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
+    }
+    
+    func saveUserHeight() {
+        
+        let date = Date()
+        let uuid = String(Int(date.timeIntervalSince1970))
+        
+        let userObjectRm = UserObjectRm()
+        userObjectRm.createdAt = date
+        userObjectRm.id = uuid
+        userObjectRm.sizeUnit = self.unit.rawValue
+        userObjectRm.name = "Object" + uuid
+        userObjectRm.height = self.getObjectSize()
+        
+        DispatchQueue.main.async {
+            try! GRDatabaseManager.sharedDatabaseManager.grRealm.write({
+                GRDatabaseManager.sharedDatabaseManager.grRealm.add(userObjectRm, update:true)
+            })
+        }
+    }
+    
+    func getObjectSize() -> Float {
+        var height: Float = 0.0
+        
+        if let finalLine = lines.last {
+            height = finalLine.length
+        }
+        
+        return height
     }
     
     func showMessageLabelForLength(length: Float) {

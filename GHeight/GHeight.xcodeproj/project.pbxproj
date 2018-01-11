@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11B0A6EB6764569706BE3B49 /* Pods_GHeight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B39948B32C4B9E071801DC /* Pods_GHeight.framework */; };
 		CE13087D2001774A00ACCC55 /* ScreenshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13087C2001774A00ACCC55 /* ScreenshotHelper.swift */; };
+		CE1A6FF82008057500F805F5 /* GRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */; };
+		CE1A6FFA200819DE00F805F5 /* UserObjectRm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FF9200819DE00F805F5 /* UserObjectRm.swift */; };
 		CE5C88071FDF324200D68F8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C88061FDF324200D68F8A /* AppDelegate.swift */; };
 		CE5C88091FDF324200D68F8A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C88081FDF324200D68F8A /* art.scnassets */; };
 		CE5C880B1FDF324200D68F8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C880A1FDF324200D68F8A /* ViewController.swift */; };
@@ -22,7 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A714603FB95E54724124F711 /* Pods-GHeight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GHeight.release.xcconfig"; path = "Pods/Target Support Files/Pods-GHeight/Pods-GHeight.release.xcconfig"; sourceTree = "<group>"; };
 		CE13087C2001774A00ACCC55 /* ScreenshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotHelper.swift; sourceTree = "<group>"; };
+		CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRDatabaseManager.swift; sourceTree = "<group>"; };
+		CE1A6FF9200819DE00F805F5 /* UserObjectRm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectRm.swift; sourceTree = "<group>"; };
 		CE5C88031FDF324200D68F8A /* GHeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C88061FDF324200D68F8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5C88081FDF324200D68F8A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -36,6 +42,8 @@
 		CEBB65B31FE6A30700D6AA48 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CEF510A31FEFADE800D9DEEE /* RulerLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerLine.swift; sourceTree = "<group>"; };
 		CEF510A51FEFAE6B00D9DEEE /* SCNVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
+		F3BC716C5C7A6604FB995E24 /* Pods-GHeight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GHeight.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GHeight/Pods-GHeight.debug.xcconfig"; sourceTree = "<group>"; };
+		F6B39948B32C4B9E071801DC /* Pods_GHeight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GHeight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +51,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11B0A6EB6764569706BE3B49 /* Pods_GHeight.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C08CFDB4289F32BC5D44EA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6B39948B32C4B9E071801DC /* Pods_GHeight.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8709A43E113BFC5F14E4C1E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F3BC716C5C7A6604FB995E24 /* Pods-GHeight.debug.xcconfig */,
+				A714603FB95E54724124F711 /* Pods-GHeight.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CE5C87FA1FDF324100D68F8A = {
 			isa = PBXGroup;
 			children = (
 				CE5C88051FDF324200D68F8A /* GHeight */,
 				CE5C88041FDF324200D68F8A /* Products */,
+				8709A43E113BFC5F14E4C1E7 /* Pods */,
+				6C08CFDB4289F32BC5D44EA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +114,7 @@
 		CEA793D31FFBE00C00F3E6C4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */,
 				CE13087C2001774A00ACCC55 /* ScreenshotHelper.swift */,
 				CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */,
 			);
@@ -121,6 +150,7 @@
 		CEF510A21FEFA84E00D9DEEE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE1A6FF9200819DE00F805F5 /* UserObjectRm.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -132,9 +162,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE5C88171FDF324200D68F8A /* Build configuration list for PBXNativeTarget "GHeight" */;
 			buildPhases = (
+				B12D65CADB1BA8A7CB8165CC /* [CP] Check Pods Manifest.lock */,
 				CE5C87FF1FDF324200D68F8A /* Sources */,
 				CE5C88001FDF324200D68F8A /* Frameworks */,
 				CE5C88011FDF324200D68F8A /* Resources */,
+				8610B022BBFA315080430552 /* [CP] Embed Pods Frameworks */,
+				7966BF88E64C70247A7606F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,6 +226,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7966BF88E64C70247A7606F1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GHeight/Pods-GHeight-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8610B022BBFA315080430552 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GHeight/Pods-GHeight-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GHeight/Pods-GHeight-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B12D65CADB1BA8A7CB8165CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GHeight-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CE5C87FF1FDF324200D68F8A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -202,7 +291,9 @@
 				CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */,
 				CEA793D51FFBE02400F3E6C4 /* ARHelper.swift in Sources */,
 				CEF510A41FEFADE800D9DEEE /* RulerLine.swift in Sources */,
+				CE1A6FF82008057500F805F5 /* GRDatabaseManager.swift in Sources */,
 				CE5C880B1FDF324200D68F8A /* ViewController.swift in Sources */,
+				CE1A6FFA200819DE00F805F5 /* UserObjectRm.swift in Sources */,
 				CE5C88071FDF324200D68F8A /* AppDelegate.swift in Sources */,
 				CEF510A61FEFAE6B00D9DEEE /* SCNVector3.swift in Sources */,
 				CE13087D2001774A00ACCC55 /* ScreenshotHelper.swift in Sources */,
@@ -340,6 +431,7 @@
 		};
 		CE5C88181FDF324200D68F8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3BC716C5C7A6604FB995E24 /* Pods-GHeight.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -355,6 +447,7 @@
 		};
 		CE5C88191FDF324200D68F8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A714603FB95E54724124F711 /* Pods-GHeight.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
