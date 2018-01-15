@@ -11,6 +11,7 @@
 		CE13087D2001774A00ACCC55 /* ScreenshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13087C2001774A00ACCC55 /* ScreenshotHelper.swift */; };
 		CE1A6FF82008057500F805F5 /* GRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */; };
 		CE1A6FFA200819DE00F805F5 /* UserObjectRm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FF9200819DE00F805F5 /* UserObjectRm.swift */; };
+		CE1A6FFC2008262500F805F5 /* ObjectsFoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FFB2008262500F805F5 /* ObjectsFoldersViewController.swift */; };
 		CE5C88071FDF324200D68F8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C88061FDF324200D68F8A /* AppDelegate.swift */; };
 		CE5C88091FDF324200D68F8A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C88081FDF324200D68F8A /* art.scnassets */; };
 		CE5C880B1FDF324200D68F8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C880A1FDF324200D68F8A /* ViewController.swift */; };
@@ -19,6 +20,9 @@
 		CE5C88131FDF324200D68F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C88111FDF324200D68F8A /* LaunchScreen.storyboard */; };
 		CE793B4D1FE87AC700A1CC53 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */; };
 		CEA793D51FFBE02400F3E6C4 /* ARHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */; };
+		CEB5E15C200D62E500C38233 /* RulerNavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E15B200D62E500C38233 /* RulerNavigationHelper.swift */; };
+		CEB5E160200D675400C38233 /* UserObjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E15E200D675300C38233 /* UserObjectViewCell.swift */; };
+		CEB5E161200D675400C38233 /* UserObjectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */; };
 		CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB65B31FE6A30700D6AA48 /* Utilities.swift */; };
 		CEF510A41FEFADE800D9DEEE /* RulerLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF510A31FEFADE800D9DEEE /* RulerLine.swift */; };
 		CEF510A61FEFAE6B00D9DEEE /* SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF510A51FEFAE6B00D9DEEE /* SCNVector3.swift */; };
@@ -29,6 +33,7 @@
 		CE13087C2001774A00ACCC55 /* ScreenshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotHelper.swift; sourceTree = "<group>"; };
 		CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRDatabaseManager.swift; sourceTree = "<group>"; };
 		CE1A6FF9200819DE00F805F5 /* UserObjectRm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectRm.swift; sourceTree = "<group>"; };
+		CE1A6FFB2008262500F805F5 /* ObjectsFoldersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectsFoldersViewController.swift; sourceTree = "<group>"; };
 		CE5C88031FDF324200D68F8A /* GHeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C88061FDF324200D68F8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5C88081FDF324200D68F8A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -39,6 +44,9 @@
 		CE5C88141FDF324200D68F8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
 		CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARHelper.swift; sourceTree = "<group>"; };
+		CEB5E15B200D62E500C38233 /* RulerNavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerNavigationHelper.swift; sourceTree = "<group>"; };
+		CEB5E15E200D675300C38233 /* UserObjectViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectViewCell.swift; sourceTree = "<group>"; };
+		CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserObjectViewCell.xib; sourceTree = "<group>"; };
 		CEBB65B31FE6A30700D6AA48 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CEF510A31FEFADE800D9DEEE /* RulerLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerLine.swift; sourceTree = "<group>"; };
 		CEF510A51FEFAE6B00D9DEEE /* SCNVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
@@ -114,11 +122,21 @@
 		CEA793D31FFBE00C00F3E6C4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CEB5E15B200D62E500C38233 /* RulerNavigationHelper.swift */,
 				CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */,
 				CE13087C2001774A00ACCC55 /* ScreenshotHelper.swift */,
 				CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CEB5E15D200D672D00C38233 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CEB5E15E200D675300C38233 /* UserObjectViewCell.swift */,
+				CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		CEBB65B21FE6A2E500D6AA48 /* Utils */ = {
@@ -133,6 +151,7 @@
 		CEF510A01FEFA83C00D9DEEE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE1A6FFB2008262500F805F5 /* ObjectsFoldersViewController.swift */,
 				CE5C880A1FDF324200D68F8A /* ViewController.swift */,
 			);
 			path = Controllers;
@@ -141,6 +160,7 @@
 		CEF510A11FEFA84700D9DEEE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CEB5E15D200D672D00C38233 /* Cells */,
 				CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */,
 				CEF510A31FEFADE800D9DEEE /* RulerLine.swift */,
 			);
@@ -219,6 +239,7 @@
 			files = (
 				CE5C88091FDF324200D68F8A /* art.scnassets in Resources */,
 				CE5C88131FDF324200D68F8A /* LaunchScreen.storyboard in Resources */,
+				CEB5E161200D675400C38233 /* UserObjectViewCell.xib in Resources */,
 				CE5C88101FDF324200D68F8A /* Assets.xcassets in Resources */,
 				CE5C880E1FDF324200D68F8A /* Main.storyboard in Resources */,
 			);
@@ -287,10 +308,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB5E15C200D62E500C38233 /* RulerNavigationHelper.swift in Sources */,
 				CE793B4D1FE87AC700A1CC53 /* VirtualPlane.swift in Sources */,
 				CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */,
+				CEB5E160200D675400C38233 /* UserObjectViewCell.swift in Sources */,
 				CEA793D51FFBE02400F3E6C4 /* ARHelper.swift in Sources */,
 				CEF510A41FEFADE800D9DEEE /* RulerLine.swift in Sources */,
+				CE1A6FFC2008262500F805F5 /* ObjectsFoldersViewController.swift in Sources */,
 				CE1A6FF82008057500F805F5 /* GRDatabaseManager.swift in Sources */,
 				CE5C880B1FDF324200D68F8A /* ViewController.swift in Sources */,
 				CE1A6FFA200819DE00F805F5 /* UserObjectRm.swift in Sources */,

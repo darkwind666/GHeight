@@ -159,6 +159,7 @@
                         <viewLayoutGuide key="safeArea" id="2HR-eT-yrc"/>
                     </view>
                     <connections>
+                        <outlet property="galleryButton" destination="tE8-XK-T9V" id="G5u-8D-Lab"/>
                         <outlet property="messageLabel" destination="efI-Cu-TB3" id="SA7-li-uHt"/>
                         <outlet property="sceneView" destination="pGb-oi-J4w" id="Sdu-k1-M3g"/>
                     </connections>
@@ -166,6 +167,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lP6-6K-WKC" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="981.60000000000002" y="131.78410794602701"/>
+        </scene>
+        <!--Objects Folders View Controller-->
+        <scene sceneID="W0j-nr-XT3">
+            <objects>
+                <viewController id="cZl-cF-VXj" customClass="ObjectsFoldersViewController" customModule="GHeight" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5oS-kl-QpE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SS2-XA-xTV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SS2-XA-xTV" firstAttribute="top" secondItem="5oS-kl-QpE" secondAttribute="top" id="WMA-Zp-9On"/>
+                            <constraint firstItem="SS2-XA-xTV" firstAttribute="bottom" secondItem="xSe-Ai-TuH" secondAttribute="bottom" id="Xte-tF-XNR"/>
+                            <constraint firstItem="SS2-XA-xTV" firstAttribute="trailing" secondItem="xSe-Ai-TuH" secondAttribute="trailing" id="s0X-nh-mkY"/>
+                            <constraint firstItem="SS2-XA-xTV" firstAttribute="leading" secondItem="xSe-Ai-TuH" secondAttribute="leading" id="sxR-Bf-mBb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xSe-Ai-TuH"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="SS2-XA-xTV" id="Jfo-cU-PXL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FJs-zS-N2O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696.8" y="128.18590704647679"/>
         </scene>
     </scenes>
     <resources>

@@ -19,6 +19,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var galleryButton: UIButton!
     
     fileprivate lazy var session = ARSession()
     fileprivate lazy var sessionConfiguration = ARWorldTrackingConfiguration()
@@ -64,7 +65,6 @@ class ViewController: UIViewController {
     
     @objc func tapGesture(sender: UITapGestureRecognizer)
     {
-        
         if startMeasurement == false {
             DispatchQueue.main.async { [weak self] in
                 self?.measurements = [SCNVector3]()
@@ -179,6 +179,18 @@ class ViewController: UIViewController {
     func showMessageLabelForLength(length: Float) {
         let measureText = String(format: "%.2f%@", length * (self.unit.fator), (self.unit.unit))
         messageLabel.text = measureText
+    }
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension ViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        
     }
 }
 
