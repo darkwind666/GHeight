@@ -171,7 +171,7 @@
         <!--Objects Folders View Controller-->
         <scene sceneID="W0j-nr-XT3">
             <objects>
-                <viewController id="cZl-cF-VXj" customClass="ObjectsFoldersViewController" customModule="GHeight" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ObjectsFoldersViewController" id="cZl-cF-VXj" customClass="ObjectsFoldersViewController" customModule="GHeight" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5oS-kl-QpE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -37,12 +37,14 @@ class ViewController: UIViewController {
     
     var arHelper = ARHelper()
     var screenshotHelper = ScreenshotHelper()
+    var rulerScreenNavigationHelper = RulerNavigationHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         arHelper.measureScreen = self
         screenshotHelper.measureScreen = self
+        rulerScreenNavigationHelper.measureScreen = self
         sceneView.delegate = self
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGesture))
@@ -131,7 +133,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func galleryButtonPressed(_ sender: Any) {
-        
+        self.rulerScreenNavigationHelper.showGalleryScreen()
     }
     
     @IBAction func takeScreenshot() {
@@ -157,7 +159,7 @@ class ViewController: UIViewController {
         userObjectRm.id = uuid
         userObjectRm.sizeUnit = self.unit.rawValue
         userObjectRm.name = "Object" + uuid
-        userObjectRm.height = self.getObjectSize()
+        userObjectRm.height = self.getObjectSize() * self.unit.fator
         
         DispatchQueue.main.async {
             try! GRDatabaseManager.sharedDatabaseManager.grRealm.write({

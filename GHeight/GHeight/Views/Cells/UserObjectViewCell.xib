@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="154.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0b-yd-nkE">
@@ -35,19 +35,33 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOb-h3-Eac">
+                        <rect key="frame" x="16" y="123" width="288" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="pZC-ve-SEX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="D0b-yd-nkE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="KLA-oI-J2m"/>
                     <constraint firstAttribute="bottomMargin" secondItem="rAq-i4-nqL" secondAttribute="bottom" constant="28.5" id="Pbi-e2-3bt"/>
                     <constraint firstItem="rAq-i4-nqL" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Peb-zJ-ucS"/>
                     <constraint firstItem="D0b-yd-nkE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="S7o-zM-vpo"/>
+                    <constraint firstItem="SOb-h3-Eac" firstAttribute="top" secondItem="rAq-i4-nqL" secondAttribute="bottom" constant="7.5" id="cKY-fT-bd0"/>
                     <constraint firstItem="rAq-i4-nqL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="cpk-9J-iXy"/>
                     <constraint firstItem="D0b-yd-nkE" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="gVD-n1-kYo"/>
+                    <constraint firstAttribute="bottom" secondItem="SOb-h3-Eac" secondAttribute="bottom" constant="1.5" id="hC8-nV-5Xm"/>
                     <constraint firstItem="rAq-i4-nqL" firstAttribute="top" secondItem="D0b-yd-nkE" secondAttribute="bottom" constant="8" id="qIu-dy-W3V"/>
+                    <constraint firstItem="SOb-h3-Eac" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="tLe-Kf-rHi"/>
+                    <constraint firstAttribute="trailing" secondItem="SOb-h3-Eac" secondAttribute="trailing" constant="16" id="xpa-yM-fgn"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="dateCreated" destination="SOb-h3-Eac" id="nRP-SU-Jg8"/>
                 <outlet property="objectName" destination="D0b-yd-nkE" id="ATF-w7-3JE"/>
                 <outlet property="objectSize" destination="rAq-i4-nqL" id="gzJ-MO-WfT"/>
             </connections>

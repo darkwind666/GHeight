@@ -10,8 +10,9 @@ import UIKit
 
 class UserObjectViewCell: UITableViewCell {
 
-    @IBOutlet weak var objectName: UITextField!
-    @IBOutlet weak var objectSize: UITextField!
+    @IBOutlet weak var objectName: UILabel!
+    @IBOutlet weak var objectSize: UILabel!
+    @IBOutlet weak var dateCreated: UILabel!
     
     var objectIndex = 0
     
