@@ -125,14 +125,27 @@
                                     <action selector="buyButtonPressed:" destination="RxW-lW-65I" eventType="touchUpInside" id="VV4-cj-OFf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhm-ei-18v" userLabel="FinishPolygonButton">
+                                <rect key="frame" x="160" y="592" width="57" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="lyV-yl-f3N"/>
+                                    <constraint firstAttribute="height" constant="57" id="tTG-aN-biU"/>
+                                </constraints>
+                                <state key="normal" image="doneButton"/>
+                                <connections>
+                                    <action selector="showCelebrityListPressed:" destination="RxW-lW-65I" eventType="touchUpInside" id="egS-4M-UkU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="jhm-ei-18v" firstAttribute="top" secondItem="pTM-zU-7Gu" secondAttribute="bottom" constant="22" id="3PK-YM-ul0"/>
                             <constraint firstItem="pGb-oi-J4w" firstAttribute="centerY" secondItem="pf6-Zl-4zv" secondAttribute="centerY" id="3wJ-l2-JNX"/>
                             <constraint firstItem="pGb-oi-J4w" firstAttribute="bottom" secondItem="2HR-eT-yrc" secondAttribute="bottom" id="EfG-Y6-iYM"/>
                             <constraint firstItem="tE8-XK-T9V" firstAttribute="top" secondItem="2HR-eT-yrc" secondAttribute="top" constant="10" id="Gve-kn-4zW"/>
                             <constraint firstItem="2HR-eT-yrc" firstAttribute="bottom" secondItem="8HP-ZZ-0kl" secondAttribute="bottom" constant="20" id="NLo-DP-Gkg"/>
                             <constraint firstItem="wJS-DZ-mpk" firstAttribute="leading" secondItem="pTM-zU-7Gu" secondAttribute="trailing" constant="25.5" id="Nx6-zp-Gwa"/>
+                            <constraint firstItem="wJS-DZ-mpk" firstAttribute="leading" secondItem="jhm-ei-18v" secondAttribute="trailing" constant="26" id="Sjw-W9-BI9"/>
                             <constraint firstItem="wJS-DZ-mpk" firstAttribute="top" secondItem="0vX-S5-3X5" secondAttribute="bottom" constant="20" id="VwF-4g-z5y"/>
                             <constraint firstItem="pGb-oi-J4w" firstAttribute="trailing" secondItem="2HR-eT-yrc" secondAttribute="trailing" id="ZTF-f5-iOG"/>
                             <constraint firstItem="i4e-E2-0ie" firstAttribute="centerX" secondItem="pf6-Zl-4zv" secondAttribute="centerX" id="Zub-0O-nPz"/>
@@ -162,6 +175,7 @@
                         <outlet property="galleryButton" destination="tE8-XK-T9V" id="G5u-8D-Lab"/>
                         <outlet property="messageLabel" destination="efI-Cu-TB3" id="SA7-li-uHt"/>
                         <outlet property="sceneView" destination="pGb-oi-J4w" id="Sdu-k1-M3g"/>
+                        <outlet property="showCelebrityListButton" destination="jhm-ei-18v" id="vu9-eP-Ego"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lP6-6K-WKC" sceneMemberID="firstResponder"/>
@@ -198,9 +212,40 @@
             </objects>
             <point key="canvasLocation" x="1696.8" y="128.18590704647679"/>
         </scene>
+        <!--Celebrity List View Controller-->
+        <scene sceneID="9eq-pd-2W6">
+            <objects>
+                <viewController storyboardIdentifier="CelebrityListViewController" id="7lc-E6-gW9" customClass="CelebrityListViewController" customModule="GHeight" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K4X-VI-Db9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9B7-a6-ncm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9B7-a6-ncm" firstAttribute="bottom" secondItem="1nl-0J-SCk" secondAttribute="bottom" id="CPc-qk-UgT"/>
+                            <constraint firstItem="9B7-a6-ncm" firstAttribute="leading" secondItem="1nl-0J-SCk" secondAttribute="leading" id="O56-bR-ILg"/>
+                            <constraint firstItem="9B7-a6-ncm" firstAttribute="trailing" secondItem="1nl-0J-SCk" secondAttribute="trailing" id="PnS-pX-L2U"/>
+                            <constraint firstItem="9B7-a6-ncm" firstAttribute="top" secondItem="K4X-VI-Db9" secondAttribute="top" id="qHk-ww-iU4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1nl-0J-SCk"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="9B7-a6-ncm" id="4BP-3C-CYf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ATD-kz-VZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2417" y="132"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cleanButton" width="56" height="56"/>
+        <image name="doneButton" width="56" height="56"/>
         <image name="galleryButton" width="55" height="55"/>
         <image name="lightButton" width="56" height="56"/>
         <image name="makePhotoButton" width="63" height="56"/>

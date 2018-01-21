@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var galleryButton: UIButton!
+    @IBOutlet weak var showCelebrityListButton: UIButton!
     
     fileprivate lazy var session = ARSession()
     fileprivate lazy var sessionConfiguration = ARWorldTrackingConfiguration()
@@ -75,6 +76,11 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func showCelebrityListPressed(_ sender: Any) {
+        self.rulerScreenNavigationHelper.showCelebrityList()
+    }
+    
     
     @IBAction func undoPressed(_ sender: Any) {
         if let finalLine = lines.last {

@@ -19,10 +19,13 @@
 		CE5C88101FDF324200D68F8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C880F1FDF324200D68F8A /* Assets.xcassets */; };
 		CE5C88131FDF324200D68F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C88111FDF324200D68F8A /* LaunchScreen.storyboard */; };
 		CE793B4D1FE87AC700A1CC53 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */; };
+		CE91AE1A2015570B00D473CF /* CelebrityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91AE182015570B00D473CF /* CelebrityViewCell.swift */; };
+		CE91AE1B2015570B00D473CF /* CelebrityViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AE192015570B00D473CF /* CelebrityViewCell.xib */; };
 		CEA793D51FFBE02400F3E6C4 /* ARHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */; };
 		CEB5E15C200D62E500C38233 /* RulerNavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E15B200D62E500C38233 /* RulerNavigationHelper.swift */; };
 		CEB5E160200D675400C38233 /* UserObjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E15E200D675300C38233 /* UserObjectViewCell.swift */; };
 		CEB5E161200D675400C38233 /* UserObjectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */; };
+		CEB5E1632015517300C38233 /* CelebrityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E1622015517300C38233 /* CelebrityListViewController.swift */; };
 		CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB65B31FE6A30700D6AA48 /* Utilities.swift */; };
 		CEF510A41FEFADE800D9DEEE /* RulerLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF510A31FEFADE800D9DEEE /* RulerLine.swift */; };
 		CEF510A61FEFAE6B00D9DEEE /* SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF510A51FEFAE6B00D9DEEE /* SCNVector3.swift */; };
@@ -43,10 +46,13 @@
 		CE5C88121FDF324200D68F8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5C88141FDF324200D68F8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
+		CE91AE182015570B00D473CF /* CelebrityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityViewCell.swift; sourceTree = "<group>"; };
+		CE91AE192015570B00D473CF /* CelebrityViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CelebrityViewCell.xib; sourceTree = "<group>"; };
 		CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARHelper.swift; sourceTree = "<group>"; };
 		CEB5E15B200D62E500C38233 /* RulerNavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerNavigationHelper.swift; sourceTree = "<group>"; };
 		CEB5E15E200D675300C38233 /* UserObjectViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectViewCell.swift; sourceTree = "<group>"; };
 		CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserObjectViewCell.xib; sourceTree = "<group>"; };
+		CEB5E1622015517300C38233 /* CelebrityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityListViewController.swift; sourceTree = "<group>"; };
 		CEBB65B31FE6A30700D6AA48 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CEF510A31FEFADE800D9DEEE /* RulerLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerLine.swift; sourceTree = "<group>"; };
 		CEF510A51FEFAE6B00D9DEEE /* SCNVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
@@ -135,6 +141,8 @@
 			children = (
 				CEB5E15E200D675300C38233 /* UserObjectViewCell.swift */,
 				CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */,
+				CE91AE182015570B00D473CF /* CelebrityViewCell.swift */,
+				CE91AE192015570B00D473CF /* CelebrityViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -153,6 +161,7 @@
 			children = (
 				CE1A6FFB2008262500F805F5 /* ObjectsFoldersViewController.swift */,
 				CE5C880A1FDF324200D68F8A /* ViewController.swift */,
+				CEB5E1622015517300C38233 /* CelebrityListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -237,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE91AE1B2015570B00D473CF /* CelebrityViewCell.xib in Resources */,
 				CE5C88091FDF324200D68F8A /* art.scnassets in Resources */,
 				CE5C88131FDF324200D68F8A /* LaunchScreen.storyboard in Resources */,
 				CEB5E161200D675400C38233 /* UserObjectViewCell.xib in Resources */,
@@ -312,6 +322,8 @@
 				CE793B4D1FE87AC700A1CC53 /* VirtualPlane.swift in Sources */,
 				CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */,
 				CEB5E160200D675400C38233 /* UserObjectViewCell.swift in Sources */,
+				CEB5E1632015517300C38233 /* CelebrityListViewController.swift in Sources */,
+				CE91AE1A2015570B00D473CF /* CelebrityViewCell.swift in Sources */,
 				CEA793D51FFBE02400F3E6C4 /* ARHelper.swift in Sources */,
 				CEF510A41FEFADE800D9DEEE /* RulerLine.swift in Sources */,
 				CE1A6FFC2008262500F805F5 /* ObjectsFoldersViewController.swift in Sources */,
