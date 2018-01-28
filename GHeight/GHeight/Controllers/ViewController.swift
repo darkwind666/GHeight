@@ -43,6 +43,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showCelebrityListButton.isHidden = true
+        
         arHelper.measureScreen = self
         screenshotHelper.measureScreen = self
         rulerScreenNavigationHelper.measureScreen = self
@@ -89,6 +91,8 @@ class ViewController: UIViewController {
             
             if let nextLine = lines.last {
                 showMessageLabelForLength(length: nextLine.length)
+            } else {
+                showCelebrityListButton.isHidden = true
             }
         }
     }
@@ -271,6 +275,7 @@ extension ViewController: ARSCNViewDelegate {
         newMeasure.line = line
         newMeasure.length = distance
         lines.append(newMeasure)
+        showCelebrityListButton.isHidden = false
         
     }
     

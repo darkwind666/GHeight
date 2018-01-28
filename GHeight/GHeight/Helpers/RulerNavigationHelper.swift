@@ -45,6 +45,8 @@ class RulerNavigationHelper {
             return
         }
         
+        settingsViewController.measureScreen = measureScreen
+        
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSettings))
         settingsViewController.navigationItem.rightBarButtonItem = barButtonItem
         settingsViewController.title = "Celebrities"

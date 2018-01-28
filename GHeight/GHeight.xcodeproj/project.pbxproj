@@ -19,6 +19,7 @@
 		CE5C88101FDF324200D68F8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C880F1FDF324200D68F8A /* Assets.xcassets */; };
 		CE5C88131FDF324200D68F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C88111FDF324200D68F8A /* LaunchScreen.storyboard */; };
 		CE793B4D1FE87AC700A1CC53 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */; };
+		CE81DCDB201D3D8F00C54B30 /* Celebrities.json in Resources */ = {isa = PBXBuildFile; fileRef = CE81DCDA201D3D8F00C54B30 /* Celebrities.json */; };
 		CE91AE1A2015570B00D473CF /* CelebrityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91AE182015570B00D473CF /* CelebrityViewCell.swift */; };
 		CE91AE1B2015570B00D473CF /* CelebrityViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AE192015570B00D473CF /* CelebrityViewCell.xib */; };
 		CEA793D51FFBE02400F3E6C4 /* ARHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */; };
@@ -46,6 +47,7 @@
 		CE5C88121FDF324200D68F8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5C88141FDF324200D68F8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE793B4C1FE87AC600A1CC53 /* VirtualPlane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
+		CE81DCDA201D3D8F00C54B30 /* Celebrities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Celebrities.json; sourceTree = "<group>"; };
 		CE91AE182015570B00D473CF /* CelebrityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityViewCell.swift; sourceTree = "<group>"; };
 		CE91AE192015570B00D473CF /* CelebrityViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CelebrityViewCell.xib; sourceTree = "<group>"; };
 		CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARHelper.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		CE5C88051FDF324200D68F8A /* GHeight */ = {
 			isa = PBXGroup;
 			children = (
+				CE81DCD9201D3D3B00C54B30 /* CelebritiesData */,
 				CEA793D31FFBE00C00F3E6C4 /* Helpers */,
 				CEF510A21FEFA84E00D9DEEE /* Models */,
 				CEF510A11FEFA84700D9DEEE /* Views */,
@@ -123,6 +126,14 @@
 				CE5C88141FDF324200D68F8A /* Info.plist */,
 			);
 			path = GHeight;
+			sourceTree = "<group>";
+		};
+		CE81DCD9201D3D3B00C54B30 /* CelebritiesData */ = {
+			isa = PBXGroup;
+			children = (
+				CE81DCDA201D3D8F00C54B30 /* Celebrities.json */,
+			);
+			path = CelebritiesData;
 			sourceTree = "<group>";
 		};
 		CEA793D31FFBE00C00F3E6C4 /* Helpers */ = {
@@ -250,6 +261,7 @@
 				CE5C88091FDF324200D68F8A /* art.scnassets in Resources */,
 				CE5C88131FDF324200D68F8A /* LaunchScreen.storyboard in Resources */,
 				CEB5E161200D675400C38233 /* UserObjectViewCell.xib in Resources */,
+				CE81DCDB201D3D8F00C54B30 /* Celebrities.json in Resources */,
 				CE5C88101FDF324200D68F8A /* Assets.xcassets in Resources */,
 				CE5C880E1FDF324200D68F8A /* Main.storyboard in Resources */,
 			);
