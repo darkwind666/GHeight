@@ -12,6 +12,7 @@
 		CE1A6FF82008057500F805F5 /* GRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */; };
 		CE1A6FFA200819DE00F805F5 /* UserObjectRm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FF9200819DE00F805F5 /* UserObjectRm.swift */; };
 		CE1A6FFC2008262500F805F5 /* ObjectsFoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FFB2008262500F805F5 /* ObjectsFoldersViewController.swift */; };
+		CE50FF6B201FC6B7002115C1 /* EditObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50FF6A201FC6B7002115C1 /* EditObjectViewController.swift */; };
 		CE5C88071FDF324200D68F8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C88061FDF324200D68F8A /* AppDelegate.swift */; };
 		CE5C88091FDF324200D68F8A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C88081FDF324200D68F8A /* art.scnassets */; };
 		CE5C880B1FDF324200D68F8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C880A1FDF324200D68F8A /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 		CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRDatabaseManager.swift; sourceTree = "<group>"; };
 		CE1A6FF9200819DE00F805F5 /* UserObjectRm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectRm.swift; sourceTree = "<group>"; };
 		CE1A6FFB2008262500F805F5 /* ObjectsFoldersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectsFoldersViewController.swift; sourceTree = "<group>"; };
+		CE50FF6A201FC6B7002115C1 /* EditObjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditObjectViewController.swift; sourceTree = "<group>"; };
 		CE5C88031FDF324200D68F8A /* GHeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C88061FDF324200D68F8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5C88081FDF324200D68F8A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		CEF510A01FEFA83C00D9DEEE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE50FF6A201FC6B7002115C1 /* EditObjectViewController.swift */,
 				CE1A6FFB2008262500F805F5 /* ObjectsFoldersViewController.swift */,
 				CE5C880A1FDF324200D68F8A /* ViewController.swift */,
 				CEB5E1622015517300C38233 /* CelebrityListViewController.swift */,
@@ -335,6 +338,7 @@
 				CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */,
 				CEB5E160200D675400C38233 /* UserObjectViewCell.swift in Sources */,
 				CEB5E1632015517300C38233 /* CelebrityListViewController.swift in Sources */,
+				CE50FF6B201FC6B7002115C1 /* EditObjectViewController.swift in Sources */,
 				CE91AE1A2015570B00D473CF /* CelebrityViewCell.swift in Sources */,
 				CEA793D51FFBE02400F3E6C4 /* ARHelper.swift in Sources */,
 				CEF510A41FEFADE800D9DEEE /* RulerLine.swift in Sources */,

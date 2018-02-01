@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EditObjectVCDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    var measureScreen: ViewController!
     
     fileprivate var userObjects = GRDatabaseManager.sharedDatabaseManager.grRealm.objects(UserObjectRm.self).sorted(byKeyPath: "createdAt", ascending: false)
 
@@ -66,7 +67,15 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let cell = tableView.cellForRow(at: indexPath) as? UserObjectViewCell {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let editObjectVC = storyboard.instantiateViewController(withIdentifier: "EditObjectViewController") as! EditObjectViewController
+            editObjectVC.selectedObjectIndex = indexPath.row
+            editObjectVC.delegate = self
+            editObjectVC.modalPresentationStyle = .overCurrentContext
+            editObjectVC.measureScreen = measureScreen
+            self.present(editObjectVC, animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

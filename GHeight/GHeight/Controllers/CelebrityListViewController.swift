@@ -18,6 +18,7 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     var measureScreen: ViewController!
+    var height = Float(0)
     
     fileprivate var celebrities = [CelebrityModel]()
     
@@ -30,10 +31,8 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CelebrityViewCell", bundle: nil),  forCellReuseIdentifier:"CelebrityViewCell")
         
-        if let userHeight = measureScreen.lines.last?.length {
-            let userMeasureModel = CelebrityModel(name: "You height", height: Int(userHeight * measureScreen.unit.fator), isUserHeight: true)
-            celebrities.append(userMeasureModel)
-        }
+        let userMeasureModel = CelebrityModel(name: "You height", height: Int(height), isUserHeight: true)
+        celebrities.append(userMeasureModel)
         
         loadCelebritiesList()
         celebrities.sort { $0.height > $1.height }

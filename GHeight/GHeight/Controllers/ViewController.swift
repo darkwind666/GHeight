@@ -80,7 +80,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showCelebrityListPressed(_ sender: Any) {
-        self.rulerScreenNavigationHelper.showCelebrityList()
+        if let userHeight = lines.last?.length {
+            self.rulerScreenNavigationHelper.showCelebrityListFromRuler(compareHeight: userHeight * self.unit.fator)
+        }
     }
     
     
