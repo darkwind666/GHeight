@@ -88,4 +88,26 @@ class RulerNavigationHelper {
         navigationController.popoverPresentationController?.sourceRect = measureScreen.showCelebrityListButton.bounds
     }
     
+    func showSettingsScreen() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let settingsViewController = storyboard.instantiateViewController(withIdentifier: "SettingsController") as? SettingsController else {
+            return
+        }
+        
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSettings))
+        settingsViewController.navigationItem.rightBarButtonItem = barButtonItem
+        settingsViewController.title = "Settings"
+        
+        let navigationController = UINavigationController(rootViewController: settingsViewController)
+        navigationController.modalPresentationStyle = .popover
+        navigationController.popoverPresentationController?.delegate = measureScreen
+        navigationController.preferredContentSize = CGSize(width: measureScreen.sceneView.bounds.size.width - 20, height: measureScreen.sceneView.bounds.size.height - 50)
+        measureScreen.present(navigationController, animated: true, completion: nil)
+        
+        navigationController.popoverPresentationController?.sourceView = measureScreen.settingsButton
+        navigationController.popoverPresentationController?.sourceRect = measureScreen.settingsButton.bounds
+        
+    }
+    
 }
