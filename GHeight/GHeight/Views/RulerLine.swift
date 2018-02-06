@@ -204,4 +204,9 @@ final class RulerLine {
         endNode.removeFromParentNode()
         textNode.removeFromParentNode()
     }
+    
+    func updateMeasureUnit(unit: DistanceUnit) {
+        self.unit = unit
+        self.update(to: endVector)
+    }
 }

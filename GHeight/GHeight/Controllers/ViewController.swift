@@ -55,6 +55,14 @@ class ViewController: UIViewController {
         self.view.addGestureRecognizer(tapGestureRecognizer)
         
         unit = DistanceUnit.centimeter
+        
+        let defaults = UserDefaults.standard
+        if let measureString = defaults.string(forKey: Setting.measureUnits.rawValue) {
+            self.unit = DistanceUnit(rawValue: measureString)!
+        } else {
+            self.unit = .centimeter
+            defaults.set(DistanceUnit.centimeter.rawValue, forKey: Setting.measureUnits.rawValue)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -194,6 +202,19 @@ class ViewController: UIViewController {
     func showMessageLabelForLength(length: Float) {
         let measureText = String(format: "%.2f%@", length * (self.unit.fator), (self.unit.unit))
         messageLabel.text = measureText
+    }
+    
+    func updateMeasureUnit() {
+        let defaults = UserDefaults.standard
+        self.unit = DistanceUnit(rawValue: defaults.string(forKey: Setting.measureUnits.rawValue)!)!
+        
+        if let finalLine = lines.last {
+            showMessageLabelForLength(length: finalLine.length)
+        }
+        
+        for line in lines {
+            line.line?.updateMeasureUnit(unit: self.unit)
+        }
     }
 }
 

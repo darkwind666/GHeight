@@ -38,6 +38,11 @@ class RulerNavigationHelper {
     @objc
     func dismissSettings() {
         measureScreen.dismiss(animated: true, completion: nil)
+        updateSettings()
+    }
+    
+    private func updateSettings() {
+        measureScreen.updateMeasureUnit()
     }
     
     func showCelebrityListFromRuler(compareHeight: Float) {
@@ -94,6 +99,8 @@ class RulerNavigationHelper {
         guard let settingsViewController = storyboard.instantiateViewController(withIdentifier: "SettingsController") as? SettingsController else {
             return
         }
+        
+        settingsViewController.measureScreen = measureScreen
         
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSettings))
         settingsViewController.navigationItem.rightBarButtonItem = barButtonItem

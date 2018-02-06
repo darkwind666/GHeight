@@ -15,10 +15,11 @@ enum Setting: String {
 class SettingsController: UIViewController {
     
     @IBOutlet weak var measureUnitsButton: UIButton!
+    var measureScreen: ViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        popoverPresentationController?.delegate = self
         setUpButtons()
     }
     
@@ -59,4 +60,11 @@ class SettingsController: UIViewController {
         present(alertVC, animated: true, completion: nil)
     }
 
+}
+
+extension SettingsController: UIPopoverPresentationControllerDelegate {
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        measureScreen.updateMeasureUnit()
+    }
 }
