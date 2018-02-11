@@ -10,7 +10,7 @@ import UIKit
 
 struct CelebrityModel {
     var name = ""
-    var height = 0
+    var height = Float(0)
     var isUserHeight = false
 }
 
@@ -22,7 +22,7 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
     
     fileprivate var celebrities = [CelebrityModel]()
     
-    fileprivate var unit: DistanceUnit = .centimeter
+    var unit: DistanceUnit = .centimeter
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CelebrityViewCell", bundle: nil),  forCellReuseIdentifier:"CelebrityViewCell")
         
-        let userMeasureModel = CelebrityModel(name: "You height", height: Int(height), isUserHeight: true)
+        let userMeasureModel = CelebrityModel(name: "You height", height: height, isUserHeight: true)
         celebrities.append(userMeasureModel)
         
         loadCelebritiesList()
@@ -53,12 +53,14 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                 if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let сelebrities = jsonResult["сelebrities"] as? [Any] {
                     
+                    let conversionFator = unit.fator / (DistanceUnit.centimeter.fator)
+                    
                     for сelebrity in сelebrities {
                         
                         if let сelebrityDict = сelebrity as? [String: Any] {
                             let name = сelebrityDict["name"] as! String
                             let height = Int(сelebrityDict["height"] as! String)
-                            let сelebrityModel = CelebrityModel(name: name, height: height!, isUserHeight: false)
+                            let сelebrityModel = CelebrityModel(name: name, height: Float(height!) * conversionFator, isUserHeight: false)
                             celebrities.append(сelebrityModel)
                         }
                     }

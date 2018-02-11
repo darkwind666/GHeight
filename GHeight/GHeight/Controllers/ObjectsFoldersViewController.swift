@@ -15,7 +15,7 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
     
     fileprivate var userObjects = GRDatabaseManager.sharedDatabaseManager.grRealm.objects(UserObjectRm.self).sorted(byKeyPath: "createdAt", ascending: false)
 
-    fileprivate var unit: DistanceUnit = .centimeter
+    var unit: DistanceUnit = .centimeter
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +74,7 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
             editObjectVC.delegate = self
             editObjectVC.modalPresentationStyle = .overCurrentContext
             editObjectVC.measureScreen = measureScreen
+            editObjectVC.unit = measureScreen.unit
             self.present(editObjectVC, animated: true, completion: nil)
         }
     }

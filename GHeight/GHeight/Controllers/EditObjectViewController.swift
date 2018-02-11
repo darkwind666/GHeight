@@ -25,7 +25,7 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
     var measureScreen: ViewController!
     var selectedObjectIndex = 0
     var delegate: EditObjectVCDelegate?
-    fileprivate var unit: DistanceUnit = .centimeter
+    var unit: DistanceUnit = .centimeter
     fileprivate let imagePicker = UIImagePickerController()
     fileprivate var imageName = ""
     fileprivate var selectedObject: UserObjectRm?
@@ -74,7 +74,8 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     @IBAction func compareHeightPressed(_ sender: Any) {
-        measureScreen.rulerScreenNavigationHelper.showCelebrityListFromRulerMeasureDetail(compareHeight: (selectedObject?.height)!, controller: self)
+        let height = Float(self.objectSizeTextField.text!)!
+        measureScreen.rulerScreenNavigationHelper.showCelebrityListFromRulerMeasureDetail(compareHeight: height, controller: self)
     }
     
     @IBAction func savePressed(_ sender: Any) {

@@ -24,6 +24,7 @@ class RulerNavigationHelper {
         settingsViewController.navigationItem.rightBarButtonItem = barButtonItem
         settingsViewController.title = "Gallery"
         settingsViewController.measureScreen = measureScreen
+        settingsViewController.unit = measureScreen.unit
         
         let navigationController = UINavigationController(rootViewController: settingsViewController)
         navigationController.modalPresentationStyle = .popover
@@ -57,6 +58,7 @@ class RulerNavigationHelper {
         settingsViewController.navigationItem.rightBarButtonItem = barButtonItem
         settingsViewController.title = "Celebrities"
         settingsViewController.height = compareHeight
+        settingsViewController.unit = measureScreen.unit
         
         let navigationController = UINavigationController(rootViewController: settingsViewController)
         navigationController.modalPresentationStyle = .popover
@@ -81,6 +83,7 @@ class RulerNavigationHelper {
         settingsViewController.navigationItem.rightBarButtonItem = barButtonItem
         settingsViewController.title = "Celebrities"
         settingsViewController.height = compareHeight
+        settingsViewController.unit = measureScreen.unit
 
         let navigationController = UINavigationController(rootViewController: settingsViewController)
         navigationController.modalPresentationStyle = .overCurrentContext
