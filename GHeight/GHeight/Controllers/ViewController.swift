@@ -9,6 +9,7 @@
 import UIKit
 import SceneKit
 import ARKit
+import StoreKit
 
 class HeightMeasure {
     var line: RulerLine?
@@ -40,6 +41,9 @@ class ViewController: UIViewController {
     var arHelper = ARHelper()
     var screenshotHelper = ScreenshotHelper()
     var rulerScreenNavigationHelper = RulerNavigationHelper()
+    
+    var removeObjectsLimit = false
+    var products = [SKProduct]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

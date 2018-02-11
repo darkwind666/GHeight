@@ -30,6 +30,10 @@
 		CEB5E161200D675400C38233 /* UserObjectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */; };
 		CEB5E1632015517300C38233 /* CelebrityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E1622015517300C38233 /* CelebrityListViewController.swift */; };
 		CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB65B31FE6A30700D6AA48 /* Utilities.swift */; };
+		CEC4B8332030F6BB006215AD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC4B8322030F6BB006215AD /* StoreKit.framework */; };
+		CEC4B8352030F718006215AD /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4B8342030F717006215AD /* IAPHelper.swift */; };
+		CEC4B8372030F81A006215AD /* RulerPurchasesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4B8362030F81A006215AD /* RulerPurchasesHelper.swift */; };
+		CEC4B8392030F90C006215AD /* RageProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4B8382030F90C006215AD /* RageProducts.swift */; };
 		CEF510A41FEFADE800D9DEEE /* RulerLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF510A31FEFADE800D9DEEE /* RulerLine.swift */; };
 		CEF510A61FEFAE6B00D9DEEE /* SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF510A51FEFAE6B00D9DEEE /* SCNVector3.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +64,10 @@
 		CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserObjectViewCell.xib; sourceTree = "<group>"; };
 		CEB5E1622015517300C38233 /* CelebrityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityListViewController.swift; sourceTree = "<group>"; };
 		CEBB65B31FE6A30700D6AA48 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		CEC4B8322030F6BB006215AD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CEC4B8342030F717006215AD /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		CEC4B8362030F81A006215AD /* RulerPurchasesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerPurchasesHelper.swift; sourceTree = "<group>"; };
+		CEC4B8382030F90C006215AD /* RageProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RageProducts.swift; sourceTree = "<group>"; };
 		CEF510A31FEFADE800D9DEEE /* RulerLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerLine.swift; sourceTree = "<group>"; };
 		CEF510A51FEFAE6B00D9DEEE /* SCNVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
 		F3BC716C5C7A6604FB995E24 /* Pods-GHeight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GHeight.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GHeight/Pods-GHeight.debug.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11B0A6EB6764569706BE3B49 /* Pods_GHeight.framework in Frameworks */,
+				CEC4B8332030F6BB006215AD /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +90,7 @@
 		6C08CFDB4289F32BC5D44EA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEC4B8322030F6BB006215AD /* StoreKit.framework */,
 				F6B39948B32C4B9E071801DC /* Pods_GHeight.framework */,
 			);
 			name = Frameworks;
@@ -143,6 +153,9 @@
 		CEA793D31FFBE00C00F3E6C4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CEC4B8382030F90C006215AD /* RageProducts.swift */,
+				CEC4B8362030F81A006215AD /* RulerPurchasesHelper.swift */,
+				CEC4B8342030F717006215AD /* IAPHelper.swift */,
 				CEB5E15B200D62E500C38233 /* RulerNavigationHelper.swift */,
 				CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */,
 				CE13087C2001774A00ACCC55 /* ScreenshotHelper.swift */,
@@ -237,6 +250,11 @@
 					CE5C88021FDF324200D68F8A = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -340,6 +358,8 @@
 				CE793B4D1FE87AC700A1CC53 /* VirtualPlane.swift in Sources */,
 				CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */,
 				CE50FF6D20251A23002115C1 /* SettingsController.swift in Sources */,
+				CEC4B8392030F90C006215AD /* RageProducts.swift in Sources */,
+				CEC4B8352030F718006215AD /* IAPHelper.swift in Sources */,
 				CEB5E160200D675400C38233 /* UserObjectViewCell.swift in Sources */,
 				CEB5E1632015517300C38233 /* CelebrityListViewController.swift in Sources */,
 				CE50FF6B201FC6B7002115C1 /* EditObjectViewController.swift in Sources */,
@@ -352,6 +372,7 @@
 				CE1A6FFA200819DE00F805F5 /* UserObjectRm.swift in Sources */,
 				CE5C88071FDF324200D68F8A /* AppDelegate.swift in Sources */,
 				CEF510A61FEFAE6B00D9DEEE /* SCNVector3.swift in Sources */,
+				CEC4B8372030F81A006215AD /* RulerPurchasesHelper.swift in Sources */,
 				CE13087D2001774A00ACCC55 /* ScreenshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,7 +515,7 @@
 				DEVELOPMENT_TEAM = NYJEFU8C25;
 				INFOPLIST_FILE = GHeight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = darkwinddev.GHeight;
+				PRODUCT_BUNDLE_IDENTIFIER = comDarkWind.GHeight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -510,7 +531,7 @@
 				DEVELOPMENT_TEAM = NYJEFU8C25;
 				INFOPLIST_FILE = GHeight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = darkwinddev.GHeight;
+				PRODUCT_BUNDLE_IDENTIFIER = comDarkWind.GHeight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -14,6 +14,10 @@ enum Setting: String {
 
 class SettingsController: UIViewController {
     
+    static let removeAdProductId = "com.darkwind.gHeight.removeAd"
+    static let removeUserGalleryProductId = "com.darkwind.gHeight.removeUserGalleryLimit"
+    static let removeAdsPlusLimitProductId = "com.darkwind.gHeight.removeAdPlusUserGalleryLimit"
+    
     @IBOutlet weak var measureUnitsButton: UIButton!
     var measureScreen: ViewController!
     
