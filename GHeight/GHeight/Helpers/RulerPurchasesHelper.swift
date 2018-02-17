@@ -64,25 +64,25 @@ class RulerPurchasesHelper {
     }
     
     func showPurchasesPopUp() {
-        let message = NSLocalizedString("purchasesPopUpMessage", comment: "")
-        let rateAlert = UIAlertController(title: NSLocalizedString("purchasesPopUpTitle", comment: "") + "\u{1F4B0}", message: message, preferredStyle: .alert)
-        let removeAdsPlusLimitAction = UIAlertAction(title: NSLocalizedString("removeAdsPlusLimitButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
+        let message = "purchases"
+        let rateAlert = UIAlertController(title: "purchases" + "\u{1F4B0}", message: message, preferredStyle: .alert)
+        let removeAdsPlusLimitAction = UIAlertAction(title: "remove Ads Plus Limit", style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeAdsPlusLimitProductId)
         })
         
-        let removeAdsAction = UIAlertAction(title: NSLocalizedString("removeAdsButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
+        let removeAdsAction = UIAlertAction(title: "remove Ads", style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeAdProductId)
         })
         
-        let removeLimitAction = UIAlertAction(title: NSLocalizedString("removeLimitButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
+        let removeLimitAction = UIAlertAction(title: "remove Limit", style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeUserGalleryProductId)
         })
         
-        let restorePurchasesAction = UIAlertAction(title: NSLocalizedString("restorePurchasesButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
+        let restorePurchasesAction = UIAlertAction(title: "restore Purchases", style: .default, handler: { (action) -> Void in
             RageProducts.store.restorePurchases()
         })
         
-        let cancelAction = UIAlertAction(title: NSLocalizedString("cancelKey", comment: ""), style: .cancel, handler: { (action) -> Void in
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: { (action) -> Void in
         })
         
         if !RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
@@ -112,7 +112,46 @@ class RulerPurchasesHelper {
                 break
             }
         }
+    }
+    
+    func checkUserLimit() -> Bool {
         
+        let userObjects = GRDatabaseManager.sharedDatabaseManager.grRealm.objects(UserObjectRm.self)
+        
+        if userObjects.count >= rulerScreen.maxObjectsInUserGallery && rulerScreen.removeObjectsLimit == false {
+            let objectsLimitTitle = "objects Limit"
+            let alertController = UIAlertController(title: "\(objectsLimitTitle) \(rulerScreen.maxObjectsInUserGallery)", message: "do You Whant To Remove Limit ?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alertController.addAction(UIAlertAction(title: "remove Ads Plus Limit Button Title", style: UIAlertActionStyle.default, handler: { UIAlertAction in
+                for (_, product) in self.rulerScreen.products.enumerated() {
+                    if product.productIdentifier == SettingsController.removeAdsPlusLimitProductId {
+                        RageProducts.store.buyProduct(product)
+                        break
+                    }
+                }
+            }))
+            
+            alertController.addAction(UIAlertAction(title: "remove Limit Button Title", style: UIAlertActionStyle.default, handler: { UIAlertAction in
+                for (_, product) in self.rulerScreen.products.enumerated() {
+                    if product.productIdentifier == SettingsController.removeUserGalleryProductId {
+                        RageProducts.store.buyProduct(product)
+                        break
+                    }
+                }
+            }))
+            
+            alertController.addAction(UIAlertAction(title: "make Just Screenshot", style: UIAlertActionStyle.default, handler: { UIAlertAction in
+                self.rulerScreen.screenshotHelper.takeJustScreenshot()
+            }))
+            
+            alertController.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.default, handler: nil))
+            
+            rulerScreen.present(alertController, animated: true, completion: nil)
+            
+            return true
+        } else {
+            return false
+        }
     }
     
 }

@@ -17,6 +17,8 @@ class HeightMeasure {
 }
 
 class ViewController: UIViewController {
+    
+    let maxObjectsInUserGallery = 3
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var messageLabel: UILabel!
@@ -41,6 +43,7 @@ class ViewController: UIViewController {
     var arHelper = ARHelper()
     var screenshotHelper = ScreenshotHelper()
     var rulerScreenNavigationHelper = RulerNavigationHelper()
+    var rulerPurchasesHelper: RulerPurchasesHelper!
     
     var removeObjectsLimit = false
     var products = [SKProduct]()
@@ -53,6 +56,7 @@ class ViewController: UIViewController {
         arHelper.measureScreen = self
         screenshotHelper.measureScreen = self
         rulerScreenNavigationHelper.measureScreen = self
+        rulerPurchasesHelper = RulerPurchasesHelper(rulerScreen: self)
         sceneView.delegate = self
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGesture))
@@ -150,7 +154,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buyButtonPressed(_ sender: Any) {
-        
+        rulerPurchasesHelper.showPurchasesPopUp()
     }
     
     @IBAction func showSettings(_ sender: Any) {
@@ -175,6 +179,10 @@ class ViewController: UIViewController {
     }
     
     func saveUserHeight() {
+        
+        if rulerPurchasesHelper.checkUserLimit() == true {
+            return
+        }
         
         let date = Date()
         let uuid = String(Int(date.timeIntervalSince1970))
