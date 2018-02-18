@@ -22,10 +22,10 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGb-oi-J4w">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </arscnView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efI-Cu-TB3">
-                                <rect key="frame" x="83" y="55" width="209" height="74"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="efI-Cu-TB3">
+                                <rect key="frame" x="83" y="55" width="209" height="71"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="74" id="ATx-dg-4fT"/>
+                                    <constraint firstAttribute="height" constant="71" id="ATx-dg-4fT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -247,7 +247,7 @@
         <!--Edit Object View Controller-->
         <scene sceneID="YFy-PM-559">
             <objects>
-                <viewController storyboardIdentifier="EditObjectViewController" id="cxl-4x-Sre" customClass="EditObjectViewController" customModule="BeaverRuler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditObjectViewController" id="cxl-4x-Sre" customClass="EditObjectViewController" customModule="GHeight" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mv6-2U-xLJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,8 +310,8 @@
                                         </state>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="SSV-Uw-q3l"/>
                                                 <exclude reference="1av-n9-xue"/>
+                                                <exclude reference="SSV-Uw-q3l"/>
                                             </mask>
                                         </variation>
                                         <connections>

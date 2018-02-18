@@ -12,6 +12,9 @@
 		CE1A6FF82008057500F805F5 /* GRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */; };
 		CE1A6FFA200819DE00F805F5 /* UserObjectRm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FF9200819DE00F805F5 /* UserObjectRm.swift */; };
 		CE1A6FFC2008262500F805F5 /* ObjectsFoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FFB2008262500F805F5 /* ObjectsFoldersViewController.swift */; };
+		CE2321BD2039F29C0012696E /* APAppRater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2321BC2039F29C0012696E /* APAppRater.swift */; };
+		CE2321BF2039F3890012696E /* AppFeedbackHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2321BE2039F3890012696E /* AppFeedbackHelper.swift */; };
+		CE2321C12039F6B50012696E /* RateAppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2321C02039F6B40012696E /* RateAppHelper.swift */; };
 		CE50FF6B201FC6B7002115C1 /* EditObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50FF6A201FC6B7002115C1 /* EditObjectViewController.swift */; };
 		CE50FF6D20251A23002115C1 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50FF6C20251A23002115C1 /* SettingsController.swift */; };
 		CE5C88071FDF324200D68F8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C88061FDF324200D68F8A /* AppDelegate.swift */; };
@@ -44,6 +47,9 @@
 		CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRDatabaseManager.swift; sourceTree = "<group>"; };
 		CE1A6FF9200819DE00F805F5 /* UserObjectRm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectRm.swift; sourceTree = "<group>"; };
 		CE1A6FFB2008262500F805F5 /* ObjectsFoldersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectsFoldersViewController.swift; sourceTree = "<group>"; };
+		CE2321BC2039F29C0012696E /* APAppRater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APAppRater.swift; sourceTree = "<group>"; };
+		CE2321BE2039F3890012696E /* AppFeedbackHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFeedbackHelper.swift; sourceTree = "<group>"; };
+		CE2321C02039F6B40012696E /* RateAppHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateAppHelper.swift; sourceTree = "<group>"; };
 		CE50FF6A201FC6B7002115C1 /* EditObjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditObjectViewController.swift; sourceTree = "<group>"; };
 		CE50FF6C20251A23002115C1 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		CE5C88031FDF324200D68F8A /* GHeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +159,9 @@
 		CEA793D31FFBE00C00F3E6C4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CE2321C02039F6B40012696E /* RateAppHelper.swift */,
+				CE2321BE2039F3890012696E /* AppFeedbackHelper.swift */,
+				CE2321BC2039F29C0012696E /* APAppRater.swift */,
 				CEC4B8382030F90C006215AD /* RageProducts.swift */,
 				CEC4B8362030F81A006215AD /* RulerPurchasesHelper.swift */,
 				CEC4B8342030F717006215AD /* IAPHelper.swift */,
@@ -354,12 +363,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2321BF2039F3890012696E /* AppFeedbackHelper.swift in Sources */,
 				CEB5E15C200D62E500C38233 /* RulerNavigationHelper.swift in Sources */,
 				CE793B4D1FE87AC700A1CC53 /* VirtualPlane.swift in Sources */,
 				CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */,
 				CE50FF6D20251A23002115C1 /* SettingsController.swift in Sources */,
 				CEC4B8392030F90C006215AD /* RageProducts.swift in Sources */,
 				CEC4B8352030F718006215AD /* IAPHelper.swift in Sources */,
+				CE2321C12039F6B50012696E /* RateAppHelper.swift in Sources */,
+				CE2321BD2039F29C0012696E /* APAppRater.swift in Sources */,
 				CEB5E160200D675400C38233 /* UserObjectViewCell.swift in Sources */,
 				CEB5E1632015517300C38233 /* CelebrityListViewController.swift in Sources */,
 				CE50FF6B201FC6B7002115C1 /* EditObjectViewController.swift in Sources */,

@@ -57,7 +57,8 @@ class ViewController: UIViewController {
         screenshotHelper.measureScreen = self
         rulerScreenNavigationHelper.measureScreen = self
         rulerPurchasesHelper = RulerPurchasesHelper(rulerScreen: self)
-        sceneView.delegate = self
+        
+        setupScene()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGesture))
         self.view.addGestureRecognizer(tapGestureRecognizer)
@@ -71,6 +72,17 @@ class ViewController: UIViewController {
             self.unit = .centimeter
             defaults.set(DistanceUnit.centimeter.rawValue, forKey: Setting.measureUnits.rawValue)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleStartARSessionNotification(_:)),
+                                               name: Notification.Name(rawValue:AppFeedbackHelper.appFeedbackHelperNotificationKey),
+                                               object: nil)
+    }
+    
+    fileprivate func setupScene() {
+        sceneView.delegate = self
+        sceneView.session = session
+        messageLabel.text = "detecting plane"
+        session.run(sessionConfiguration, options: [.resetTracking, .removeExistingAnchors])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,6 +95,10 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
+    }
+    
+    @objc func handleStartARSessionNotification(_ notification: Notification) {
+        session.run(sessionConfiguration)
     }
     
     @objc func tapGesture(sender: UITapGestureRecognizer)
@@ -150,7 +166,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func rateAppPressed(_ sender: Any) {
-        
+        APAppRater.sharedInstance.rateTheApp()
     }
     
     @IBAction func buyButtonPressed(_ sender: Any) {
