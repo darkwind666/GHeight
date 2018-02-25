@@ -124,8 +124,8 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     @IBAction func sharePressed(_ sender: Any) {
         let size = objectSizeTextField.text! + " " + unit.unit
-        let firstActivityItem = objectNameTextField.text! + " " + size + " #GRuler"
-        let secondActivityItem : NSURL = NSURL(string: "https://itunes.apple.com/us/app/gruler/id1274233742?ls=1&mt=8")!
+        let firstActivityItem = objectNameTextField.text! + " " + size + " #GHeight"
+        let secondActivityItem : NSURL = NSURL(string: RateAppHelper.reviewString)!
         
         let activityViewController : UIActivityViewController = UIActivityViewController(
             activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)

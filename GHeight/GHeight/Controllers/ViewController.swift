@@ -353,7 +353,20 @@ extension ViewController: ARSCNViewDelegate {
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
+        let errorCode = (error as NSError).code
         
+        if errorCode == 103 {
+            
+            let alert = UIAlertController(title: "GHeight Would Like To Access The Camera", message: "please Grant Permission To Use The Camera", preferredStyle: .alert )
+            alert.addAction(UIAlertAction(title: "open Settings", style: .cancel) { alert in
+                
+                UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: { (success) in
+                })
+            })
+            present(alert, animated: true, completion: nil)
+        }
+        
+        messageLabel.text = "Error"
     }
     
     func sessionWasInterrupted(_ session: ARSession) {

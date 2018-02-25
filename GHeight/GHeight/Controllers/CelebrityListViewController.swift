@@ -27,6 +27,9 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let leftButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(CelebrityListViewController.shareResult))
+        self.navigationItem.leftBarButtonItem = leftButtonItem
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CelebrityViewCell", bundle: nil),  forCellReuseIdentifier:"CelebrityViewCell")
@@ -36,6 +39,31 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
         
         loadCelebritiesList()
         celebrities.sort { $0.height > $1.height }
+    }
+    
+    @objc func shareResult() {
+        
+        var firstActivityItem = ""
+        let size = String(height)
+        
+        guard let index = celebrities.index(where: {$0.isUserHeight == true}) else {return}
+        if (index + 1) >= celebrities.count {
+            firstActivityItem = "My height " + size + " " + unit.unit + " #GRuler"
+        } else {
+            let celebrityGeight = celebrities[index + 1]
+            firstActivityItem =  size + " " + unit.unit + "I am heigh than " + celebrityGeight.name + "  #GRuler"
+        }
+        
+        let secondActivityItem : NSURL = NSURL(string: RateAppHelper.reviewString)!
+        
+        let activityViewController : UIActivityViewController = UIActivityViewController(
+            activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)
+        
+        activityViewController.popoverPresentationController?.sourceView = self.navigationItem.leftBarButtonItem?.customView
+        activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.unknown
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
+        
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
