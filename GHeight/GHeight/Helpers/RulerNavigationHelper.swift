@@ -20,6 +20,8 @@ class RulerNavigationHelper {
             return
         }
         
+        settingsViewController.products = measureScreen.products
+        settingsViewController.apdAdQueue = measureScreen.apdAdQueue
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSettings))
         settingsViewController.navigationItem.rightBarButtonItem = barButtonItem
         settingsViewController.title = "Gallery"

@@ -51,8 +51,8 @@ class RulerPurchasesHelper {
         if (RageProducts.store.isProductPurchased(SettingsController.removeAdProductId)) || (RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId)) {
             
         } else {
-//            rulerScreen.apdAdQueue.setMaxAdSize(rulerScreen.capacity)
-//            rulerScreen.apdAdQueue.loadAd(of: rulerScreen.type)
+            rulerScreen.apdAdQueue.setMaxAdSize(rulerScreen.capacity)
+            rulerScreen.apdAdQueue.loadAd(of: rulerScreen.type)
         }
         
         rulerScreen.products = []

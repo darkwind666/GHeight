@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import Appodeal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         appRater = APAppRater.sharedInstance
+        
+        let adTypes: AppodealAdType = [.nativeAd, .interstitial]
+        Appodeal.initialize(withApiKey: "1093f95a689f0e90c92425aff2828358d047ed8991cd3e12", types: adTypes)
+        
         // Override point for customization after application launch.
         return true
     }

@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 import StoreKit
+import Appodeal
 
 class HeightMeasure {
     var line: RulerLine?
@@ -48,6 +49,11 @@ class ViewController: UIViewController {
     var removeObjectsLimit = false
     var products = [SKProduct]()
     
+    var apdAdQueue : APDNativeAdQueue = APDNativeAdQueue()
+    var capacity : Int = 9
+    var type : APDNativeAdType = .auto
+    var showUserInterstitial = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,6 +82,8 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleStartARSessionNotification(_:)),
                                                name: Notification.Name(rawValue:AppFeedbackHelper.appFeedbackHelperNotificationKey),
                                                object: nil)
+        
+        Appodeal.setInterstitialDelegate(self)
     }
     
     fileprivate func setupScene() {
@@ -174,7 +182,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showSettings(_ sender: Any) {
-        rulerScreenNavigationHelper.showSettingsScreen()
+        
+        var blockAd = false
+        
+        if RageProducts.store.isProductPurchased(SettingsController.removeAdProductId) || RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
+            blockAd = true
+        }
+        
+        if showUserInterstitial == false && Appodeal.isReadyForShow(with: AppodealShowStyle.interstitial) && blockAd == false {
+            Appodeal.showAd(AppodealShowStyle.interstitial, rootViewController: self)
+            showUserInterstitial = true
+        } else {
+            rulerScreenNavigationHelper.showSettingsScreen()
+        }
     }
     
     @IBAction func galleryButtonPressed(_ sender: Any) {
@@ -254,6 +274,23 @@ extension ViewController: UIPopoverPresentationControllerDelegate {
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        
+    }
+}
+
+// MARK: - AppodealInterstitialDelegate
+
+extension ViewController: AppodealInterstitialDelegate {
+    func interstitialWillPresent(){
+        
+    }
+    
+    func interstitialDidDismiss(){
+        rulerScreenNavigationHelper.showSettingsScreen()
+        session.run(sessionConfiguration)
+    }
+    
+    func interstitialDidClick(){
         
     }
 }

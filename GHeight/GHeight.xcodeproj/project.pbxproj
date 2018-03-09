@@ -309,9 +309,34 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GHeight/Pods-GHeight-resources.sh",
+				"${PODS_ROOT}/Appodeal/Appodeal.bundle",
+				"${PODS_ROOT}/Appodeal/APDStartAppAdapter.embeddedframework/Resources/StartApp.bundle",
+				"${PODS_ROOT}/Appodeal/APDTapjoyAdapter.embeddedframework/Resources/TapjoyResources.bundle",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPAdBrowserController.xib",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseButtonX.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseButtonX@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseButtonX@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPDAAIcon.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPDAAIcon@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPDAAIcon@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPMutedBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPMutedBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPMutedBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPPlayBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPPlayBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPPlayBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPUnmutedBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPUnmutedBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPUnmutedBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MRAID.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -462,6 +487,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -512,6 +538,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;

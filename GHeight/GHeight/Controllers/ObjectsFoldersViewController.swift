@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Appodeal
+import StoreKit
 
 class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EditObjectVCDelegate {
 
@@ -16,6 +18,9 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
     fileprivate var userObjects = GRDatabaseManager.sharedDatabaseManager.grRealm.objects(UserObjectRm.self).sorted(byKeyPath: "createdAt", ascending: false)
 
     var unit: DistanceUnit = .centimeter
+    
+    var apdAdQueue : APDNativeAdQueue = APDNativeAdQueue()
+    var products = [SKProduct]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
