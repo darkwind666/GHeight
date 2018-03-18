@@ -118,6 +118,20 @@ extension SCNVector3 {
         let cosineAngle = (dotProduct(vectorB) / (magnitude * vectorB.magnitude))
         return SCNFloat(acos(cosineAngle))
     }
+    
+    static func center(_ vectors: [SCNVector3]) -> SCNVector3 {
+        var x: Float = 0
+        var y: Float = 0
+        var z: Float = 0
+        
+        let size = Float(vectors.count)
+        vectors.forEach {
+            x += $0.x
+            y += $0.y
+            z += $0.z
+        }
+        return SCNVector3Make(x / size, y / size, z / size)
+    }
 }
 
 extension SCNVector3: Equatable {

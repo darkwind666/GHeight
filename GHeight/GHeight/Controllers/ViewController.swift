@@ -11,6 +11,7 @@ import SceneKit
 import ARKit
 import StoreKit
 import Appodeal
+import Vision
 
 class HeightMeasure {
     var line: RulerLine?
@@ -54,6 +55,11 @@ class ViewController: UIViewController {
     var type : APDNativeAdType = .auto
     var showUserInterstitial = false
     
+    var faceDetectionTimer = Timer()
+    let detectFaceTime = Double(1)
+    var faces = [SCNNode]()
+    var detectFaceFlag = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,6 +90,10 @@ class ViewController: UIViewController {
                                                object: nil)
         
         Appodeal.setInterstitialDelegate(self)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.faceDetectionTimer = Timer.scheduledTimer(timeInterval: (self?.detectFaceTime)!, target: self,   selector: (#selector(ViewController.detectFace)), userInfo: nil, repeats: true)
+        }
     }
     
     fileprivate func setupScene() {
@@ -320,6 +330,141 @@ extension ViewController: ARSCNViewDelegate {
         }
         
     }
+    
+    @objc func detectFace() {
+        
+        if detectFaceFlag {
+            return
+        }
+        
+        guard let lowestPlane = self.lowestPlane else {
+            return
+        }
+        
+        guard let frame = self.sceneView.session.currentFrame else {
+            print("No frame available")
+            return
+        }
+        
+        // Create and rotate image
+        let image = CIImage.init(cvPixelBuffer: frame.capturedImage).rotate
+        
+        let facesRequest = VNDetectFaceRectanglesRequest { request, error in
+            guard error == nil else {
+                print("Face request error: \(error!.localizedDescription)")
+                return
+            }
+            
+            guard let observations = request.results as? [VNFaceObservation] else {
+                print("No face observations")
+                return
+            }
+            
+            for face in observations {
+                let boundingBox = self.transformBoundingBox(face.boundingBox)
+                guard let worldCoord = self.normalizeWorldCoord(boundingBox) else {
+                    print("No feature point found")
+                    continue
+                }
+                
+                let node = SCNNode.init(withText: "", position: worldCoord)
+                self.sceneView.scene.rootNode.addChildNode(node)
+                node.show()
+                self.faces.append(node)
+                
+                let distance = worldCoord.y - (lowestPlane.worldPosition.y)
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.messageLabel.text = String(format: "%.2f%@", distance * (self?.unit.fator)!, (self?.unit.unit)!)
+                }
+                
+                self.detectFaceFlag = true
+            }
+            
+        }
+        try? VNImageRequestHandler(ciImage: image).perform([facesRequest])
+    }
+    
+    private func transformBoundingBox(_ boundingBox: CGRect) -> CGRect {
+        var size: CGSize
+        var origin: CGPoint
+        var bounds = sceneView.bounds
+        switch UIDevice.current.orientation {
+        case .landscapeLeft, .landscapeRight:
+            size = CGSize(width: boundingBox.width * bounds.height,
+                          height: boundingBox.height * bounds.width)
+        default:
+            size = CGSize(width: boundingBox.width * bounds.width,
+                          height: boundingBox.height * bounds.height)
+        }
+        
+        switch UIDevice.current.orientation {
+        case .landscapeLeft:
+            origin = CGPoint(x: boundingBox.minY * bounds.width,
+                             y: boundingBox.minX * bounds.height)
+        case .landscapeRight:
+            origin = CGPoint(x: (1 - boundingBox.maxY) * bounds.width,
+                             y: (1 - boundingBox.maxX) * bounds.height)
+        case .portraitUpsideDown:
+            origin = CGPoint(x: (1 - boundingBox.maxX) * bounds.width,
+                             y: boundingBox.minY * bounds.height)
+        default:
+            origin = CGPoint(x: boundingBox.minX * bounds.width,
+                             y: (1 - boundingBox.maxY) * bounds.height)
+        }
+        
+        return CGRect(origin: origin, size: size)
+    }
+    
+    private func normalizeWorldCoord(_ boundingBox: CGRect) -> SCNVector3? {
+        
+        var array: [SCNVector3] = []
+        Array(0...2).forEach{_ in
+            if let position = determineWorldCoord(boundingBox) {
+                array.append(position)
+            }
+            usleep(12000) // .012 seconds
+        }
+        
+        if array.isEmpty {
+            return nil
+        }
+        
+        
+        
+        let center = SCNVector3.center(array)
+        var sortedArray = array.sorted(by: { $0.y > $1.y })
+        let heistPoint = sortedArray.first
+        
+        let heistYPosiotion = CGPoint(x: boundingBox.midX, y: boundingBox.origin.y + boundingBox.size.height)  
+        
+        return SCNVector3(x:center.x , y:(determineWorldCoordForPoint(point: heistYPosiotion)?.y)!, z:center.z)
+        
+        //return SCNVector3.center(array)
+    }
+    
+    private func determineWorldCoord(_ boundingBox: CGRect) -> SCNVector3? {
+        let arHitTestResults = sceneView.hitTest(CGPoint(x: boundingBox.midX, y: boundingBox.midY), types: [.featurePoint])
+        
+        // Filter results that are to close
+        if let closestResult = arHitTestResults.filter({ $0.distance > 0.10 }).first {
+            //            print("vector distance: \(closestResult.distance)")
+            return SCNVector3.positionFromTransform(closestResult.worldTransform)
+        }
+        return nil
+    }
+    
+    private func determineWorldCoordForPoint(point: CGPoint) -> SCNVector3? {
+        let arHitTestResults = sceneView.hitTest(CGPoint(x: point.x, y: point.y), types: [.featurePoint])
+        
+        // Filter results that are to close
+        if let closestResult = arHitTestResults.filter({ $0.distance > 0.10 }).first {
+            //            print("vector distance: \(closestResult.distance)")
+            return SCNVector3.positionFromTransform(closestResult.worldTransform)
+        }
+        return nil
+    }
+    
     
     @objc func finishTimer() {
         
