@@ -430,8 +430,6 @@ extension ViewController: ARSCNViewDelegate {
             return nil
         }
         
-        
-        
         let center = SCNVector3.center(array)
         var sortedArray = array.sorted(by: { $0.y > $1.y })
         let heistPoint = sortedArray.first

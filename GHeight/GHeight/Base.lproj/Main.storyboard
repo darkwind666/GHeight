@@ -61,9 +61,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8HP-ZZ-0kl">
-                                <rect key="frame" x="13" y="592" width="62" height="55"/>
+                                <rect key="frame" x="13" y="592" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="M3c-26-Ixs"/>
+                                    <constraint firstAttribute="width" constant="55" id="M3c-26-Ixs"/>
                                     <constraint firstAttribute="height" constant="55" id="amS-kL-P2Y"/>
                                 </constraints>
                                 <state key="normal" image="makePhotoButton"/>
@@ -465,17 +465,17 @@
     </scenes>
     <resources>
         <image name="background" width="360" height="640"/>
-        <image name="cleanButton" width="56" height="56"/>
+        <image name="cleanButton" width="114" height="114"/>
         <image name="deleteButton" width="25" height="34"/>
         <image name="doneButton" width="56" height="56"/>
-        <image name="galleryButton" width="55" height="55"/>
-        <image name="lightButton" width="56" height="56"/>
-        <image name="makePhotoButton" width="63" height="56"/>
-        <image name="purchasesButton" width="61" height="61"/>
-        <image name="rateGameButton" width="56" height="56"/>
-        <image name="settingsButton" width="55" height="55"/>
+        <image name="galleryButton" width="114" height="114"/>
+        <image name="lightButton" width="114" height="114"/>
+        <image name="makePhotoButton" width="114" height="114"/>
+        <image name="purchasesButton" width="114" height="114"/>
+        <image name="rateGameButton" width="114" height="114"/>
+        <image name="settingsButton" width="114" height="114"/>
         <image name="shareButton" width="36" height="35"/>
         <image name="targetWhite" width="60" height="60"/>
-        <image name="undoButton" width="65" height="55"/>
+        <image name="undoButton" width="114" height="114"/>
     </resources>
 </document>
