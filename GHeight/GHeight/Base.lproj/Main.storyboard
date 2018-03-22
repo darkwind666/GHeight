@@ -467,7 +467,7 @@
         <image name="background" width="360" height="640"/>
         <image name="cleanButton" width="114" height="114"/>
         <image name="deleteButton" width="25" height="34"/>
-        <image name="doneButton" width="56" height="56"/>
+        <image name="doneButton" width="114" height="114"/>
         <image name="galleryButton" width="114" height="114"/>
         <image name="lightButton" width="114" height="114"/>
         <image name="makePhotoButton" width="114" height="114"/>

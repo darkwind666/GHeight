@@ -374,6 +374,13 @@ extension ViewController: ARSCNViewDelegate {
                 
                 let distance = worldCoord.y - (lowestPlane.worldPosition.y)
                 
+                var startPosition = SCNVector3()
+                startPosition.x = worldCoord.x
+                startPosition.y = (lowestPlane.worldPosition.y)
+                startPosition.z = worldCoord.z
+                
+                self.showLine(startPoint: startPosition, endPoint: worldCoord, distance: distance)
+                
                 DispatchQueue.main.async { [weak self] in
                     self?.messageLabel.text = String(format: "%.2f%@", distance * (self?.unit.fator)!, (self?.unit.unit)!)
                 }
@@ -383,6 +390,17 @@ extension ViewController: ARSCNViewDelegate {
             
         }
         try? VNImageRequestHandler(ciImage: image).perform([facesRequest])
+    }
+    
+    func showLine(startPoint: SCNVector3, endPoint: SCNVector3, distance: Float) {
+        let line = RulerLine(sceneView: sceneView, startVector: startPoint, unit: unit)
+        line.update(to: endPoint)
+        
+        let newMeasure = HeightMeasure()
+        newMeasure.line = line
+        newMeasure.length = distance
+        lines.append(newMeasure)
+        showCelebrityListButton.isHidden = false
     }
     
     private func transformBoundingBox(_ boundingBox: CGRect) -> CGRect {
@@ -436,9 +454,7 @@ extension ViewController: ARSCNViewDelegate {
         
         let heistYPosiotion = CGPoint(x: boundingBox.midX, y: boundingBox.origin.y + boundingBox.size.height)  
         
-        return SCNVector3(x:center.x , y:(determineWorldCoordForPoint(point: heistYPosiotion)?.y)!, z:center.z)
-        
-        //return SCNVector3.center(array)
+        return SCNVector3(x:center.x , y:(determineWorldCoordForPoint(point: heistYPosiotion)?.y)!, z:center.z) 
     }
     
     private func determineWorldCoord(_ boundingBox: CGRect) -> SCNVector3? {
