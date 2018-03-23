@@ -39,6 +39,8 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "UserObjectViewCell", bundle: nil),  forCellReuseIdentifier:"UserObjectViewCell")
+        tableView.register(UINib(nibName: "NativeAppInstallAdCell", bundle: nil),
+                           forCellReuseIdentifier: "NativeAppInstallAdCell")
         
         userdefaults = UserDefaults.standard
         showAdsCount = userdefaults.integer(forKey: showAdsCountKey)
@@ -166,8 +168,14 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
     func showUserObject(indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: "UserObjectViewCell", for: indexPath) as? UserObjectViewCell)!
         
+        if blockAd == false {
+            cell.objectIndex = indexPath.row - (indexPath.row / adDivisor)
+            
+        } else {
+            cell.objectIndex = indexPath.row
+        }
         
-        let userObjectData = userObjects[indexPath.row]
+        let userObjectData = userObjects[cell.objectIndex]
         
         if let name = userObjectData.name {
             cell.objectName.text = name
@@ -185,10 +193,12 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
         if let cell = tableView.cellForRow(at: indexPath) as? UserObjectViewCell {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let editObjectVC = storyboard.instantiateViewController(withIdentifier: "EditObjectViewController") as! EditObjectViewController
-            editObjectVC.selectedObjectIndex = indexPath.row
+            editObjectVC.selectedObjectIndex = cell.objectIndex
             editObjectVC.delegate = self
             editObjectVC.modalPresentationStyle = .overCurrentContext
             editObjectVC.measureScreen = measureScreen
