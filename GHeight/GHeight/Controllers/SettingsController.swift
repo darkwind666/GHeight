@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FacebookCore
+import FacebookLogin
 
 enum Setting: String {
     case measureUnits = "measureUnits"
@@ -19,11 +21,17 @@ class SettingsController: UIViewController {
     static let removeAdsPlusLimitProductId = "com.darkwind.gHeight.removeAdPlusUserGalleryLimit"
     
     @IBOutlet weak var measureUnitsButton: UIButton!
+    @IBOutlet weak var facebookButtonView: UIView!
     var measureScreen: ViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         popoverPresentationController?.delegate = self
+        
+        let loginButton = LoginButton(frame: CGRect(origin: CGPoint(x:0,y:0), size: facebookButtonView.bounds.size) ,readPermissions: [ ReadPermission.publicProfile ])
+        
+        facebookButtonView.addSubview(loginButton)
+        
         setUpButtons()
     }
     
@@ -41,6 +49,21 @@ class SettingsController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func loginFacebookPressed(_ sender: Any) {
+        
+        let loginManager = LoginManager()
+        loginManager.logIn(readPermissions: [ ReadPermission.publicProfile ], viewController: self) { (loginResult) in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                print("User cancelled login.")
+            case .success( _, _, _):
+                print("Logged in!")
+            }
+        }
     }
 
     // MARK: - Users Interactions

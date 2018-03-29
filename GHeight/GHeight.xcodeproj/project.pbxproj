@@ -34,6 +34,9 @@
 		CEB5E160200D675400C38233 /* UserObjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E15E200D675300C38233 /* UserObjectViewCell.swift */; };
 		CEB5E161200D675400C38233 /* UserObjectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */; };
 		CEB5E1632015517300C38233 /* CelebrityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E1622015517300C38233 /* CelebrityListViewController.swift */; };
+		CEB9A2B5206A79E6007A3611 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEB9A2B4206A79E6007A3611 /* Localizable.strings */; };
+		CEB9A2B7206A7AF9007A3611 /* AppAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9A2B6206A7AF9007A3611 /* AppAnalyticsHelper.swift */; };
+		CEB9A2BA206D1574007A3611 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEB9A2B9206D1574007A3611 /* GoogleService-Info.plist */; };
 		CEBB65B41FE6A30700D6AA48 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB65B31FE6A30700D6AA48 /* Utilities.swift */; };
 		CEC4B8332030F6BB006215AD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC4B8322030F6BB006215AD /* StoreKit.framework */; };
 		CEC4B8352030F718006215AD /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4B8342030F717006215AD /* IAPHelper.swift */; };
@@ -73,6 +76,9 @@
 		CEB5E15E200D675300C38233 /* UserObjectViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectViewCell.swift; sourceTree = "<group>"; };
 		CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserObjectViewCell.xib; sourceTree = "<group>"; };
 		CEB5E1622015517300C38233 /* CelebrityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityListViewController.swift; sourceTree = "<group>"; };
+		CEB9A2B4206A79E6007A3611 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		CEB9A2B6206A7AF9007A3611 /* AppAnalyticsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAnalyticsHelper.swift; sourceTree = "<group>"; };
+		CEB9A2B9206D1574007A3611 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEBB65B31FE6A30700D6AA48 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CEC4B8322030F6BB006215AD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CEC4B8342030F717006215AD /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
@@ -136,6 +142,8 @@
 		CE5C88051FDF324200D68F8A /* GHeight */ = {
 			isa = PBXGroup;
 			children = (
+				CEB9A2B9206D1574007A3611 /* GoogleService-Info.plist */,
+				CEB9A2B3206A79C4007A3611 /* Resources */,
 				CE81DCD9201D3D3B00C54B30 /* CelebritiesData */,
 				CEA793D31FFBE00C00F3E6C4 /* Helpers */,
 				CEF510A21FEFA84E00D9DEEE /* Models */,
@@ -163,6 +171,7 @@
 		CEA793D31FFBE00C00F3E6C4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CEB9A2B6206A7AF9007A3611 /* AppAnalyticsHelper.swift */,
 				CE2321C02039F6B40012696E /* RateAppHelper.swift */,
 				CE2321BE2039F3890012696E /* AppFeedbackHelper.swift */,
 				CE2321BC2039F29C0012696E /* APAppRater.swift */,
@@ -188,6 +197,14 @@
 				CE91AE192015570B00D473CF /* CelebrityViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		CEB9A2B3206A79C4007A3611 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9A2B4206A79E6007A3611 /* Localizable.strings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		CEBB65B21FE6A2E500D6AA48 /* Utils */ = {
@@ -242,6 +259,7 @@
 				CE5C88011FDF324200D68F8A /* Resources */,
 				8610B022BBFA315080430552 /* [CP] Embed Pods Frameworks */,
 				7966BF88E64C70247A7606F1 /* [CP] Copy Pods Resources */,
+				CEB9A2B8206BFE8A007A3611 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -296,10 +314,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB9A2BA206D1574007A3611 /* GoogleService-Info.plist in Resources */,
 				CE91AE1B2015570B00D473CF /* CelebrityViewCell.xib in Resources */,
 				CE5C88091FDF324200D68F8A /* art.scnassets in Resources */,
 				CE5C88131FDF324200D68F8A /* LaunchScreen.storyboard in Resources */,
 				CEB5E161200D675400C38233 /* UserObjectViewCell.xib in Resources */,
+				CEB9A2B5206A79E6007A3611 /* Localizable.strings in Resources */,
 				CE81DCDB201D3D8F00C54B30 /* Celebrities.json in Resources */,
 				CE5C88101FDF324200D68F8A /* Assets.xcassets in Resources */,
 				CE5C880E1FDF324200D68F8A /* Main.storyboard in Resources */,
@@ -357,13 +377,27 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GHeight/Pods-GHeight-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -387,6 +421,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CEB9A2B8206BFE8A007A3611 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 192e859af758c035575a858cb3d354fadb830818 0f9dbfd3d1924f435564838bb6e38981805294e8a28ea2df8b1874483d2ebfc5";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -416,6 +463,7 @@
 				CE1A6FFA200819DE00F805F5 /* UserObjectRm.swift in Sources */,
 				CE9F0E9D205457C400276B40 /* NativeAppInstallAdCell.swift in Sources */,
 				CE5C88071FDF324200D68F8A /* AppDelegate.swift in Sources */,
+				CEB9A2B7206A7AF9007A3611 /* AppAnalyticsHelper.swift in Sources */,
 				CEF510A61FEFAE6B00D9DEEE /* SCNVector3.swift in Sources */,
 				CEC4B8372030F81A006215AD /* RulerPurchasesHelper.swift in Sources */,
 				CE13087D2001774A00ACCC55 /* ScreenshotHelper.swift in Sources */,
