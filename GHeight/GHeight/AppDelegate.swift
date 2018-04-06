@@ -13,12 +13,14 @@ import Fabric
 import Crashlytics
 import FacebookCore
 import Firebase
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SKPaymentTransactionObserver {
 
     var window: UIWindow?
     var appRater: APAppRater?
+    var pushNotificationHelper:PushNotificationHelper?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         appRater = APAppRater.sharedInstance
@@ -28,6 +30,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SKPaymentTransactionObser
         Fabric.with([Crashlytics.self])
         FirebaseApp.configure()
         SKPaymentQueue.default().add(self)
+        
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+        OneSignal.initWithLaunchOptions(launchOptions,
+                                        appId: "ce93d959-04b8-46de-b3f1-6f17507dafc8",
+                                        handleNotificationAction: nil,
+                                        settings: onesignalInitSettings)
+        
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+        pushNotificationHelper = PushNotificationHelper.sharedInstance
         
         // Override point for customization after application launch.
         return true

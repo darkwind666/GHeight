@@ -441,26 +441,71 @@
                                     <action selector="measureUnitPressed:" destination="0BE-5a-daQ" eventType="touchUpInside" id="xtQ-MF-Qz1"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUe-6r-dpr">
+                                <rect key="frame" x="16" y="141" width="343" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gSz-DK-zb6"/>
+                                </constraints>
+                                <state key="normal" title="Log in facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginFacebookPressed:" destination="0BE-5a-daQ" eventType="touchUpInside" id="Hda-ua-WkR"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukP-vd-leM" userLabel="Facebook Button View">
+                                <rect key="frame" x="16" y="141" width="324" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EVy-dh-TyS"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="7O0-hd-9xG"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgB-Iu-u50">
+                                <rect key="frame" x="16" y="198" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.72097843890000002" green="0.71373695140000004" blue="0.72215801479999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="egT-bg-ZKs"/>
+                                </constraints>
+                                <state key="normal" title="Subscribe to news!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="subscribeToNewsPressed:" destination="0BE-5a-daQ" eventType="touchUpInside" id="Oyi-iZ-Gan"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vgB-Iu-u50" firstAttribute="leading" secondItem="vPd-gH-jlY" secondAttribute="leading" constant="16" id="01G-eH-zuc"/>
                             <constraint firstItem="OMv-iX-XlF" firstAttribute="leading" secondItem="vPd-gH-jlY" secondAttribute="leading" constant="16" id="2x4-UA-HgL"/>
                             <constraint firstItem="fRP-FB-qWX" firstAttribute="leading" secondItem="vPd-gH-jlY" secondAttribute="leading" id="4Ut-IX-5kz"/>
                             <constraint firstItem="vPd-gH-jlY" firstAttribute="trailing" secondItem="OMv-iX-XlF" secondAttribute="trailing" constant="16" id="5C0-IK-qSM"/>
                             <constraint firstItem="OMv-iX-XlF" firstAttribute="top" secondItem="vPd-gH-jlY" secondAttribute="top" constant="66" id="729-A4-rCM"/>
+                            <constraint firstItem="YUe-6r-dpr" firstAttribute="leading" secondItem="vPd-gH-jlY" secondAttribute="leading" constant="16" id="A10-8f-5NG"/>
+                            <constraint firstItem="vPd-gH-jlY" firstAttribute="trailing" secondItem="YUe-6r-dpr" secondAttribute="trailing" constant="16" id="AfU-Lz-E4P"/>
                             <constraint firstItem="vPd-gH-jlY" firstAttribute="trailing" secondItem="fRP-FB-qWX" secondAttribute="trailing" id="C0g-Lu-Eec"/>
+                            <constraint firstItem="vgB-Iu-u50" firstAttribute="top" secondItem="ukP-vd-leM" secondAttribute="bottom" constant="27" id="CI1-Rn-S7J"/>
+                            <constraint firstItem="vPd-gH-jlY" firstAttribute="trailing" secondItem="ukP-vd-leM" secondAttribute="trailing" constant="35" id="EnA-0e-sX0"/>
+                            <constraint firstItem="YUe-6r-dpr" firstAttribute="top" secondItem="OMv-iX-XlF" secondAttribute="bottom" constant="25" id="GBg-il-9kj"/>
                             <constraint firstItem="fRP-FB-qWX" firstAttribute="top" secondItem="zH1-fw-rCQ" secondAttribute="topMargin" id="VXz-aT-TGA"/>
+                            <constraint firstItem="ukP-vd-leM" firstAttribute="top" secondItem="OMv-iX-XlF" secondAttribute="bottom" constant="25" id="Yhz-sy-4Lx"/>
+                            <constraint firstItem="ukP-vd-leM" firstAttribute="leading" secondItem="vPd-gH-jlY" secondAttribute="leading" constant="16" id="fjP-ni-Up5"/>
+                            <constraint firstItem="vPd-gH-jlY" firstAttribute="trailing" secondItem="vgB-Iu-u50" secondAttribute="trailing" constant="16" id="jHh-ZP-ci5"/>
                             <constraint firstAttribute="bottomMargin" secondItem="fRP-FB-qWX" secondAttribute="bottom" id="wRc-Oj-CPB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vPd-gH-jlY"/>
                     </view>
                     <connections>
+                        <outlet property="facebookButtonView" destination="ukP-vd-leM" id="glI-gJ-PoJ"/>
                         <outlet property="measureUnitsButton" destination="OMv-iX-XlF" id="df6-1I-oQr"/>
+                        <outlet property="subscribeToNewsButton" destination="vgB-Iu-u50" id="6ih-ue-Map"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pnp-TH-6Si" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="814"/>
+            <point key="canvasLocation" x="1696.8" y="813.64317841079469"/>
         </scene>
     </scenes>
     <resources>
