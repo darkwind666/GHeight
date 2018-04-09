@@ -117,6 +117,7 @@ DEPENDENCIES:
   - Fabric
   - FacebookCore
   - FacebookLogin
+  - FBSDKLoginKit
   - Firebase/Core
   - OneSignal (< 3.0, >= 2.5.2)
   - RealmSwift
@@ -140,6 +141,6 @@ SPEC CHECKSUMS:
   Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
 
-PODFILE CHECKSUM: 036a7dc362600007a430fe887e575243d97b0217
+PODFILE CHECKSUM: 0e537c12fb90a112ccecd5cbdc05f3b2a210cc1a
 
 COCOAPODS: 1.3.1

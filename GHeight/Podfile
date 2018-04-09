@@ -13,6 +13,7 @@ target 'GHeight' do
   pod 'Crashlytics'
   pod 'FacebookCore'
   pod 'FacebookLogin'
+  pod 'FBSDKLoginKit'
   pod 'Firebase/Core'
   pod 'OneSignal', '>= 2.5.2', '< 3.0'
 

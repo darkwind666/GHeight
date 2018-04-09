@@ -31,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SKPaymentTransactionObser
         FirebaseApp.configure()
         SKPaymentQueue.default().add(self)
         
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
         OneSignal.initWithLaunchOptions(launchOptions,
                                         appId: "ce93d959-04b8-46de-b3f1-6f17507dafc8",
