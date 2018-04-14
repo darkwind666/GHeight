@@ -86,6 +86,14 @@ class SettingsController: UIViewController {
         }
     }
     
+    @IBAction func rateAppPressed(_ sender: Any) {
+        APAppRater.sharedInstance.rateTheApp(controller: self)
+    }
+    
+    @IBAction func buyButtonPressed(_ sender: Any) {
+        measureScreen.rulerPurchasesHelper.showPurchasesPopUp(controller: self)
+    }
+    
     func showProposalToGoAppSettings() {
         AppAnalyticsHelper.sendAppAnalyticEvent(withName: "Show_go_to_app_settings_notifications")
         

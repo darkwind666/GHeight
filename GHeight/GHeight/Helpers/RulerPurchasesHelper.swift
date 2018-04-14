@@ -63,7 +63,7 @@ class RulerPurchasesHelper {
         }
     }
     
-    func showPurchasesPopUp() {
+    func showPurchasesPopUp(controller: UIViewController?) {
         let message = "purchases"
         let rateAlert = UIAlertController(title: "purchases" + "\u{1F4B0}", message: message, preferredStyle: .alert)
         let removeAdsPlusLimitAction = UIAlertAction(title: "remove Ads Plus Limit", style: .default, handler: { (action) -> Void in
@@ -101,7 +101,7 @@ class RulerPurchasesHelper {
         rateAlert.addAction(cancelAction)
         
         DispatchQueue.main.async {
-            self.rulerScreen.present(rateAlert, animated: true, completion: nil)
+            controller?.present(rateAlert, animated: true, completion: nil)
         }
     }
     

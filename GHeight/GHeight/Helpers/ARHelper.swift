@@ -13,38 +13,6 @@ class ARHelper {
     
     var measureScreen: ViewController!
     
-    func selectNearestLine() {
-        guard let worldPosition = measureScreen.sceneView.realWorldVector(screenPosition: measureScreen.view.center) else { return }
-        
-        RulerLine.diselectLine(node: measureScreen.selectedLineNode)
-        measureScreen.selectedLineNode = nil
-        
-        let currentPositionProjection = measureScreen.sceneView.projectPoint(worldPosition)
-        
-        for line in measureScreen.lines {
-            
-            let currentPositionOnLine = getCurrentPositionOnLine(line: line.line!, currentPosition: currentPositionProjection)
-            
-            let distanceToPoint = distanceBetweenPoints(firtsPoint: currentPositionProjection, secondPoint: currentPositionOnLine)
-            
-            if distanceToPoint < 20  {
-                if checkPointInLine(line: line.line!, point: currentPositionOnLine) {
-                    measureScreen.selectedLineNode = line.line!.lineNode
-                    RulerLine.selectLine(node: measureScreen.selectedLineNode!)
-                    measureScreen.showMessageLabelForLength(length: line.length)
-                    break
-                }
-            }
-        }
-        
-        if measureScreen.selectedLineNode == nil {
-            
-            if let nextLine = measureScreen.lines.last {
-                measureScreen.showMessageLabelForLength(length: nextLine.length)
-            }
-        }
-    }
-    
     func getCurrentPositionOnLine(line: RulerLine, currentPosition: SCNVector3) -> SCNVector3 {
         let p1 = measureScreen.sceneView.projectPoint(line.startVector)
         let p2 = measureScreen.sceneView.projectPoint(line.endVector)

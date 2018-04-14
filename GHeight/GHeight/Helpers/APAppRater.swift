@@ -20,6 +20,7 @@ let AP_APP_RATING_SHOWN = "com.gittielabs.app_rating_shown"
     let requiredLaunchesBeforeRating = 2
     public var appId: String!
     let appFeedbackHelper = AppFeedbackHelper()
+    var rateAlert = UIAlertController()
     
     @objc public static var sharedInstance = APAppRater()
     
@@ -92,7 +93,7 @@ let AP_APP_RATING_SHOWN = "com.gittielabs.app_rating_shown"
         if hasShownAppRating() == false {
             if appLaunchCount >= self.requiredLaunchesBeforeRating {
                 self.setAppRatingShown()
-                rateTheApp()
+                rateTheApp(controller: nil)
             }
         }
         
@@ -100,10 +101,10 @@ let AP_APP_RATING_SHOWN = "com.gittielabs.app_rating_shown"
     }
     
     @available(iOS 8.0, *)
-    func rateTheApp(){
+    func rateTheApp(controller: UIViewController?){
         
         let message = "rate App Proposal"
-        let rateAlert = UIAlertController(title: "rate Us" + "\u{1F44D}", message: message, preferredStyle: .alert)
+        rateAlert = UIAlertController(title: "rate Us" + "\u{1F44D}", message: message, preferredStyle: .alert)
         let goToItunesAction = UIAlertAction(title: "rate Us", style: .default, handler: { (action) -> Void in
             RateAppHelper.rateApp()
         })
@@ -120,8 +121,13 @@ let AP_APP_RATING_SHOWN = "com.gittielabs.app_rating_shown"
         rateAlert.addAction(feedbackAction)
         
         DispatchQueue.main.async {
-            let window = self.application.windows[0]
-            window.rootViewController?.present(rateAlert, animated: true, completion: nil)
+            
+            if let actualController = controller {
+                actualController.present(self.rateAlert, animated: true, completion: nil)
+            } else {
+                let window = self.application.windows[0]
+                window.rootViewController?.present(self.rateAlert, animated: true, completion: nil)
+            }
         }
     }
 }

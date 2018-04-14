@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var galleryButton: UIButton!
     @IBOutlet weak var showCelebrityListButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var saveHeightButton: UIButton!
     
     fileprivate lazy var session = ARSession()
     fileprivate lazy var sessionConfiguration = ARWorldTrackingConfiguration()
@@ -38,8 +39,7 @@ class ViewController: UIViewController {
     var unit: DistanceUnit!
     var measurements = [SCNVector3]()
     var startMeasurement = false
-    var lines = [HeightMeasure]()
-    var selectedLineNode:SCNNode?
+    var heightLength = Float(0.0)
     
     var arHelper = ARHelper()
     var screenshotHelper = ScreenshotHelper()
@@ -58,6 +58,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         showCelebrityListButton.isHidden = true
+        saveHeightButton.isHidden = true
+        galleryButton.isHidden = true
+        
+        let userObjects = GRDatabaseManager.sharedDatabaseManager.grRealm.objects(UserObjectRm.self)
+        
+        if userObjects.count > 0 {
+            galleryButton.isHidden = false
+        }
         
         arHelper.measureScreen = self
         screenshotHelper.measureScreen = self
@@ -121,64 +129,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showCelebrityListPressed(_ sender: Any) {
-        if let userHeight = lines.last?.length {
-            self.rulerScreenNavigationHelper.showCelebrityListFromRuler(compareHeight: userHeight * self.unit.fator)
-        }
-    }
-    
-    
-    @IBAction func undoPressed(_ sender: Any) {
-        if let finalLine = lines.last {
-            finalLine.line?.removeFromParentNode()
-            lines.removeLast()
-            
-            if let nextLine = lines.last {
-                showMessageLabelForLength(length: nextLine.length)
-            } else {
-                showCelebrityListButton.isHidden = true
-            }
-        }
-    }
-    
-    @IBAction func clearPressed(_ sender: Any) {
-        for line in lines {
-            line.line?.removeFromParentNode()
-        }
-        
-        lines.removeAll()
-        lines = [HeightMeasure]()
-        messageLabel.text = ""
-    }
-    
-    @IBAction func turnLightPressed(_ sender: Any) {
-        guard let device = AVCaptureDevice.default(for: AVMediaType.video)
-            else {return}
-        
-        if device.hasTorch {
-            do {
-                try device.lockForConfiguration()
-                
-                if device.torchMode == .off {
-                    device.torchMode = .on
-                } else {
-                    device.torchMode = .off
-                }
-                
-                device.unlockForConfiguration()
-            } catch {
-                print("Torch could not be used")
-            }
-        } else {
-            print("Torch is not available")
-        }
-    }
-    
-    @IBAction func rateAppPressed(_ sender: Any) {
-        APAppRater.sharedInstance.rateTheApp()
-    }
-    
-    @IBAction func buyButtonPressed(_ sender: Any) {
-        rulerPurchasesHelper.showPurchasesPopUp()
+        self.rulerScreenNavigationHelper.showCelebrityListFromRuler(compareHeight: heightLength * self.unit.fator)
     }
     
     @IBAction func showSettings(_ sender: Any) {
@@ -202,16 +153,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func takeScreenshot() {
-        let alertVC = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-        alertVC.addAction(UIAlertAction(title: "Save height", style: .default) { [weak self] _ in
-            self?.saveUserHeight()
-        })
-        alertVC.addAction(UIAlertAction(title: "Take photo", style: .default) { [weak self] _ in
-            self?.screenshotHelper.takeJustScreenshot()
-        })
-        
-        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alertVC, animated: true, completion: nil)
+        self.saveUserHeight()
     }
     
     func saveUserHeight() {
@@ -233,17 +175,14 @@ class ViewController: UIViewController {
         DispatchQueue.main.async {
             try! GRDatabaseManager.sharedDatabaseManager.grRealm.write({
                 GRDatabaseManager.sharedDatabaseManager.grRealm.add(userObjectRm, update:true)
+                self.galleryButton.isHidden = false
             })
         }
     }
     
     func getObjectSize() -> Float {
         var height: Float = 0.0
-        
-        if let finalLine = lines.last {
-            height = finalLine.length
-        }
-        
+        height = heightLength
         return height
     }
     
@@ -255,14 +194,7 @@ class ViewController: UIViewController {
     func updateMeasureUnit() {
         let defaults = UserDefaults.standard
         self.unit = DistanceUnit(rawValue: defaults.string(forKey: Setting.measureUnits.rawValue)!)!
-        
-        if let finalLine = lines.last {
-            showMessageLabelForLength(length: finalLine.length)
-        }
-        
-        for line in lines {
-            line.line?.updateMeasureUnit(unit: self.unit)
-        }
+        showMessageLabelForLength(length: heightLength)
     }
 }
 
@@ -337,35 +269,14 @@ extension ViewController: ARSCNViewDelegate {
         }
         
         let distance = avarageY - (plane.worldPosition.y)
+        heightLength = distance
         
         DispatchQueue.main.async { [weak self] in
             self?.messageLabel.text = String(format: "%.2f%@", distance * (self?.unit.fator)!, (self?.unit.unit)!)
         }
         
-        guard let frame = sceneView.session.currentFrame else {
-            return
-        }
-        
-        let currentPosition = SCNVector3.positionFromTransform(frame.camera.transform)
-        var endPosition = SCNVector3()
-        endPosition.x = currentPosition.x
-        endPosition.y = avarageY
-        endPosition.z = currentPosition.z
-        
-        var startPosition = SCNVector3()
-        startPosition.x = currentPosition.x
-        startPosition.y = (lowestPlane?.worldPosition.y)!
-        startPosition.z = currentPosition.z
-        
-        let line = RulerLine(sceneView: sceneView, startVector: startPosition, unit: unit)
-        line.update(to: endPosition)
-        
-        let newMeasure = HeightMeasure()
-        newMeasure.line = line
-        newMeasure.length = distance
-        lines.append(newMeasure)
         showCelebrityListButton.isHidden = false
-        
+        saveHeightButton.isHidden = false
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
@@ -373,11 +284,6 @@ extension ViewController: ARSCNViewDelegate {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.arHelper.selectNearestLine()
-        }
-        
         if startMeasurement == true {
             
             guard let frame = sceneView.session.currentFrame else {
