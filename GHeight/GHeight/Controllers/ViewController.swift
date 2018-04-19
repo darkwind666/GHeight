@@ -28,6 +28,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var saveHeightButton: UIButton!
     
+    @IBOutlet weak var findSurfaceView: UIView!
+    @IBOutlet weak var findSurfaceLabel: UILabel!
+    
+    @IBOutlet weak var goCloserToSurfaceView: UIView!
+    @IBOutlet weak var goCloserToSurfaceLabel: UILabel!
+    @IBOutlet weak var goCloserProgress: UIProgressView!
+    
     fileprivate lazy var session = ARSession()
     fileprivate lazy var sessionConfiguration = ARWorldTrackingConfiguration()
     fileprivate var planeExist = false
@@ -54,12 +61,23 @@ class ViewController: UIViewController {
     var type : APDNativeAdType = .auto
     var showUserInterstitial = false
     
+    var goCloserToSurfaceTimer = Timer()
+    let goCloserToSurfaceTimerInterval = Double(0.1)
+    let minCloserDistanceToSurface = Float(0.2)
+    let maxCloserDistanceToSurface = Float(1.6)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         showCelebrityListButton.isHidden = true
         saveHeightButton.isHidden = true
         galleryButton.isHidden = true
+        goCloserToSurfaceView.isHidden = true
+        
+        findSurfaceLabel.text = "Find surface"
+        goCloserToSurfaceLabel.text = "Go closer to surface"
+        
+        goCloserProgress.progress = 0
         
         let userObjects = GRDatabaseManager.sharedDatabaseManager.grRealm.objects(UserObjectRm.self)
         
@@ -119,13 +137,13 @@ class ViewController: UIViewController {
     
     @objc func tapGesture(sender: UITapGestureRecognizer)
     {
-        if startMeasurement == false {
-            DispatchQueue.main.async { [weak self] in
-                self?.measurements = [SCNVector3]()
-                self?.startMeasurement = true
-                self?.timer = Timer.scheduledTimer(timeInterval: (self?.measureTime)!, target: self,   selector: (#selector(ViewController.finishTimer)), userInfo: nil, repeats: false)
-            }
-        }
+//        if startMeasurement == false {
+//            DispatchQueue.main.async { [weak self] in
+//                self?.measurements = [SCNVector3]()
+//                self?.startMeasurement = true
+//                self?.timer = Timer.scheduledTimer(timeInterval: (self?.measureTime)!, target: self,   selector: (#selector(ViewController.finishTimer)), userInfo: nil, repeats: false)
+//            }
+//        }
     }
     
     @IBAction func showCelebrityListPressed(_ sender: Any) {
@@ -251,6 +269,40 @@ extension ViewController: ARSCNViewDelegate {
             lowestPlane = planeNode
         }
         
+        DispatchQueue.main.async {
+            self.findSurfaceView.isHidden = true
+            self.goCloserToSurfaceView.isHidden = false
+            self.goCloserToSurfaceTimer = Timer.scheduledTimer(timeInterval: (self.goCloserToSurfaceTimerInterval), target: self,   selector: (#selector(ViewController.checkDistanceToSurface)), userInfo: nil, repeats: true)
+        }
+        
+    }
+    
+    @objc func checkDistanceToSurface() {
+        
+        guard let frame = sceneView.session.currentFrame else {
+            return
+        }
+        
+        guard let plane = lowestPlane else {
+            return
+        }
+        
+        let cameraPos = SCNVector3.positionFromTransform(frame.camera.transform)
+        let distance = cameraPos.distance(from: plane.worldPosition)
+        
+        if distance <= minCloserDistanceToSurface {
+            goCloserProgress.progress = 1
+            self.goCloserToSurfaceTimer.invalidate()
+            goCloserToSurfaceView.isHidden = true
+        } else {
+            if distance >= maxCloserDistanceToSurface {
+                goCloserProgress.progress = 0
+            } else {
+                let progress = 100 - ((distance - minCloserDistanceToSurface) * 100) / (maxCloserDistanceToSurface - minCloserDistanceToSurface)
+                goCloserProgress.progress = progress / 100
+                print(progress)
+            }
+        }
     }
     
     @objc func finishTimer() {
