@@ -69,8 +69,8 @@ class RulerNavigationHelper {
         
         measureScreen.present(navigationController, animated: true, completion: nil)
         
-        navigationController.popoverPresentationController?.sourceView = measureScreen.showCelebrityListButton
-        navigationController.popoverPresentationController?.sourceRect = measureScreen.showCelebrityListButton.bounds
+        navigationController.popoverPresentationController?.sourceView = measureScreen.settingsButton
+        navigationController.popoverPresentationController?.sourceRect = measureScreen.settingsButton.bounds
     }
     
     func showCelebrityListFromRulerMeasureDetail(compareHeight: Float, controller: EditObjectViewController) {
@@ -94,8 +94,8 @@ class RulerNavigationHelper {
 
         controller.present(navigationController, animated: true, completion: nil)
 
-        navigationController.popoverPresentationController?.sourceView = measureScreen.showCelebrityListButton
-        navigationController.popoverPresentationController?.sourceRect = measureScreen.showCelebrityListButton.bounds
+        navigationController.popoverPresentationController?.sourceView = measureScreen.settingsButton
+        navigationController.popoverPresentationController?.sourceRect = measureScreen.settingsButton.bounds
     }
     
     func showSettingsScreen() {

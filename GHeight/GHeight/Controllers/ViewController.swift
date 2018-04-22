@@ -24,9 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var galleryButton: UIButton!
-    @IBOutlet weak var showCelebrityListButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var saveHeightButton: UIButton!
     
     @IBOutlet weak var findSurfaceView: UIView!
     @IBOutlet weak var findSurfaceLabel: UILabel!
@@ -34,6 +32,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var goCloserToSurfaceView: UIView!
     @IBOutlet weak var goCloserToSurfaceLabel: UILabel!
     @IBOutlet weak var goCloserProgress: UIProgressView!
+    
+    @IBOutlet weak var placePhoneOnYouHeadView: UIView!
+    @IBOutlet weak var placePhoneOnYouHeadLabel: UILabel!
+    @IBOutlet weak var placePhoneOnYouHeadCountdown: UILabel!
+    @IBOutlet weak var startMeasurementButton: UIButton!
+    @IBOutlet weak var resultView: UIView!
+    @IBOutlet weak var resultTextLabel: UILabel!
+    @IBOutlet weak var resultValueLabel: UILabel!
     
     fileprivate lazy var session = ARSession()
     fileprivate lazy var sessionConfiguration = ARWorldTrackingConfiguration()
@@ -63,19 +69,40 @@ class ViewController: UIViewController {
     
     var goCloserToSurfaceTimer = Timer()
     let goCloserToSurfaceTimerInterval = Double(0.1)
-    let minCloserDistanceToSurface = Float(0.2)
+    let minCloserDistanceToSurface = Float(0.15)
     let maxCloserDistanceToSurface = Float(1.6)
+    
+    let placePhoneCountdownMaxValue = 5
+    let placePhoneCountdownTimerInterval = Double(1)
+    var placePhoneCountdownTimer = Timer()
+    var currentCountdownValue = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showCelebrityListButton.isHidden = true
-        saveHeightButton.isHidden = true
         galleryButton.isHidden = true
         goCloserToSurfaceView.isHidden = true
+        placePhoneOnYouHeadView.isHidden = true
+        placePhoneOnYouHeadCountdown.isHidden = true
+        resultView.isHidden = true
+        
+        unit = DistanceUnit.centimeter
+        
+        let defaults = UserDefaults.standard
+        if let measureString = defaults.string(forKey: Setting.measureUnits.rawValue) {
+            self.unit = DistanceUnit(rawValue: measureString)!
+        } else {
+            self.unit = .centimeter
+            defaults.set(DistanceUnit.centimeter.rawValue, forKey: Setting.measureUnits.rawValue)
+        }
         
         findSurfaceLabel.text = "Find surface"
-        goCloserToSurfaceLabel.text = "Go closer to surface"
+        goCloserToSurfaceLabel.text = "Go closer to surface to \(minCloserDistanceToSurface * unit.fator) \(unit.unit)"
+        placePhoneOnYouHeadLabel.text = "Press Start and place device on you head and wait bip sound"
+        placePhoneOnYouHeadCountdown.text = "\(placePhoneCountdownMaxValue)"
+        currentCountdownValue = placePhoneCountdownMaxValue
+        startMeasurementButton.titleLabel?.text = "Start"
+        resultTextLabel.text = "You height is"
         
         goCloserProgress.progress = 0
         
@@ -92,19 +119,6 @@ class ViewController: UIViewController {
         
         setupScene()
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGesture))
-        self.view.addGestureRecognizer(tapGestureRecognizer)
-        
-        unit = DistanceUnit.centimeter
-        
-        let defaults = UserDefaults.standard
-        if let measureString = defaults.string(forKey: Setting.measureUnits.rawValue) {
-            self.unit = DistanceUnit(rawValue: measureString)!
-        } else {
-            self.unit = .centimeter
-            defaults.set(DistanceUnit.centimeter.rawValue, forKey: Setting.measureUnits.rawValue)
-        }
-        
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleStartARSessionNotification(_:)),
                                                name: Notification.Name(rawValue:AppFeedbackHelper.appFeedbackHelperNotificationKey),
                                                object: nil)
@@ -115,7 +129,6 @@ class ViewController: UIViewController {
     fileprivate func setupScene() {
         sceneView.delegate = self
         sceneView.session = session
-        messageLabel.text = "detecting plane"
         session.run(sessionConfiguration, options: [.resetTracking, .removeExistingAnchors])
     }
     
@@ -135,15 +148,12 @@ class ViewController: UIViewController {
         session.run(sessionConfiguration)
     }
     
-    @objc func tapGesture(sender: UITapGestureRecognizer)
-    {
-//        if startMeasurement == false {
-//            DispatchQueue.main.async { [weak self] in
-//                self?.measurements = [SCNVector3]()
-//                self?.startMeasurement = true
-//                self?.timer = Timer.scheduledTimer(timeInterval: (self?.measureTime)!, target: self,   selector: (#selector(ViewController.finishTimer)), userInfo: nil, repeats: false)
-//            }
-//        }
+    @IBAction func startPressed(_ sender: Any) {
+        DispatchQueue.main.async { [weak self] in
+            self?.placePhoneOnYouHeadCountdown.isHidden = false
+            self?.startMeasurementButton.isHidden = true
+            self?.placePhoneCountdownTimer = Timer.scheduledTimer(timeInterval: (self?.placePhoneCountdownTimerInterval)!, target: self,   selector: (#selector(ViewController.decrementCountdown)), userInfo: nil, repeats: true)
+        }
     }
     
     @IBAction func showCelebrityListPressed(_ sender: Any) {
@@ -172,6 +182,15 @@ class ViewController: UIViewController {
     
     @IBAction func takeScreenshot() {
         self.saveUserHeight()
+    }
+    
+    @IBAction func redoPressed(_ sender: Any) {
+        resultView.isHidden = true
+        placePhoneOnYouHeadView.isHidden = false
+        placePhoneOnYouHeadCountdown.isHidden = true
+        startMeasurementButton.isHidden = false
+        currentCountdownValue = placePhoneCountdownMaxValue
+        placePhoneOnYouHeadCountdown.text = "\(currentCountdownValue)"
     }
     
     func saveUserHeight() {
@@ -206,7 +225,7 @@ class ViewController: UIViewController {
     
     func showMessageLabelForLength(length: Float) {
         let measureText = String(format: "%.2f%@", length * (self.unit.fator), (self.unit.unit))
-        messageLabel.text = measureText
+        resultValueLabel.text = measureText
     }
     
     func updateMeasureUnit() {
@@ -288,25 +307,43 @@ extension ViewController: ARSCNViewDelegate {
         }
         
         let cameraPos = SCNVector3.positionFromTransform(frame.camera.transform)
-        let distance = cameraPos.distance(from: plane.worldPosition)
+        //let distance = cameraPos.distance(from: plane.worldPosition)
+        let distance = cameraPos.y - plane.worldPosition.y
         
         if distance <= minCloserDistanceToSurface {
             goCloserProgress.progress = 1
             self.goCloserToSurfaceTimer.invalidate()
             goCloserToSurfaceView.isHidden = true
+            placePhoneOnYouHeadView.isHidden = false
+            
         } else {
             if distance >= maxCloserDistanceToSurface {
                 goCloserProgress.progress = 0
             } else {
                 let progress = 100 - ((distance - minCloserDistanceToSurface) * 100) / (maxCloserDistanceToSurface - minCloserDistanceToSurface)
                 goCloserProgress.progress = progress / 100
-                print(progress)
+            }
+        }
+    }
+    
+    @objc func decrementCountdown() {
+        currentCountdownValue -= 1
+        placePhoneOnYouHeadCountdown.text = "\(currentCountdownValue)"
+        
+        if currentCountdownValue == 0 {
+            self.placePhoneCountdownTimer.invalidate()
+            DispatchQueue.main.async { [weak self] in
+                self?.measurements = [SCNVector3]()
+                self?.startMeasurement = true
+                self?.timer = Timer.scheduledTimer(timeInterval: (self?.measureTime)!, target: self,   selector: (#selector(ViewController.finishTimer)), userInfo: nil, repeats: false)
             }
         }
     }
     
     @objc func finishTimer() {
         
+        placePhoneOnYouHeadView.isHidden = true
+        resultView.isHidden = false
         startMeasurement = false
         
         var sumY = Float(0.0)
@@ -324,11 +361,8 @@ extension ViewController: ARSCNViewDelegate {
         heightLength = distance
         
         DispatchQueue.main.async { [weak self] in
-            self?.messageLabel.text = String(format: "%.2f%@", distance * (self?.unit.fator)!, (self?.unit.unit)!)
+            self?.resultValueLabel.text = String(format: "%.2f%@", distance * (self?.unit.fator)!, (self?.unit.unit)!)
         }
-        
-        showCelebrityListButton.isHidden = false
-        saveHeightButton.isHidden = false
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
