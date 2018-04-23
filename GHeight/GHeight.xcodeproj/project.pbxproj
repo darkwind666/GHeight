@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		11B0A6EB6764569706BE3B49 /* Pods_GHeight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B39948B32C4B9E071801DC /* Pods_GHeight.framework */; };
 		3D4F6A66D9F5411FCDF73CB0 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B0143BF40037EFFAF1D1C9 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		CE0C1672208CEC2500072B21 /* ShareResultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C1671208CEC2500072B21 /* ShareResultHelper.swift */; };
 		CE13087D2001774A00ACCC55 /* ScreenshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13087C2001774A00ACCC55 /* ScreenshotHelper.swift */; };
 		CE1A6FF82008057500F805F5 /* GRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */; };
 		CE1A6FFA200819DE00F805F5 /* UserObjectRm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A6FF9200819DE00F805F5 /* UserObjectRm.swift */; };
@@ -79,6 +80,7 @@
 		7A84BAD62949586A5610C670 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		82CD7E3F3791B3975A4FF76E /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		A714603FB95E54724124F711 /* Pods-GHeight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GHeight.release.xcconfig"; path = "Pods/Target Support Files/Pods-GHeight/Pods-GHeight.release.xcconfig"; sourceTree = "<group>"; };
+		CE0C1671208CEC2500072B21 /* ShareResultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareResultHelper.swift; sourceTree = "<group>"; };
 		CE13087C2001774A00ACCC55 /* ScreenshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotHelper.swift; sourceTree = "<group>"; };
 		CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRDatabaseManager.swift; sourceTree = "<group>"; };
 		CE1A6FF9200819DE00F805F5 /* UserObjectRm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectRm.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				CE1A6FF72008057500F805F5 /* GRDatabaseManager.swift */,
 				CE13087C2001774A00ACCC55 /* ScreenshotHelper.swift */,
 				CEA793D41FFBE02400F3E6C4 /* ARHelper.swift */,
+				CE0C1671208CEC2500072B21 /* ShareResultHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				CEB5E1632015517300C38233 /* CelebrityListViewController.swift in Sources */,
 				CE50FF6B201FC6B7002115C1 /* EditObjectViewController.swift in Sources */,
 				CE91AE1A2015570B00D473CF /* CelebrityViewCell.swift in Sources */,
+				CE0C1672208CEC2500072B21 /* ShareResultHelper.swift in Sources */,
 				CEA793D51FFBE02400F3E6C4 /* ARHelper.swift in Sources */,
 				CEF510A41FEFADE800D9DEEE /* RulerLine.swift in Sources */,
 				CE1A6FFC2008262500F805F5 /* ObjectsFoldersViewController.swift in Sources */,

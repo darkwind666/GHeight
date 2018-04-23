@@ -40,6 +40,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultTextLabel: UILabel!
     @IBOutlet weak var resultValueLabel: UILabel!
+    @IBOutlet weak var compareButton: UIButton!
     
     fileprivate lazy var session = ARSession()
     fileprivate lazy var sessionConfiguration = ARWorldTrackingConfiguration()
@@ -85,6 +86,14 @@ class ViewController: UIViewController {
         placePhoneOnYouHeadView.isHidden = true
         placePhoneOnYouHeadCountdown.isHidden = true
         resultView.isHidden = true
+        
+        compareButton.backgroundColor = .clear
+        compareButton.titleLabel?.layer.cornerRadius = 5
+        compareButton.titleLabel?.layer.borderWidth = 1
+        compareButton.titleLabel?.layer.borderColor = UIColor.white.cgColor
+        compareButton.titleLabel?.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        compareButton.titleLabel?.textAlignment = .center
+        compareButton.setTitle("Compare", for: UIControlState.normal)
         
         unit = DistanceUnit.centimeter
         
@@ -362,6 +371,35 @@ extension ViewController: ARSCNViewDelegate {
         
         DispatchQueue.main.async { [weak self] in
             self?.resultValueLabel.text = String(format: "%.2f%@", distance * (self?.unit.fator)!, (self?.unit.unit)!)
+        }
+        
+        compareHeightWithCelebrity(height: heightLength * self.unit.fator)
+    }
+    
+    func compareHeightWithCelebrity(height: Float) {
+        var celebrities = ShareResultHelper.getCelebritiesList(measureUnit: unit)
+        let userMeasureModel = CelebrityModel(name: "You height", height: height, isUserHeight: true)
+        celebrities.append(userMeasureModel)
+        celebrities.sort { $0.height > $1.height }
+        
+        guard let index = celebrities.index(where: {$0.isUserHeight == true}) else { return }
+        
+        if (index + 1) >= celebrities.count {
+            DispatchQueue.main.async { [weak self] in
+                self?.compareButton.setTitle("Compare", for: UIControlState.normal)
+            }
+        } else {
+            let celebrityGeight = celebrities[index + 1]
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.compareButton.setTitle("You higher than " + celebrityGeight.name, for: UIControlState.normal)
+                
+                self?.compareButton.titleLabel?.sizeToFit()
+                self?.compareButton.sizeThatFits((self?.compareButton.titleLabel?.intrinsicContentSize)!)
+                
+                    self?.compareButton.layoutIfNeeded()
+                    self?.view.layoutIfNeeded()
+            }
         }
     }
     
