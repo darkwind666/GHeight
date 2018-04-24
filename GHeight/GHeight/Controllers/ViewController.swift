@@ -208,6 +208,10 @@ class ViewController: UIViewController {
         compareButton.titleLabel?.layer.borderWidth = 0
     }
     
+    @IBAction func buyButtonPressed(_ sender: Any) {
+        rulerPurchasesHelper.showPurchasesPopUp(controller: self)
+    }
+    
     @IBAction func sharePressed(_ sender: Any) {
         
         var firstActivityItem = ""
