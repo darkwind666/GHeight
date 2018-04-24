@@ -89,11 +89,15 @@ class ViewController: UIViewController {
         
         compareButton.backgroundColor = .clear
         compareButton.titleLabel?.layer.cornerRadius = 5
-        compareButton.titleLabel?.layer.borderWidth = 1
+        compareButton.titleLabel?.layer.borderWidth = 0
         compareButton.titleLabel?.layer.borderColor = UIColor.white.cgColor
         compareButton.titleLabel?.baselineAdjustment = UIBaselineAdjustment.alignCenters
         compareButton.titleLabel?.textAlignment = .center
         compareButton.setTitle("Compare", for: UIControlState.normal)
+        
+        compareButton.layer.cornerRadius = 5
+        compareButton.layer.borderWidth = 1
+        compareButton.layer.borderColor = UIColor.white.cgColor
         
         unit = DistanceUnit.centimeter
         
@@ -200,6 +204,40 @@ class ViewController: UIViewController {
         startMeasurementButton.isHidden = false
         currentCountdownValue = placePhoneCountdownMaxValue
         placePhoneOnYouHeadCountdown.text = "\(currentCountdownValue)"
+        compareButton.layer.borderWidth = 1
+        compareButton.titleLabel?.layer.borderWidth = 0
+    }
+    
+    @IBAction func sharePressed(_ sender: Any) {
+        
+        var firstActivityItem = ""
+        let size = String(heightLength * self.unit.fator)
+        
+        var celebrities = ShareResultHelper.getCelebritiesList(measureUnit: unit)
+        let userMeasureModel = CelebrityModel(name: "You height", height: heightLength * self.unit.fator, isUserHeight: true)
+        celebrities.append(userMeasureModel)
+        celebrities.sort { $0.height > $1.height }
+        
+        guard let index = celebrities.index(where: {$0.isUserHeight == true}) else { return }
+        
+        if (index + 1) >= celebrities.count {
+            firstActivityItem = "My height " + size + " " + self.unit.unit + " #GRuler"
+        } else {
+            let celebrityGeight = celebrities[index + 1]
+            firstActivityItem =  size + " " + self.unit.unit + "I am heigh than " + celebrityGeight.name + "  #GRuler"
+        }
+        
+        let secondActivityItem : NSURL = NSURL(string: RateAppHelper.reviewString)!
+        
+        let activityViewController : UIActivityViewController = UIActivityViewController(
+            activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)
+        
+        activityViewController.popoverPresentationController?.sourceView = self.navigationItem.leftBarButtonItem?.customView
+        activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.unknown
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
+        
+        self.present(activityViewController, animated: true, completion: nil)
+        
     }
     
     func saveUserHeight() {
@@ -387,6 +425,8 @@ extension ViewController: ARSCNViewDelegate {
         if (index + 1) >= celebrities.count {
             DispatchQueue.main.async { [weak self] in
                 self?.compareButton.setTitle("Compare", for: UIControlState.normal)
+                self?.compareButton.layer.borderWidth = 1
+                self?.compareButton.titleLabel?.layer.borderWidth = 0
             }
         } else {
             let celebrityGeight = celebrities[index + 1]
@@ -399,6 +439,8 @@ extension ViewController: ARSCNViewDelegate {
                 
                     self?.compareButton.layoutIfNeeded()
                     self?.view.layoutIfNeeded()
+                self?.compareButton.layer.borderWidth = 0
+                self?.compareButton.titleLabel?.layer.borderWidth = 1
             }
         }
     }

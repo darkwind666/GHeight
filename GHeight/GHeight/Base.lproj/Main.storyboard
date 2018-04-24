@@ -192,6 +192,9 @@
                                                 </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="shareButton"/>
+                                                <connections>
+                                                    <action selector="sharePressed:" destination="RxW-lW-65I" eventType="touchUpInside" id="veW-vC-rJK"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You height is" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uR1-e2-hbi" userLabel="resultTextLabel">
                                                 <rect key="frame" x="97.5" y="12" width="180" height="71"/>
@@ -213,11 +216,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="KZ5-Kt-YBR">
-                                                <rect key="frame" x="77" y="170" width="220" height="48"/>
+                                                <rect key="frame" x="77" y="170" width="220" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="220" id="LeV-Ui-rCL"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -229,6 +232,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KZ5-Kt-YBR" secondAttribute="bottom" constant="2" id="3cX-dE-2PB"/>
                                             <constraint firstItem="uR1-e2-hbi" firstAttribute="top" secondItem="oUb-SU-BV5" secondAttribute="top" constant="12" id="45A-p4-c3R"/>
                                             <constraint firstAttribute="height" constant="286" id="D0Q-Dj-4xq"/>
                                             <constraint firstItem="KZ5-Kt-YBR" firstAttribute="top" secondItem="wRU-mU-KER" secondAttribute="bottom" constant="30" id="Ki2-Fa-4Zb"/>
