@@ -37,6 +37,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var placePhoneOnYouHeadLabel: UILabel!
     @IBOutlet weak var placePhoneOnYouHeadCountdown: UILabel!
     @IBOutlet weak var startMeasurementButton: UIButton!
+    
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultTextLabel: UILabel!
     @IBOutlet weak var resultValueLabel: UILabel!
@@ -339,12 +340,13 @@ extension ViewController: ARSCNViewDelegate {
             lowestPlane = planeNode
         }
         
-        DispatchQueue.main.async {
-            self.findSurfaceView.isHidden = true
-            self.goCloserToSurfaceView.isHidden = false
-            self.goCloserToSurfaceTimer = Timer.scheduledTimer(timeInterval: (self.goCloserToSurfaceTimerInterval), target: self,   selector: (#selector(ViewController.checkDistanceToSurface)), userInfo: nil, repeats: true)
+        if goCloserToSurfaceView.isHidden == true && placePhoneOnYouHeadView.isHidden == true && resultView.isHidden == true {
+            DispatchQueue.main.async {
+                self.findSurfaceView.isHidden = true
+                self.goCloserToSurfaceView.isHidden = false
+                self.goCloserToSurfaceTimer = Timer.scheduledTimer(timeInterval: (self.goCloserToSurfaceTimerInterval), target: self,   selector: (#selector(ViewController.checkDistanceToSurface)), userInfo: nil, repeats: true)
+            }
         }
-        
     }
     
     @objc func checkDistanceToSurface() {
@@ -358,7 +360,6 @@ extension ViewController: ARSCNViewDelegate {
         }
         
         let cameraPos = SCNVector3.positionFromTransform(frame.camera.transform)
-        //let distance = cameraPos.distance(from: plane.worldPosition)
         let distance = cameraPos.y - plane.worldPosition.y
         
         if distance <= minCloserDistanceToSurface {
