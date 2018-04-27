@@ -89,16 +89,16 @@ class ViewController: UIViewController {
         resultView.isHidden = true
         
         compareButton.backgroundColor = .clear
-        compareButton.titleLabel?.layer.cornerRadius = 5
-        compareButton.titleLabel?.layer.borderWidth = 0
-        compareButton.titleLabel?.layer.borderColor = UIColor.white.cgColor
         compareButton.titleLabel?.baselineAdjustment = UIBaselineAdjustment.alignCenters
         compareButton.titleLabel?.textAlignment = .center
         compareButton.setTitle("Compare", for: UIControlState.normal)
         
-        compareButton.layer.cornerRadius = 5
+        setupBorder(view: compareButton)
+        setupBorder(view: (compareButton.titleLabel)!)
+        setupBorder(view: startMeasurementButton)
+        
         compareButton.layer.borderWidth = 1
-        compareButton.layer.borderColor = UIColor.white.cgColor
+        compareButton.titleLabel?.layer.borderWidth = 0
         
         unit = DistanceUnit.centimeter
         
@@ -112,11 +112,11 @@ class ViewController: UIViewController {
         
         findSurfaceLabel.text = "Find surface"
         goCloserToSurfaceLabel.text = "Go closer to surface to \(minCloserDistanceToSurface * unit.fator) \(unit.unit)"
-        placePhoneOnYouHeadLabel.text = "Press Start and place device on you head and wait bip sound"
+        placePhoneOnYouHeadLabel.text = "Press Start and place device on head. Then wait bip sound"
         placePhoneOnYouHeadCountdown.text = "\(placePhoneCountdownMaxValue)"
         currentCountdownValue = placePhoneCountdownMaxValue
         startMeasurementButton.titleLabel?.text = "Start"
-        resultTextLabel.text = "You height is"
+        resultTextLabel.text = "You height"
         
         goCloserProgress.progress = 0
         
@@ -138,6 +138,12 @@ class ViewController: UIViewController {
                                                object: nil)
         
         Appodeal.setInterstitialDelegate(self)
+    }
+    
+    fileprivate func setupBorder(view: UIView) {
+        view.layer.cornerRadius = 5
+        view.layer.borderWidth = 1
+        view.layer.borderColor = findSurfaceLabel.textColor.cgColor
     }
     
     fileprivate func setupScene() {
@@ -229,7 +235,7 @@ class ViewController: UIViewController {
             firstActivityItem = "My height " + size + " " + self.unit.unit + " #GRuler"
         } else {
             let celebrityGeight = celebrities[index + 1]
-            firstActivityItem =  size + " " + self.unit.unit + "I am heigh than " + celebrityGeight.name + "  #GRuler"
+            firstActivityItem =  size + " " + self.unit.unit + "I am higher than " + celebrityGeight.name + "  #GRuler"
         }
         
         let secondActivityItem : NSURL = NSURL(string: RateAppHelper.reviewString)!
