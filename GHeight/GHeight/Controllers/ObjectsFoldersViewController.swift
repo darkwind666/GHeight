@@ -142,7 +142,7 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
         
         let alertController = UIAlertController(title: "remove Ads", message: "do You Whant To Remove Ads", preferredStyle: UIAlertControllerStyle.alert)
         
-        alertController.addAction(UIAlertAction(title: "remove Ads Plus Limit", style: UIAlertActionStyle.default, handler: { UIAlertAction in
+        alertController.addAction(UIAlertAction(title: "buy full version", style: UIAlertActionStyle.default, handler: { UIAlertAction in
             for (_, product) in self.products.enumerated() {
                 if product.productIdentifier == SettingsController.removeAdsPlusLimitProductId {
                     RageProducts.store.buyProduct(product)

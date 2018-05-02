@@ -177,11 +177,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showCelebrityListPressed(_ sender: Any) {
-        self.rulerScreenNavigationHelper.showCelebrityListFromRuler(compareHeight: heightLength * self.unit.fator)
+        if RageProducts.store.isProductPurchased(SettingsController.openFullCelebrityListProductId) || RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
+            self.rulerScreenNavigationHelper.showCelebrityListFromRuler(compareHeight: heightLength * self.unit.fator)
+        } else {
+            rulerPurchasesHelper.showBuyFullCelebrityListPopUp(controller: self)
+        }
     }
     
     @IBAction func showSettings(_ sender: Any) {
-        
         var blockAd = false
         
         if RageProducts.store.isProductPurchased(SettingsController.removeAdProductId) || RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {

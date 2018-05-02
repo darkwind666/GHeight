@@ -24,7 +24,7 @@ import Foundation
 
 public struct RageProducts {
   
-  fileprivate static let productIdentifiers: Set<ProductIdentifier> = [SettingsController.removeAdProductId, SettingsController.removeUserGalleryProductId, SettingsController.removeAdsPlusLimitProductId]
+  fileprivate static let productIdentifiers: Set<ProductIdentifier> = [SettingsController.removeAdProductId, SettingsController.removeUserGalleryProductId, SettingsController.removeAdsPlusLimitProductId, SettingsController.openFullCelebrityListProductId]
 
   public static let store = IAPHelper(productIds: RageProducts.productIdentifiers)
 }

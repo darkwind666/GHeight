@@ -29,14 +29,19 @@ class RulerPurchasesHelper {
         
         if productID == SettingsController.removeUserGalleryProductId  {
             rulerScreen.removeObjectsLimit = true
+            self.logPurchase(name: "Remove user gallery limit", id: productID, price: 0.99)
         }
         
         if productID == SettingsController.removeAdProductId {
-            self.logPurchase(name: "Remove ad", id: productID, price: 1.99)
+            self.logPurchase(name: "Remove ad", id: productID, price: 0.99)
         }
         
         if productID == SettingsController.removeAdsPlusLimitProductId {
-            self.logPurchase(name: "Remove ad and objects limit", id: productID, price: 2.99)
+            self.logPurchase(name: "Remove ad and objects limit", id: productID, price: 1.99)
+        }
+        
+        if productID == SettingsController.openFullCelebrityListProductId {
+            self.logPurchase(name: "Open full celebrity list", id: productID, price: 0.99)
         }
     }
     
@@ -63,11 +68,46 @@ class RulerPurchasesHelper {
         }
     }
     
+    func showBuyFullCelebrityListPopUp(controller: UIViewController?) {
+        let message = "purchases"
+        let rateAlert = UIAlertController(title: "purchases" + "\u{1F4B0}", message: message, preferredStyle: .alert)
+        
+        let removeAdsPlusLimitAction = UIAlertAction(title: "buy full version", style: .default, handler: { (action) -> Void in
+            self.buyProduct(productId: SettingsController.removeAdsPlusLimitProductId)
+        })
+        
+        let openFullCelebrityListAction = UIAlertAction(title: "open full celebrity list", style: .default, handler: { (action) -> Void in
+            self.buyProduct(productId: SettingsController.openFullCelebrityListProductId)
+        })
+        
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: { (action) -> Void in
+        })
+        
+        if !RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
+            rateAlert.addAction(removeAdsPlusLimitAction)
+        }
+        
+        if !RageProducts.store.isProductPurchased(SettingsController.openFullCelebrityListProductId) {
+            rateAlert.addAction(openFullCelebrityListAction)
+        }
+        
+        rateAlert.addAction(cancelAction)
+        
+        DispatchQueue.main.async {
+            controller?.present(rateAlert, animated: true, completion: nil)
+        }
+    }
+    
     func showPurchasesPopUp(controller: UIViewController?) {
         let message = "purchases"
         let rateAlert = UIAlertController(title: "purchases" + "\u{1F4B0}", message: message, preferredStyle: .alert)
-        let removeAdsPlusLimitAction = UIAlertAction(title: "remove Ads Plus Limit", style: .default, handler: { (action) -> Void in
+        
+        let removeAdsPlusLimitAction = UIAlertAction(title: "buy full version", style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeAdsPlusLimitProductId)
+        })
+        
+        let openFullCelebrityListAction = UIAlertAction(title: "open full celebrity list", style: .default, handler: { (action) -> Void in
+            self.buyProduct(productId: SettingsController.openFullCelebrityListProductId)
         })
         
         let removeAdsAction = UIAlertAction(title: "remove Ads", style: .default, handler: { (action) -> Void in
@@ -87,6 +127,10 @@ class RulerPurchasesHelper {
         
         if !RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
             rateAlert.addAction(removeAdsPlusLimitAction)
+        }
+        
+        if !RageProducts.store.isProductPurchased(SettingsController.openFullCelebrityListProductId) {
+            rateAlert.addAction(openFullCelebrityListAction)
         }
         
         if !RageProducts.store.isProductPurchased(SettingsController.removeAdProductId){
@@ -122,7 +166,7 @@ class RulerPurchasesHelper {
             let objectsLimitTitle = "objects Limit"
             let alertController = UIAlertController(title: "\(objectsLimitTitle) \(rulerScreen.maxObjectsInUserGallery)", message: "do You Whant To Remove Limit ?", preferredStyle: UIAlertControllerStyle.alert)
             
-            alertController.addAction(UIAlertAction(title: "remove Ads Plus Limit Button Title", style: UIAlertActionStyle.default, handler: { UIAlertAction in
+            alertController.addAction(UIAlertAction(title: "buy full version", style: UIAlertActionStyle.default, handler: { UIAlertAction in
                 for (_, product) in self.rulerScreen.products.enumerated() {
                     if product.productIdentifier == SettingsController.removeAdsPlusLimitProductId {
                         RageProducts.store.buyProduct(product)
@@ -131,17 +175,13 @@ class RulerPurchasesHelper {
                 }
             }))
             
-            alertController.addAction(UIAlertAction(title: "remove Limit Button Title", style: UIAlertActionStyle.default, handler: { UIAlertAction in
+            alertController.addAction(UIAlertAction(title: "remove Limit", style: UIAlertActionStyle.default, handler: { UIAlertAction in
                 for (_, product) in self.rulerScreen.products.enumerated() {
                     if product.productIdentifier == SettingsController.removeUserGalleryProductId {
                         RageProducts.store.buyProduct(product)
                         break
                     }
                 }
-            }))
-            
-            alertController.addAction(UIAlertAction(title: "make Just Screenshot", style: UIAlertActionStyle.default, handler: { UIAlertAction in
-                self.rulerScreen.screenshotHelper.takeJustScreenshot()
             }))
             
             alertController.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.default, handler: nil))

@@ -74,8 +74,14 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     @IBAction func compareHeightPressed(_ sender: Any) {
-        let height = Float(self.objectSizeTextField.text!)!
-        measureScreen.rulerScreenNavigationHelper.showCelebrityListFromRulerMeasureDetail(compareHeight: height, controller: self)
+        
+        if RageProducts.store.isProductPurchased(SettingsController.openFullCelebrityListProductId) || RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
+            let height = Float(self.objectSizeTextField.text!)!
+            measureScreen.rulerScreenNavigationHelper.showCelebrityListFromRulerMeasureDetail(compareHeight: height, controller: self)
+            
+        } else {
+            measureScreen.rulerPurchasesHelper.showBuyFullCelebrityListPopUp(controller: self)
+        }
     }
     
     @IBAction func savePressed(_ sender: Any) {

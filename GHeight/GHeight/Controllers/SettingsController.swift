@@ -22,6 +22,7 @@ class SettingsController: UIViewController {
     static let removeAdProductId = "com.darkwind.gHeight.removeAd"
     static let removeUserGalleryProductId = "com.darkwind.gHeight.removeUserGalleryLimit"
     static let removeAdsPlusLimitProductId = "com.darkwind.gHeight.removeAdPlusUserGalleryLimit"
+    static let openFullCelebrityListProductId = "com.darkwind.gHeight.openFullCelebrityList"
     
     @IBOutlet weak var measureUnitsButton: UIButton!
     @IBOutlet weak var facebookButtonView: UIView!
