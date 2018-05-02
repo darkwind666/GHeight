@@ -11,6 +11,7 @@ import SceneKit
 import ARKit
 import StoreKit
 import Appodeal
+import AudioToolbox
 
 class HeightMeasure {
     var line: RulerLine?
@@ -112,7 +113,7 @@ class ViewController: UIViewController {
         
         findSurfaceLabel.text = "Find surface"
         goCloserToSurfaceLabel.text = "Go closer to surface to \(minCloserDistanceToSurface * unit.fator) \(unit.unit)"
-        placePhoneOnYouHeadLabel.text = "Press Start and place device on head. Then wait bip sound"
+        placePhoneOnYouHeadLabel.text = "Press Start and place device on head. Then wait signal"
         placePhoneOnYouHeadCountdown.text = "\(placePhoneCountdownMaxValue)"
         currentCountdownValue = placePhoneCountdownMaxValue
         startMeasurementButton.titleLabel?.text = "Start"
@@ -267,7 +268,7 @@ class ViewController: UIViewController {
         userObjectRm.createdAt = date
         userObjectRm.id = uuid
         userObjectRm.sizeUnit = self.unit.rawValue
-        userObjectRm.name = "Object" + uuid
+        userObjectRm.name = "Object" + " " + uuid
         userObjectRm.height = self.getObjectSize() * self.unit.fator
         
         DispatchQueue.main.async {
@@ -423,6 +424,7 @@ extension ViewController: ARSCNViewDelegate {
         
         DispatchQueue.main.async { [weak self] in
             self?.resultValueLabel.text = String(format: "%.2f%@", distance * (self?.unit.fator)!, (self?.unit.unit)!)
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
         }
         
         compareHeightWithCelebrity(height: heightLength * self.unit.fator)

@@ -36,6 +36,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find surface" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4Fp-Dj-Sd4">
                                         <rect key="frame" x="83" y="35" width="209" height="71"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="71" id="LWH-GT-0eh"/>
                                         </constraints>
@@ -571,6 +572,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="bx9-Vl-KpZ" id="RjR-Nh-wKQ"/>
+                        <outlet property="compareButton" destination="7uE-vx-lS5" id="Njp-6h-jEF"/>
                         <outlet property="measureUnitLabel" destination="Xba-hz-Lyb" id="Gb6-Zh-FZA"/>
                         <outlet property="objectNameTextField" destination="iQl-E1-YIj" id="aq6-Jl-X2N"/>
                         <outlet property="objectSizeTextField" destination="QnO-dp-2g8" id="bNq-z9-S4x"/>
@@ -598,6 +600,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1Le-4T-KfB"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Measure units">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -632,6 +635,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="egT-bg-ZKs"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Subscribe to news!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -640,25 +644,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIc-ih-e4Y" userLabel="RateButton">
-                                <rect key="frame" x="16" y="261" width="57" height="57"/>
+                                <rect key="frame" x="16" y="255" width="343" height="30"/>
                                 <color key="backgroundColor" red="0.72097843890000002" green="0.71373695140000004" blue="0.72215801479999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="57" id="IYQ-WE-ao2"/>
-                                    <constraint firstAttribute="height" constant="57" id="K7A-sW-XmN"/>
+                                    <constraint firstAttribute="height" constant="30" id="K7A-sW-XmN"/>
                                 </constraints>
-                                <state key="normal" image="rateGameButton"/>
+                                <state key="normal" title="Rate us"/>
                                 <connections>
                                     <action selector="rateAppPressed:" destination="0BE-5a-daQ" eventType="touchUpInside" id="Sma-xa-PkJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-Ol-L6b" userLabel="BuyButton">
-                                <rect key="frame" x="302" y="261" width="57" height="57"/>
+                                <rect key="frame" x="16" y="312" width="343" height="30"/>
                                 <color key="backgroundColor" red="0.72097843890000002" green="0.71373695140000004" blue="0.72215801479999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="BE7-S0-ejV"/>
-                                    <constraint firstAttribute="width" constant="57" id="kxO-vj-msG"/>
+                                    <constraint firstAttribute="height" constant="30" id="BE7-S0-ejV"/>
                                 </constraints>
-                                <state key="normal" image="purchasesButton"/>
+                                <state key="normal" title="Buy full version"/>
                                 <connections>
                                     <action selector="buyButtonPressed:" destination="0BE-5a-daQ" eventType="touchUpInside" id="GNr-Uj-0x6"/>
                                     <action selector="buyButtonPressed:" destination="RxW-lW-65I" eventType="touchUpInside" id="KQh-rs-vtP"/>
@@ -675,24 +677,28 @@
                             <constraint firstItem="YUe-6r-dpr" firstAttribute="leading" secondItem="vPd-gH-jlY" secondAttribute="leading" constant="16" id="A10-8f-5NG"/>
                             <constraint firstItem="vPd-gH-jlY" firstAttribute="trailing" secondItem="YUe-6r-dpr" secondAttribute="trailing" constant="16" id="AfU-Lz-E4P"/>
                             <constraint firstItem="vPd-gH-jlY" firstAttribute="trailing" secondItem="fRP-FB-qWX" secondAttribute="trailing" id="C0g-Lu-Eec"/>
-                            <constraint firstItem="UgW-Ol-L6b" firstAttribute="top" secondItem="vgB-Iu-u50" secondAttribute="bottom" constant="33" id="CDH-3j-ACX"/>
                             <constraint firstItem="vgB-Iu-u50" firstAttribute="top" secondItem="ukP-vd-leM" secondAttribute="bottom" constant="27" id="CI1-Rn-S7J"/>
                             <constraint firstItem="vPd-gH-jlY" firstAttribute="trailing" secondItem="ukP-vd-leM" secondAttribute="trailing" constant="35" id="EnA-0e-sX0"/>
                             <constraint firstItem="YUe-6r-dpr" firstAttribute="top" secondItem="OMv-iX-XlF" secondAttribute="bottom" constant="25" id="GBg-il-9kj"/>
                             <constraint firstItem="fRP-FB-qWX" firstAttribute="top" secondItem="zH1-fw-rCQ" secondAttribute="topMargin" id="VXz-aT-TGA"/>
                             <constraint firstItem="vPd-gH-jlY" firstAttribute="trailing" secondItem="UgW-Ol-L6b" secondAttribute="trailing" constant="16" id="Vhw-H1-HC1"/>
                             <constraint firstItem="ukP-vd-leM" firstAttribute="top" secondItem="OMv-iX-XlF" secondAttribute="bottom" constant="25" id="Yhz-sy-4Lx"/>
+                            <constraint firstItem="UgW-Ol-L6b" firstAttribute="leading" secondItem="vPd-gH-jlY" secondAttribute="leading" constant="16" id="aCm-dM-gnN"/>
                             <constraint firstItem="ukP-vd-leM" firstAttribute="leading" secondItem="vPd-gH-jlY" secondAttribute="leading" constant="16" id="fjP-ni-Up5"/>
                             <constraint firstItem="DIc-ih-e4Y" firstAttribute="leading" secondItem="vPd-gH-jlY" secondAttribute="leading" constant="16" id="i48-d6-rOi"/>
                             <constraint firstItem="vPd-gH-jlY" firstAttribute="trailing" secondItem="vgB-Iu-u50" secondAttribute="trailing" constant="16" id="jHh-ZP-ci5"/>
+                            <constraint firstItem="vPd-gH-jlY" firstAttribute="trailing" secondItem="DIc-ih-e4Y" secondAttribute="trailing" constant="16" id="tTM-Ko-NT5"/>
+                            <constraint firstItem="UgW-Ol-L6b" firstAttribute="top" secondItem="DIc-ih-e4Y" secondAttribute="bottom" constant="27" id="u20-pT-edg"/>
                             <constraint firstAttribute="bottomMargin" secondItem="fRP-FB-qWX" secondAttribute="bottom" id="wRc-Oj-CPB"/>
-                            <constraint firstItem="DIc-ih-e4Y" firstAttribute="top" secondItem="vgB-Iu-u50" secondAttribute="bottom" constant="33" id="y2X-sr-8lm"/>
+                            <constraint firstItem="DIc-ih-e4Y" firstAttribute="top" secondItem="vgB-Iu-u50" secondAttribute="bottom" constant="27" id="y2X-sr-8lm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vPd-gH-jlY"/>
                     </view>
                     <connections>
+                        <outlet property="buyButton" destination="UgW-Ol-L6b" id="AYB-Da-bRV"/>
                         <outlet property="facebookButtonView" destination="ukP-vd-leM" id="glI-gJ-PoJ"/>
                         <outlet property="measureUnitsButton" destination="OMv-iX-XlF" id="df6-1I-oQr"/>
+                        <outlet property="rateUsButton" destination="DIc-ih-e4Y" id="Dhs-qn-RI8"/>
                         <outlet property="subscribeToNewsButton" destination="vgB-Iu-u50" id="6ih-ue-Map"/>
                     </connections>
                 </viewController>
@@ -707,9 +713,7 @@
         <image name="deleteButton" width="25" height="34"/>
         <image name="galleryIcon" width="114" height="114"/>
         <image name="goCloser" width="187" height="158"/>
-        <image name="purchasesButton" width="61" height="61"/>
         <image name="putPhoneOnHeadIcon" width="260" height="391"/>
-        <image name="rateGameButton" width="56" height="56"/>
         <image name="saveIcon" width="114" height="114"/>
         <image name="settingsIcon" width="114" height="114"/>
         <image name="shakeHand" width="336" height="400"/>

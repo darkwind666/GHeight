@@ -21,6 +21,7 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var compareButton: UIButton!
     
     var measureScreen: ViewController!
     var selectedObjectIndex = 0
@@ -32,6 +33,10 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        compareButton.layer.cornerRadius = 10
+        compareButton.layer.borderWidth = 1
+        compareButton.layer.borderColor = UIColor.blue.cgColor
         
         objectNameTextField.delegate = self
         objectSizeTextField.delegate = self

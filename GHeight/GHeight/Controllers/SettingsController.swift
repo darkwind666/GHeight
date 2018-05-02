@@ -27,6 +27,9 @@ class SettingsController: UIViewController {
     @IBOutlet weak var measureUnitsButton: UIButton!
     @IBOutlet weak var facebookButtonView: UIView!
     @IBOutlet weak var subscribeToNewsButton: UIButton!
+    @IBOutlet weak var rateUsButton: UIButton!
+    @IBOutlet weak var buyButton: UIButton!
+    
     var measureScreen: ViewController!
     
     override func viewDidLoad() {
@@ -42,8 +45,12 @@ class SettingsController: UIViewController {
     func setUpButtons() {
         setupButtonStyle(button: measureUnitsButton)
         setupButtonStyle(button: subscribeToNewsButton)
+        setupButtonStyle(button: rateUsButton)
+        setupButtonStyle(button: buyButton)
         measureUnitsButton.setTitle("Measure units", for: [])
         subscribeToNewsButton.setTitle("subscribe To News", for: [])
+        rateUsButton.setTitle("Rate us", for: [])
+        buyButton.setTitle("Buy full version", for: [])
     }
     
     func setupButtonStyle(button: UIButton) {
