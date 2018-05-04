@@ -12,6 +12,7 @@ import ARKit
 import StoreKit
 import Appodeal
 import AudioToolbox
+import AVFoundation
 
 class HeightMeasure {
     var line: RulerLine?
@@ -79,6 +80,8 @@ class ViewController: UIViewController {
     let placePhoneCountdownTimerInterval = Double(1)
     var placePhoneCountdownTimer = Timer()
     var currentCountdownValue = 0
+    
+    var player: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -424,7 +427,26 @@ extension ViewController: ARSCNViewDelegate {
         
         DispatchQueue.main.async { [weak self] in
             self?.resultValueLabel.text = String(format: "%.2f%@", distance * (self?.unit.fator)!, (self?.unit.unit)!)
-            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+            
+                if UIDevice.current.userInterfaceIdiom == .phone {
+                    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+                } else {
+                    
+                    guard let url = Bundle.main.url(forResource: "beepSound", withExtension: "wav") else { return }
+                    
+                    do {
+                        try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                        try AVAudioSession.sharedInstance().setActive(true)
+                        
+                        self?.player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+                        
+                        self?.player?.play()
+                        
+                    } catch let error {
+                        print(error.localizedDescription)
+                    }
+            }
+            
         }
         
         compareHeightWithCelebrity(height: heightLength * self.unit.fator)

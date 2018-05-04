@@ -19,6 +19,7 @@
 		CE2321C12039F6B50012696E /* RateAppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2321C02039F6B40012696E /* RateAppHelper.swift */; };
 		CE50FF6B201FC6B7002115C1 /* EditObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50FF6A201FC6B7002115C1 /* EditObjectViewController.swift */; };
 		CE50FF6D20251A23002115C1 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50FF6C20251A23002115C1 /* SettingsController.swift */; };
+		CE58656C209CAD5E00C5584B /* beepSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE58656B209CAD5E00C5584B /* beepSound.wav */; };
 		CE5C88071FDF324200D68F8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C88061FDF324200D68F8A /* AppDelegate.swift */; };
 		CE5C88091FDF324200D68F8A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C88081FDF324200D68F8A /* art.scnassets */; };
 		CE5C880B1FDF324200D68F8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C880A1FDF324200D68F8A /* ViewController.swift */; };
@@ -90,6 +91,7 @@
 		CE2321C02039F6B40012696E /* RateAppHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateAppHelper.swift; sourceTree = "<group>"; };
 		CE50FF6A201FC6B7002115C1 /* EditObjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditObjectViewController.swift; sourceTree = "<group>"; };
 		CE50FF6C20251A23002115C1 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		CE58656B209CAD5E00C5584B /* beepSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beepSound.wav; sourceTree = "<group>"; };
 		CE5C88031FDF324200D68F8A /* GHeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C88061FDF324200D68F8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5C88081FDF324200D68F8A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 		CEB9A2B3206A79C4007A3611 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE58656B209CAD5E00C5584B /* beepSound.wav */,
 				CEB9A2B4206A79E6007A3611 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -416,6 +419,7 @@
 				CE5C88101FDF324200D68F8A /* Assets.xcassets in Resources */,
 				CE5C880E1FDF324200D68F8A /* Main.storyboard in Resources */,
 				CE9F0E9E205457C400276B40 /* NativeAppInstallAdCell.xib in Resources */,
+				CE58656C209CAD5E00C5584B /* beepSound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +765,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NYJEFU8C25;
 				INFOPLIST_FILE = GHeight/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = comDarkWind.GHeight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -779,6 +784,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NYJEFU8C25;
 				INFOPLIST_FILE = GHeight/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = comDarkWind.GHeight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
