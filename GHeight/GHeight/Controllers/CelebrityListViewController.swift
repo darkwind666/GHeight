@@ -36,7 +36,7 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
         
         loadCelebritiesList()
         
-        let userMeasureModel = CelebrityModel(name: "You height", height: height, isUserHeight: true)
+        let userMeasureModel = CelebrityModel(name: NSLocalizedString("resultTextTitle", comment: ""), height: height, isUserHeight: true)
         celebrities.append(userMeasureModel)
         celebrities.sort { $0.height > $1.height }
     }
@@ -48,10 +48,10 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
         
         guard let index = celebrities.index(where: {$0.isUserHeight == true}) else {return}
         if (index + 1) >= celebrities.count {
-            firstActivityItem = "My height " + size + " " + unit.unit + " #GRuler"
+            firstActivityItem = NSLocalizedString("myHeightTextTitle", comment: "") + size + " " + unit.unit + " #GRuler"
         } else {
             let celebrityGeight = celebrities[index + 1]
-            firstActivityItem =  size + " " + unit.unit + "I am heigh than " + celebrityGeight.name + "  #GRuler"
+            firstActivityItem =  size + " " + unit.unit + NSLocalizedString("iAmHigherThanTitle", comment: "") + celebrityGeight.name + "  #GRuler"
         }
         
         let secondActivityItem : NSURL = NSURL(string: RateAppHelper.reviewString)!
@@ -67,7 +67,7 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let index = celebrities.index(where: {$0.name == "You height"}) {
+        if let index = celebrities.index(where: {$0.name == NSLocalizedString("resultTextTitle", comment: "")}) {
             let scrollPosition = IndexPath(row: index, section: 0)
             tableView.scrollToRow(at: scrollPosition, at: .none, animated: false)
         }

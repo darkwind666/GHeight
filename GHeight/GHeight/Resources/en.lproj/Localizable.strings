@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  GHeight
+
+  Created by user on 3/27/18.
+  Copyright © 2018 user. All rights reserved.
+*/
+
+"compareButtonTitle" = "Compare";
+"findSurfaceTitle" = "Find surface on floor";
+"goCloserToSurfaceTitle" = "Go closer to surface to";
+"pressStartTitle" = "Press Start and place device on head. Then wait signal";
+"startButtonTitle" = "Start";
+"resultTextTitle" = "You height";
+"myHeightTextTitle" = "My height ";
+"iAmHigherThanTitle" = "I am higher than ";
+"GHeightWouldLikeToAccessTheCamera" = "GHeight would like to access camera";
+"pleaseGrantPermissionToUseTheCamera" = "Please grant permission to use Camera.";
+"openSettings" = "Open Settings";
+"errorOccurred" = "Error occurred!";
+"measureUnitsButtonTitle" = "Measure units";
+"subscribeToNews" = "Subscribe to news!";
+"rateUsKey" = "Rate Us";
+"removeAdsPlusLimitButtonTitle" = "Buy full version";
+"GHeightWouldLikeToAccessNotifications" = "GHeight Would Like To Access Notifications";
+"pleaseGrantPermissionToUseNotifications" = "Please grant permission to use notifications.";
+"notNowKey" = "Not now";
+"settingsScreenTitle" = "Settings";
+"pleaseSelectDistanceUnitOptions" = "Please select distance unit";
+"cancelKey" = "Cancel";
+"inputError" = "INPUT ERROR";
+"inputRightSize" = "Input right size";
+"okKey" = "OK";
+"noKey" = "NO";
+"removeAdsButtonTitle" = "Remove ads";
+"doYouWhantToRemoveAdsMessage" = "Do you want to remove ads?";
+"couldNotSendEmailTitle" = "Could not send email";
+"yourDeviceCouldNotSendEmailTitle" = "Your device could not send e-mail.  Please check e-mail configuration and try again.";
+"rateAppProposal" = "Do you love the GHeight app?  Please rate us!";
+"sendFeedbackButtonTitle" = "Send feedback";
+"purchasesPopUpTitle" = "Purchases";
+"openFullCelebrityListTitle" = "Open full celebrity list";
+"removeLimitButtonTitle" = "Remove limit";
+"restorePurchasesButtonTitle" = "Restore purchases";
+"objectsLimit" = "Objects limit:";
+"doYouWhantToRemoveLimitMessage" = "Do you want to remove limit? You also can remove some items from Gallery.";
+"userGalleryScreenTitle" = "Gallery";
+"celebritiesScreenTitle" = "Celebrities";
+"centimeterKey" = "Centimeter";
+"inchKey" = "Inch";
+"meterKey" = "Meter";
+"interrupted" = "Interrupted";
+"interruptionEnded" = "Interruption ended";
+"backButtonTitle" = "Back";
+"saveButtonTitle" = "Save";
+"purchasesPopUpMessage" = "Support giraffe!";
+"savedTitle" = "Saved";

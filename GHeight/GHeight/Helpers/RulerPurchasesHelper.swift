@@ -68,19 +68,46 @@ class RulerPurchasesHelper {
         }
     }
     
-    func showBuyFullCelebrityListPopUp(controller: UIViewController?) {
-        let message = "purchases"
-        let rateAlert = UIAlertController(title: "purchases" + "\u{1F4B0}", message: message, preferredStyle: .alert)
+    func showRemoveAdsProposalAlert(controller: UIViewController?) {
         
-        let removeAdsPlusLimitAction = UIAlertAction(title: "buy full version", style: .default, handler: { (action) -> Void in
+        let alertController = UIAlertController(title: NSLocalizedString("removeAdsButtonTitle", comment: ""), message: NSLocalizedString("purchasesPopUpMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("removeAdsPlusLimitButtonTitle", comment: ""), style: UIAlertActionStyle.default, handler: { UIAlertAction in
+            for (_, product) in self.rulerScreen.products.enumerated() {
+                if product.productIdentifier == SettingsController.removeAdsPlusLimitProductId {
+                    RageProducts.store.buyProduct(product)
+                    break
+                }
+            }
+        }))
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("removeAdsButtonTitle", comment: ""), style: UIAlertActionStyle.default, handler: { UIAlertAction in
+            for (_, product) in self.rulerScreen.products.enumerated() {
+                if product.productIdentifier == SettingsController.removeAdProductId {
+                    RageProducts.store.buyProduct(product)
+                    break
+                }
+            }
+        }))
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("noKey", comment: ""), style: UIAlertActionStyle.default, handler: nil))
+        
+        controller?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showBuyFullCelebrityListPopUp(controller: UIViewController?) {
+        let message = NSLocalizedString("purchasesPopUpMessage", comment: "")
+        let rateAlert = UIAlertController(title: NSLocalizedString("purchasesPopUpTitle", comment: "") + "\u{1F4B0}", message: message, preferredStyle: .alert)
+        
+        let removeAdsPlusLimitAction = UIAlertAction(title: NSLocalizedString("removeAdsPlusLimitButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeAdsPlusLimitProductId)
         })
         
-        let openFullCelebrityListAction = UIAlertAction(title: "open full celebrity list", style: .default, handler: { (action) -> Void in
+        let openFullCelebrityListAction = UIAlertAction(title: NSLocalizedString("openFullCelebrityListTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.openFullCelebrityListProductId)
         })
         
-        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: { (action) -> Void in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancelKey", comment: ""), style: .cancel, handler: { (action) -> Void in
         })
         
         if !RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
@@ -99,30 +126,30 @@ class RulerPurchasesHelper {
     }
     
     func showPurchasesPopUp(controller: UIViewController?) {
-        let message = "purchases"
-        let rateAlert = UIAlertController(title: "purchases" + "\u{1F4B0}", message: message, preferredStyle: .alert)
+        let message = NSLocalizedString("purchasesPopUpMessage", comment: "")
+        let rateAlert = UIAlertController(title: NSLocalizedString("purchasesPopUpTitle", comment: "") + "\u{1F4B0}", message: message, preferredStyle: .alert)
         
-        let removeAdsPlusLimitAction = UIAlertAction(title: "buy full version", style: .default, handler: { (action) -> Void in
+        let removeAdsPlusLimitAction = UIAlertAction(title: NSLocalizedString("removeAdsPlusLimitButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeAdsPlusLimitProductId)
         })
         
-        let openFullCelebrityListAction = UIAlertAction(title: "open full celebrity list", style: .default, handler: { (action) -> Void in
+        let openFullCelebrityListAction = UIAlertAction(title: NSLocalizedString("openFullCelebrityListTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.openFullCelebrityListProductId)
         })
         
-        let removeAdsAction = UIAlertAction(title: "remove Ads", style: .default, handler: { (action) -> Void in
+        let removeAdsAction = UIAlertAction(title: NSLocalizedString("removeAdsButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeAdProductId)
         })
         
-        let removeLimitAction = UIAlertAction(title: "remove Limit", style: .default, handler: { (action) -> Void in
+        let removeLimitAction = UIAlertAction(title: NSLocalizedString("removeLimitButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeUserGalleryProductId)
         })
         
-        let restorePurchasesAction = UIAlertAction(title: "restore Purchases", style: .default, handler: { (action) -> Void in
+        let restorePurchasesAction = UIAlertAction(title: NSLocalizedString("restorePurchasesButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             RageProducts.store.restorePurchases()
         })
         
-        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: { (action) -> Void in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancelKey", comment: ""), style: .cancel, handler: { (action) -> Void in
         })
         
         if !RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
@@ -163,10 +190,10 @@ class RulerPurchasesHelper {
         let userObjects = GRDatabaseManager.sharedDatabaseManager.grRealm.objects(UserObjectRm.self)
         
         if userObjects.count >= rulerScreen.maxObjectsInUserGallery && rulerScreen.removeObjectsLimit == false {
-            let objectsLimitTitle = "objects Limit"
-            let alertController = UIAlertController(title: "\(objectsLimitTitle) \(rulerScreen.maxObjectsInUserGallery)", message: "do You Whant To Remove Limit ?", preferredStyle: UIAlertControllerStyle.alert)
+            let objectsLimitTitle = NSLocalizedString("objectsLimit", comment: "")
+            let alertController = UIAlertController(title: "\(objectsLimitTitle) \(rulerScreen.maxObjectsInUserGallery)", message: NSLocalizedString("purchasesPopUpMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             
-            alertController.addAction(UIAlertAction(title: "buy full version", style: UIAlertActionStyle.default, handler: { UIAlertAction in
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("removeAdsPlusLimitButtonTitle", comment: ""), style: UIAlertActionStyle.default, handler: { UIAlertAction in
                 for (_, product) in self.rulerScreen.products.enumerated() {
                     if product.productIdentifier == SettingsController.removeAdsPlusLimitProductId {
                         RageProducts.store.buyProduct(product)
@@ -175,7 +202,7 @@ class RulerPurchasesHelper {
                 }
             }))
             
-            alertController.addAction(UIAlertAction(title: "remove Limit", style: UIAlertActionStyle.default, handler: { UIAlertAction in
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("removeLimitButtonTitle", comment: ""), style: UIAlertActionStyle.default, handler: { UIAlertAction in
                 for (_, product) in self.rulerScreen.products.enumerated() {
                     if product.productIdentifier == SettingsController.removeUserGalleryProductId {
                         RageProducts.store.buyProduct(product)
@@ -184,7 +211,7 @@ class RulerPurchasesHelper {
                 }
             }))
             
-            alertController.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.default, handler: nil))
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("noKey", comment: ""), style: UIAlertActionStyle.default, handler: nil))
             
             rulerScreen.present(alertController, animated: true, completion: nil)
             

@@ -47,10 +47,10 @@ class SettingsController: UIViewController {
         setupButtonStyle(button: subscribeToNewsButton)
         setupButtonStyle(button: rateUsButton)
         setupButtonStyle(button: buyButton)
-        measureUnitsButton.setTitle("Measure units", for: [])
-        subscribeToNewsButton.setTitle("subscribe To News", for: [])
-        rateUsButton.setTitle("Rate us", for: [])
-        buyButton.setTitle("Buy full version", for: [])
+        measureUnitsButton.setTitle(NSLocalizedString("measureUnitsButtonTitle", comment: ""), for: []) 
+        subscribeToNewsButton.setTitle(NSLocalizedString("subscribeToNews", comment: ""), for: [])
+        rateUsButton.setTitle(NSLocalizedString("rateUsKey", comment: ""), for: [])
+        buyButton.setTitle(NSLocalizedString("removeAdsPlusLimitButtonTitle", comment: ""), for: [])
     }
     
     func setupButtonStyle(button: UIButton) {
@@ -105,8 +105,8 @@ class SettingsController: UIViewController {
     func showProposalToGoAppSettings() {
         AppAnalyticsHelper.sendAppAnalyticEvent(withName: "Show_go_to_app_settings_notifications")
         
-        let alert = UIAlertController(title: "GRulerWouldLikeToAccessNotifications", message: "pleaseGrantPermissionToUseNotifications", preferredStyle: .alert )
-        alert.addAction(UIAlertAction(title: "openSettings", style: .default) { alert in
+        let alert = UIAlertController(title: NSLocalizedString("GHeightWouldLikeToAccessNotifications", comment: ""), message: NSLocalizedString("pleaseGrantPermissionToUseNotifications", comment: ""), preferredStyle: .alert )
+        alert.addAction(UIAlertAction(title: NSLocalizedString("openSettings", comment: ""), style: .default) { alert in
             
             AppAnalyticsHelper.sendAppAnalyticEvent(withName: "User_go_to_app_settings_notifications")
             
@@ -115,7 +115,7 @@ class SettingsController: UIViewController {
             
         })
         
-        let cancelAction = UIAlertAction(title: "notNow", style: .cancel, handler: { (action) -> Void in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("notNowKey", comment: ""), style: .cancel, handler: { (action) -> Void in
             AppAnalyticsHelper.sendAppAnalyticEvent(withName: "Subscribe_notifications_cancel_Settings_screen")
         })
         
@@ -129,8 +129,8 @@ class SettingsController: UIViewController {
     @IBAction func measureUnitPressed(_ sender: Any) {
 
         let defaults = UserDefaults.standard
-
-        let alertVC = UIAlertController(title: "Settings", message: "Select measure unit", preferredStyle: .actionSheet)
+        
+        let alertVC = UIAlertController(title: NSLocalizedString("settingsScreenTitle", comment: ""), message: NSLocalizedString("pleaseSelectDistanceUnitOptions", comment: ""), preferredStyle: .actionSheet)
         alertVC.addAction(UIAlertAction(title: DistanceUnit.centimeter.title, style: .default) { [weak self] _ in
             defaults.set(DistanceUnit.centimeter.rawValue, forKey: Setting.measureUnits.rawValue)
         })
@@ -141,7 +141,7 @@ class SettingsController: UIViewController {
             defaults.set(DistanceUnit.meter.rawValue, forKey: Setting.measureUnits.rawValue)
         })
         
-        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertVC.addAction(UIAlertAction(title: NSLocalizedString("cancelKey", comment: ""), style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
 

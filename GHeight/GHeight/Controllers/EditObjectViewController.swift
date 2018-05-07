@@ -34,9 +34,13 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        backButton.setTitle(NSLocalizedString("backButtonTitle", comment: ""), for: [])
+        saveButton.setTitle(NSLocalizedString("saveButtonTitle", comment: ""), for: [])
+        
         compareButton.layer.cornerRadius = 10
         compareButton.layer.borderWidth = 1
         compareButton.layer.borderColor = UIColor.blue.cgColor
+        compareButton.setTitle(NSLocalizedString("compareButtonTitle", comment: ""), for: [])
         
         objectNameTextField.delegate = self
         objectSizeTextField.delegate = self
@@ -79,11 +83,10 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     @IBAction func compareHeightPressed(_ sender: Any) {
-        
         if RageProducts.store.isProductPurchased(SettingsController.openFullCelebrityListProductId) || RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
             let height = Float(self.objectSizeTextField.text!)!
             measureScreen.rulerScreenNavigationHelper.showCelebrityListFromRulerMeasureDetail(compareHeight: height, controller: self)
-            
+
         } else {
             measureScreen.rulerPurchasesHelper.showBuyFullCelebrityListPopUp(controller: self)
         }

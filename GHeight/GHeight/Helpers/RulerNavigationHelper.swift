@@ -24,7 +24,7 @@ class RulerNavigationHelper {
         settingsViewController.apdAdQueue = measureScreen.apdAdQueue
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSettings))
         settingsViewController.navigationItem.rightBarButtonItem = barButtonItem
-        settingsViewController.title = "Gallery"
+        settingsViewController.title = NSLocalizedString("userGalleryScreenTitle", comment: "")
         settingsViewController.measureScreen = measureScreen
         settingsViewController.unit = measureScreen.unit
         
@@ -58,7 +58,7 @@ class RulerNavigationHelper {
         
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSettings))
         settingsViewController.navigationItem.rightBarButtonItem = barButtonItem
-        settingsViewController.title = "Celebrities"
+        settingsViewController.title = NSLocalizedString("celebritiesScreenTitle", comment: "")
         settingsViewController.height = compareHeight
         settingsViewController.unit = measureScreen.unit
         
@@ -83,7 +83,7 @@ class RulerNavigationHelper {
         
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: controller, action: #selector(EditObjectViewController.dismissCelebritiesList))
         settingsViewController.navigationItem.rightBarButtonItem = barButtonItem
-        settingsViewController.title = "Celebrities"
+        settingsViewController.title = NSLocalizedString("celebritiesScreenTitle", comment: "")
         settingsViewController.height = compareHeight
         settingsViewController.unit = measureScreen.unit
 
@@ -109,7 +109,7 @@ class RulerNavigationHelper {
         
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSettings))
         settingsViewController.navigationItem.rightBarButtonItem = barButtonItem
-        settingsViewController.title = "Settings"
+        settingsViewController.title = NSLocalizedString("settingsScreenTitle", comment: "")
         
         let navigationController = UINavigationController(rootViewController: settingsViewController)
         navigationController.modalPresentationStyle = .popover

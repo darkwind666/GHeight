@@ -39,11 +39,11 @@ enum DistanceUnit: String {
     var title: String {
         switch self {
         case .centimeter:
-            return "Centimeter"
+            return NSLocalizedString("centimeterKey", comment: "")
         case .inch:
-            return "Inch"
+            return NSLocalizedString("inchKey", comment: "")
         case .meter:
-            return "Meter"
+            return NSLocalizedString("meterKey", comment: "")
         }
     }
 }

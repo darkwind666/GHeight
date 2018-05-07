@@ -15,7 +15,7 @@ let AP_APP_PUSH_NOTIFICATION_SHOWN = "com.gittielabs.push_notifacation_shown"
 @objc public class PushNotificationHelper: NSObject {
     var application: UIApplication!
     var userdefaults = UserDefaults()
-    let requiredLaunchesBeforePushesProposal = 2
+    let requiredLaunchesBeforePushesProposal = 3
     public var appId: String!
     
     @objc public static var sharedInstance = PushNotificationHelper()

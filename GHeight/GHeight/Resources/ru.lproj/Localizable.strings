@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  GHeight
+
+  Created by user on 3/27/18.
+  Copyright © 2018 user. All rights reserved.
+*/
+
+"compareButtonTitle" = "Сравнить";
+"findSurfaceTitle" = "Найди поверхность на которой стоишь";
+"goCloserToSurfaceTitle" = "Приблизь телефон к поверхности на";
+"pressStartTitle" = "Нажми Старт и положи телефон на голову. Жди сигнала!";
+"startButtonTitle" = "Старт";
+"resultTextTitle" = "Твой рост";
+"myHeightTextTitle" = "Мой рост ";
+"iAmHigherThanTitle" = "В ыше чем ";
+"GHeightWouldLikeToAccessTheCamera" = "GHeight хотел бы получить доступ к камере";
+"pleaseGrantPermissionToUseTheCamera" = "Пожалуйста, разрешите доступ к камере.";
+"openSettings" = "Открыть настройки";
+"errorOccurred" = "Произошла ошибка!";
+"measureUnitsButtonTitle" = "Единицы измерения";
+"subscribeToNews" = "Получать новости!";
+"rateUsKey" = "Оставить отзыв";
+"removeAdsPlusLimitButtonTitle" = "Купить полную версию";
+"GHeightWouldLikeToAccessNotifications" = "GHeight хотел бы получить доступ к уведомлениям";
+"pleaseGrantPermissionToUseNotifications" = "Пожалуйста, разрешите доступ к уведомлениям.";
+"notNowKey" = "Не сейчас";
+"settingsScreenTitle" = "Настройки";
+"pleaseSelectDistanceUnitOptions" = "Выберите единицы измерения";
+"cancelKey" = "Отменить";
+"inputError" = "Ошибка ввода";
+"inputRightSize" = "Введите правильный размер";
+"okKey" = "OK";
+"noKey" = "Нет";
+"removeAdsButtonTitle" = "Убрать рекламу";
+"doYouWhantToRemoveAdsMessage" = "Хотите убрать рекламу?";
+"couldNotSendEmailTitle" = "Нельзя отправить email!";
+"yourDeviceCouldNotSendEmailTitle" = "Ваше устройство не может отправить email. Пожалуйста проверьте настройки.";
+"rateAppProposal" = "Вам понравился GRuler? Пожалуйста оцените!";
+"sendFeedbackButtonTitle" = "Написать разработчику";
+"purchasesPopUpTitle" = "Покупки";
+"openFullCelebrityListTitle" = "Полный список знаменитостей";
+"removeLimitButtonTitle" = "Убрать лимит";
+"restorePurchasesButtonTitle" = "Восстановить покупки";
+"objectsLimit" = "Лимит объектов:";
+"doYouWhantToRemoveLimitMessage" = "Хотите убрать лимит? Или удалите ненужные объекты из Галереи";
+"userGalleryScreenTitle" = "Галерея";
+"celebritiesScreenTitle" = "Знаменитости";
+"centimeterKey" = "Сантиметры";
+"inchKey" = "Дюймы";
+"meterKey" = "Метры";
+"interrupted" = "Прерывание";
+"interruptionEnded" = "Прерывание закончено";
+"backButtonTitle" = "Назад";
+"saveButtonTitle" = "Сохранить";
+"purchasesPopUpMessage" = "Поддержите жирафика!";
+"savedTitle" = "Сохранено!";

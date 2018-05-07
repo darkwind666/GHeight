@@ -133,36 +133,9 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
             if showAdsCount >= maxShowAdsCountBeforeProposal {
                 showRemoveAdsProposal = true
                 userdefaults.set(showRemoveAdsProposal, forKey: showRemoveAdsProposalKey)
-                showRemoveAdsProposalAlert()
+                measureScreen.rulerPurchasesHelper.showRemoveAdsProposalAlert(controller: self)
             }
         }
-    }
-    
-    func showRemoveAdsProposalAlert() {
-        
-        let alertController = UIAlertController(title: "remove Ads", message: "do You Whant To Remove Ads", preferredStyle: UIAlertControllerStyle.alert)
-        
-        alertController.addAction(UIAlertAction(title: "buy full version", style: UIAlertActionStyle.default, handler: { UIAlertAction in
-            for (_, product) in self.products.enumerated() {
-                if product.productIdentifier == SettingsController.removeAdsPlusLimitProductId {
-                    RageProducts.store.buyProduct(product)
-                    break
-                }
-            }
-        }))
-        
-        alertController.addAction(UIAlertAction(title: "remove Ads", style: UIAlertActionStyle.default, handler: { UIAlertAction in
-            for (_, product) in self.products.enumerated() {
-                if product.productIdentifier == SettingsController.removeAdProductId {
-                    RageProducts.store.buyProduct(product)
-                    break
-                }
-            }
-        }))
-        
-        alertController.addAction(UIAlertAction(title: "no", style: UIAlertActionStyle.default, handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
     }
     
     func showUserObject(indexPath: IndexPath) -> UITableViewCell {

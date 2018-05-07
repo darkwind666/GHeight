@@ -95,7 +95,7 @@ class ViewController: UIViewController {
         compareButton.backgroundColor = .clear
         compareButton.titleLabel?.baselineAdjustment = UIBaselineAdjustment.alignCenters
         compareButton.titleLabel?.textAlignment = .center
-        compareButton.setTitle("Compare", for: UIControlState.normal)
+        compareButton.setTitle(NSLocalizedString("compareButtonTitle", comment: ""), for: UIControlState.normal) 
         
         setupBorder(view: compareButton)
         setupBorder(view: (compareButton.titleLabel)!)
@@ -114,13 +114,13 @@ class ViewController: UIViewController {
             defaults.set(DistanceUnit.centimeter.rawValue, forKey: Setting.measureUnits.rawValue)
         }
         
-        findSurfaceLabel.text = "Find surface"
-        goCloserToSurfaceLabel.text = "Go closer to surface to \(minCloserDistanceToSurface * unit.fator) \(unit.unit)"
-        placePhoneOnYouHeadLabel.text = "Press Start and place device on head. Then wait signal"
+        findSurfaceLabel.text = NSLocalizedString("findSurfaceTitle", comment: "")
+        goCloserToSurfaceLabel.text = "\(NSLocalizedString("goCloserToSurfaceTitle", comment: "")) \(minCloserDistanceToSurface * unit.fator) \(unit.unit)"
+        placePhoneOnYouHeadLabel.text = NSLocalizedString("pressStartTitle", comment: "")
         placePhoneOnYouHeadCountdown.text = "\(placePhoneCountdownMaxValue)"
         currentCountdownValue = placePhoneCountdownMaxValue
-        startMeasurementButton.titleLabel?.text = "Start"
-        resultTextLabel.text = "You height"
+        startMeasurementButton.setTitle(NSLocalizedString("startButtonTitle", comment: ""), for: UIControlState.normal)
+        resultTextLabel.text = NSLocalizedString("resultTextTitle", comment: "")
         
         goCloserProgress.progress = 0
         
@@ -232,17 +232,17 @@ class ViewController: UIViewController {
         let size = String(heightLength * self.unit.fator)
         
         var celebrities = ShareResultHelper.getCelebritiesList(measureUnit: unit)
-        let userMeasureModel = CelebrityModel(name: "You height", height: heightLength * self.unit.fator, isUserHeight: true)
+        let userMeasureModel = CelebrityModel(name: NSLocalizedString("resultTextTitle", comment: ""), height: heightLength * self.unit.fator, isUserHeight: true)
         celebrities.append(userMeasureModel)
         celebrities.sort { $0.height > $1.height }
         
         guard let index = celebrities.index(where: {$0.isUserHeight == true}) else { return }
         
         if (index + 1) >= celebrities.count {
-            firstActivityItem = "My height " + size + " " + self.unit.unit + " #GRuler"
+            firstActivityItem = NSLocalizedString("myHeightTextTitle", comment: "") + size + " " + self.unit.unit + " #GRuler"
         } else {
             let celebrityGeight = celebrities[index + 1]
-            firstActivityItem =  size + " " + self.unit.unit + "I am higher than " + celebrityGeight.name + "  #GRuler"
+            firstActivityItem =  size + " " + self.unit.unit + NSLocalizedString("iAmHigherThanTitle", comment: "") + celebrityGeight.name + "  #GRuler"
         }
         
         let secondActivityItem : NSURL = NSURL(string: RateAppHelper.reviewString)!
@@ -278,6 +278,16 @@ class ViewController: UIViewController {
             try! GRDatabaseManager.sharedDatabaseManager.grRealm.write({
                 GRDatabaseManager.sharedDatabaseManager.grRealm.add(userObjectRm, update:true)
                 self.galleryButton.isHidden = false
+                
+                let alert = UIAlertController(title: "", message: NSLocalizedString("savedTitle", comment: ""), preferredStyle: .alert)
+                self.present(alert, animated: true, completion: nil)
+                
+                let when = DispatchTime.now() + 1
+                DispatchQueue.main.asyncAfter(deadline: when){
+                    // your code with delay
+                    alert.dismiss(animated: true, completion: nil)
+                }
+                
             })
         }
     }
@@ -322,6 +332,21 @@ extension ViewController: AppodealInterstitialDelegate {
     func interstitialDidDismiss(){
         rulerScreenNavigationHelper.showSettingsScreen()
         session.run(sessionConfiguration)
+        
+        let userdefaults = UserDefaults()
+        var showRemoveAdsProposal = userdefaults.bool(forKey: showRemoveAdsProposalKey)
+        
+        if showRemoveAdsProposal == false {
+            var showAdsCount = userdefaults.integer(forKey: showAdsCountKey)
+            showAdsCount = showAdsCount + 1
+            userdefaults.set(showAdsCount, forKey: showAdsCountKey)
+            if showAdsCount >= 3 {
+                showRemoveAdsProposal = true
+                userdefaults.set(showRemoveAdsProposal, forKey: showRemoveAdsProposalKey)
+                rulerPurchasesHelper.showRemoveAdsProposalAlert(controller: self.presentedViewController)
+            }
+        }
+        
     }
     
     func interstitialDidClick(){
@@ -454,7 +479,7 @@ extension ViewController: ARSCNViewDelegate {
     
     func compareHeightWithCelebrity(height: Float) {
         var celebrities = ShareResultHelper.getCelebritiesList(measureUnit: unit)
-        let userMeasureModel = CelebrityModel(name: "You height", height: height, isUserHeight: true)
+        let userMeasureModel = CelebrityModel(name: NSLocalizedString("resultTextTitle", comment: ""), height: height, isUserHeight: true)
         celebrities.append(userMeasureModel)
         celebrities.sort { $0.height > $1.height }
         
@@ -462,7 +487,7 @@ extension ViewController: ARSCNViewDelegate {
         
         if (index + 1) >= celebrities.count {
             DispatchQueue.main.async { [weak self] in
-                self?.compareButton.setTitle("Compare", for: UIControlState.normal)
+                self?.compareButton.setTitle(NSLocalizedString("compareButtonTitle", comment: ""), for: UIControlState.normal)
                 self?.compareButton.layer.borderWidth = 1
                 self?.compareButton.titleLabel?.layer.borderWidth = 0
             }
@@ -470,7 +495,7 @@ extension ViewController: ARSCNViewDelegate {
             let celebrityGeight = celebrities[index + 1]
             
             DispatchQueue.main.async { [weak self] in
-                self?.compareButton.setTitle("You higher than " + celebrityGeight.name, for: UIControlState.normal)
+                self?.compareButton.setTitle(NSLocalizedString("iAmHigherThanTitle", comment: "") + celebrityGeight.name, for: UIControlState.normal)
                 
                 self?.compareButton.titleLabel?.sizeToFit()
                 self?.compareButton.sizeThatFits((self?.compareButton.titleLabel?.intrinsicContentSize)!)
@@ -504,8 +529,8 @@ extension ViewController: ARSCNViewDelegate {
         
         if errorCode == 103 {
             
-            let alert = UIAlertController(title: "GHeight Would Like To Access The Camera", message: "please Grant Permission To Use The Camera", preferredStyle: .alert )
-            alert.addAction(UIAlertAction(title: "open Settings", style: .cancel) { alert in
+            let alert = UIAlertController(title: NSLocalizedString("GHeightWouldLikeToAccessTheCamera", comment: ""), message: NSLocalizedString("pleaseGrantPermissionToUseTheCamera", comment: ""), preferredStyle: .alert )
+            alert.addAction(UIAlertAction(title: NSLocalizedString("openSettings", comment: ""), style: .cancel) { alert in
                 
                 UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: { (success) in
                 })
@@ -513,7 +538,7 @@ extension ViewController: ARSCNViewDelegate {
             present(alert, animated: true, completion: nil)
         }
         
-        messageLabel.text = "Error"
+        messageLabel.text = NSLocalizedString("errorOccurred", comment: "")
     }
     
     func sessionWasInterrupted(_ session: ARSession) {

@@ -20,6 +20,7 @@
 		CE50FF6B201FC6B7002115C1 /* EditObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50FF6A201FC6B7002115C1 /* EditObjectViewController.swift */; };
 		CE50FF6D20251A23002115C1 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50FF6C20251A23002115C1 /* SettingsController.swift */; };
 		CE58656C209CAD5E00C5584B /* beepSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE58656B209CAD5E00C5584B /* beepSound.wav */; };
+		CE58656D209CC63E00C5584B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE58656F209CC63E00C5584B /* Localizable.strings */; };
 		CE5C88071FDF324200D68F8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C88061FDF324200D68F8A /* AppDelegate.swift */; };
 		CE5C88091FDF324200D68F8A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C88081FDF324200D68F8A /* art.scnassets */; };
 		CE5C880B1FDF324200D68F8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C880A1FDF324200D68F8A /* ViewController.swift */; };
@@ -37,7 +38,6 @@
 		CEB5E160200D675400C38233 /* UserObjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E15E200D675300C38233 /* UserObjectViewCell.swift */; };
 		CEB5E161200D675400C38233 /* UserObjectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */; };
 		CEB5E1632015517300C38233 /* CelebrityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E1622015517300C38233 /* CelebrityListViewController.swift */; };
-		CEB9A2B5206A79E6007A3611 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEB9A2B4206A79E6007A3611 /* Localizable.strings */; };
 		CEB9A2B7206A7AF9007A3611 /* AppAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9A2B6206A7AF9007A3611 /* AppAnalyticsHelper.swift */; };
 		CEB9A2BA206D1574007A3611 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEB9A2B9206D1574007A3611 /* GoogleService-Info.plist */; };
 		CEB9A2C2206D2738007A3611 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9A2C1206D2738007A3611 /* NotificationService.swift */; };
@@ -92,6 +92,8 @@
 		CE50FF6A201FC6B7002115C1 /* EditObjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditObjectViewController.swift; sourceTree = "<group>"; };
 		CE50FF6C20251A23002115C1 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		CE58656B209CAD5E00C5584B /* beepSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beepSound.wav; sourceTree = "<group>"; };
+		CE58656E209CC63E00C5584B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CE586570209CCC9100C5584B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE5C88031FDF324200D68F8A /* GHeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C88061FDF324200D68F8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5C88081FDF324200D68F8A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -111,7 +113,6 @@
 		CEB5E15E200D675300C38233 /* UserObjectViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectViewCell.swift; sourceTree = "<group>"; };
 		CEB5E15F200D675300C38233 /* UserObjectViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserObjectViewCell.xib; sourceTree = "<group>"; };
 		CEB5E1622015517300C38233 /* CelebrityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityListViewController.swift; sourceTree = "<group>"; };
-		CEB9A2B4206A79E6007A3611 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CEB9A2B6206A7AF9007A3611 /* AppAnalyticsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAnalyticsHelper.swift; sourceTree = "<group>"; };
 		CEB9A2B9206D1574007A3611 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEB9A2BF206D2738007A3611 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,7 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				CE58656B209CAD5E00C5584B /* beepSound.wav */,
-				CEB9A2B4206A79E6007A3611 /* Localizable.strings */,
+				CE58656F209CC63E00C5584B /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -392,6 +393,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = CE5C87FA1FDF324100D68F8A;
 			productRefGroup = CE5C88041FDF324200D68F8A /* Products */;
@@ -414,7 +416,7 @@
 				CE5C88091FDF324200D68F8A /* art.scnassets in Resources */,
 				CE5C88131FDF324200D68F8A /* LaunchScreen.storyboard in Resources */,
 				CEB5E161200D675400C38233 /* UserObjectViewCell.xib in Resources */,
-				CEB9A2B5206A79E6007A3611 /* Localizable.strings in Resources */,
+				CE58656D209CC63E00C5584B /* Localizable.strings in Resources */,
 				CE81DCDB201D3D8F00C54B30 /* Celebrities.json in Resources */,
 				CE5C88101FDF324200D68F8A /* Assets.xcassets in Resources */,
 				CE5C880E1FDF324200D68F8A /* Main.storyboard in Resources */,
@@ -627,6 +629,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CE58656F209CC63E00C5584B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE58656E209CC63E00C5584B /* en */,
+				CE586570209CCC9100C5584B /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		CE5C880C1FDF324200D68F8A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -650,6 +661,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -708,6 +720,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

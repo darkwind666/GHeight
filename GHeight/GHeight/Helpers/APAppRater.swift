@@ -17,7 +17,7 @@ let AP_APP_RATING_SHOWN = "com.gittielabs.app_rating_shown"
 @objc public class APAppRater: NSObject, UIAlertViewDelegate, MFMailComposeViewControllerDelegate {
     var application: UIApplication!
     var userdefaults = UserDefaults()
-    let requiredLaunchesBeforeRating = 2
+    let requiredLaunchesBeforeRating = 1
     public var appId: String!
     let appFeedbackHelper = AppFeedbackHelper()
     var rateAlert = UIAlertController()
@@ -103,16 +103,16 @@ let AP_APP_RATING_SHOWN = "com.gittielabs.app_rating_shown"
     @available(iOS 8.0, *)
     func rateTheApp(controller: UIViewController?){
         
-        let message = "rate App Proposal"
-        rateAlert = UIAlertController(title: "rate Us" + "\u{1F44D}", message: message, preferredStyle: .alert)
-        let goToItunesAction = UIAlertAction(title: "rate Us", style: .default, handler: { (action) -> Void in
+        let message = NSLocalizedString("rateAppProposal", comment: "")
+        rateAlert = UIAlertController(title: NSLocalizedString("rateUsKey", comment: "") + "\u{1F44D}", message: message, preferredStyle: .alert)
+        let goToItunesAction = UIAlertAction(title: NSLocalizedString("rateUsKey", comment: ""), style: .default, handler: { (action) -> Void in
             RateAppHelper.rateApp()
         })
         
-        let cancelAction = UIAlertAction(title: "not Now", style: .cancel, handler: { (action) -> Void in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("notNowKey", comment: ""), style: .cancel, handler: { (action) -> Void in
         })
         
-        let feedbackAction = UIAlertAction(title: "send Feedback", style: .default, handler: { (action) -> Void in
+        let feedbackAction = UIAlertAction(title: NSLocalizedString("sendFeedbackButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.appFeedbackHelper.showFeedback()
         })
         

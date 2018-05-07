@@ -43,7 +43,7 @@ import MessageUI
     }
     
     func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        let sendMailErrorAlert = UIAlertView(title: NSLocalizedString("couldNotSendEmailTitle", comment: ""), message: NSLocalizedString("yourDeviceCouldNotSendEmailTitle", comment: ""), delegate: self, cancelButtonTitle: NSLocalizedString("okKey", comment: ""))
         sendMailErrorAlert.show()
         
         NotificationCenter.default.post(name:Notification.Name(rawValue: AppFeedbackHelper.appFeedbackHelperNotificationKey),
