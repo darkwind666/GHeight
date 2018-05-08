@@ -93,6 +93,7 @@ let AP_APP_RATING_SHOWN = "com.gittielabs.app_rating_shown"
         if hasShownAppRating() == false {
             if appLaunchCount >= self.requiredLaunchesBeforeRating {
                 self.setAppRatingShown()
+                AppAnalyticsHelper.sendAppAnalyticEvent(withName: "rate_app_proposal_main_screen")
                 rateTheApp(controller: nil)
             }
         }
@@ -107,13 +108,16 @@ let AP_APP_RATING_SHOWN = "com.gittielabs.app_rating_shown"
         rateAlert = UIAlertController(title: NSLocalizedString("rateUsKey", comment: "") + "\u{1F44D}", message: message, preferredStyle: .alert)
         let goToItunesAction = UIAlertAction(title: NSLocalizedString("rateUsKey", comment: ""), style: .default, handler: { (action) -> Void in
             RateAppHelper.rateApp()
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "rate_app_go_to_AppStore")
         })
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("notNowKey", comment: ""), style: .cancel, handler: { (action) -> Void in
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "rate_app_proposal_cancel")
         })
         
         let feedbackAction = UIAlertAction(title: NSLocalizedString("sendFeedbackButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.appFeedbackHelper.showFeedback()
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "rate_app_send_email")
         })
         
         rateAlert.addAction(cancelAction)

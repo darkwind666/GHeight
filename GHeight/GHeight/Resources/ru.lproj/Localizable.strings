@@ -13,7 +13,7 @@
 "startButtonTitle" = "Старт";
 "resultTextTitle" = "Твой рост";
 "myHeightTextTitle" = "Мой рост ";
-"iAmHigherThanTitle" = "В ыше чем ";
+"iAmHigherThanTitle" = "Ты выше чем ";
 "GHeightWouldLikeToAccessTheCamera" = "GHeight хотел бы получить доступ к камере";
 "pleaseGrantPermissionToUseTheCamera" = "Пожалуйста, разрешите доступ к камере.";
 "openSettings" = "Открыть настройки";

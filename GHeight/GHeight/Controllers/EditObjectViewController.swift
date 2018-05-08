@@ -61,6 +61,8 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
         objectSizeTextField.text = String(format: "%.2f%", (selectedObject?.height)! * conversionFator)
         
         measureUnitLabel.text = unit.unit
+        
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "edit_object_screen")
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +70,9 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
+        
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "delete_object_pressed")
+        
         try! GRDatabaseManager.sharedDatabaseManager.grRealm.write {
             GRDatabaseManager.sharedDatabaseManager.grRealm.delete(selectedObject!)
             
@@ -80,19 +85,26 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
 
     @IBAction func backPressed(_ sender: Any) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "back_from_edit_object_pressed")
         dismiss(animated: true, completion: nil)
     }
     @IBAction func compareHeightPressed(_ sender: Any) {
+        
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "compare_from_edit_object_pressed")
+        
         if RageProducts.store.isProductPurchased(SettingsController.openFullCelebrityListProductId) || RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "show_celebrity_from_edit_object")
             let height = Float(self.objectSizeTextField.text!)!
             measureScreen.rulerScreenNavigationHelper.showCelebrityListFromRulerMeasureDetail(compareHeight: height, controller: self)
 
         } else {
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "show_buy_from_edit_object")
             measureScreen.rulerPurchasesHelper.showBuyFullCelebrityListPopUp(controller: self)
         }
     }
     
     @IBAction func savePressed(_ sender: Any) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "save_object_pressed")
         let userObjects = GRDatabaseManager.sharedDatabaseManager.grRealm.objects(UserObjectRm.self).sorted(byKeyPath: "createdAt", ascending: false)
         let selectedObject = userObjects[selectedObjectIndex]
         
@@ -132,11 +144,8 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
         return documentsDirectory
     }
     
-    @IBAction func editImagePressed(_ sender: Any) {
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
     @IBAction func sharePressed(_ sender: Any) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "share_from_edit_object_pressed")
         let size = objectSizeTextField.text! + " " + unit.unit
         let firstActivityItem = objectNameTextField.text! + " " + size + " #GHeight"
         let secondActivityItem : NSURL = NSURL(string: RateAppHelper.reviewString)!

@@ -40,6 +40,8 @@ class SettingsController: UIViewController {
         facebookButtonView.addSubview(loginButton)
         
         setUpButtons()
+        
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "settings_screen")
     }
     
     func setUpButtons() {
@@ -66,14 +68,18 @@ class SettingsController: UIViewController {
     
     @IBAction func loginFacebookPressed(_ sender: Any) {
         
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "facebook_login_pressed")
+        
         let loginManager = LoginManager()
         loginManager.logIn(readPermissions: [ ReadPermission.publicProfile ], viewController: self) { (loginResult) in
             switch loginResult {
             case .failed(let error):
                 print(error)
             case .cancelled:
+                AppAnalyticsHelper.sendAppAnalyticEvent(withName: "facebook_login_cancel")
                 print("User cancelled login.")
             case .success( _, _, _):
+                AppAnalyticsHelper.sendAppAnalyticEvent(withName: "facebook_login_success")
                 print("Logged in!")
             }
         }
@@ -95,10 +101,12 @@ class SettingsController: UIViewController {
     }
     
     @IBAction func rateAppPressed(_ sender: Any) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "rate_app_settings_pressed")
         APAppRater.sharedInstance.rateTheApp(controller: self)
     }
     
     @IBAction func buyButtonPressed(_ sender: Any) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "buy_pressed")
         measureScreen.rulerPurchasesHelper.showPurchasesPopUp(controller: self)
     }
     
@@ -128,20 +136,26 @@ class SettingsController: UIViewController {
 
     @IBAction func measureUnitPressed(_ sender: Any) {
 
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "buy_pressed")
         let defaults = UserDefaults.standard
         
         let alertVC = UIAlertController(title: NSLocalizedString("settingsScreenTitle", comment: ""), message: NSLocalizedString("pleaseSelectDistanceUnitOptions", comment: ""), preferredStyle: .actionSheet)
         alertVC.addAction(UIAlertAction(title: DistanceUnit.centimeter.title, style: .default) { [weak self] _ in
             defaults.set(DistanceUnit.centimeter.rawValue, forKey: Setting.measureUnits.rawValue)
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "centimeter_pressed")
         })
         alertVC.addAction(UIAlertAction(title: DistanceUnit.inch.title, style: .default) { [weak self] _ in
             defaults.set(DistanceUnit.inch.rawValue, forKey: Setting.measureUnits.rawValue)
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "inch_pressed")
         })
         alertVC.addAction(UIAlertAction(title: DistanceUnit.meter.title, style: .default) { [weak self] _ in
             defaults.set(DistanceUnit.meter.rawValue, forKey: Setting.measureUnits.rawValue)
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "meter_pressed")
         })
         
-        alertVC.addAction(UIAlertAction(title: NSLocalizedString("cancelKey", comment: ""), style: .cancel, handler: nil))
+        alertVC.addAction(UIAlertAction(title: NSLocalizedString("cancelKey", comment: ""), style: .cancel, handler: { (action) -> Void in
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "measure_unit_cancel_pressed")
+        }))
         present(alertVC, animated: true, completion: nil)
     }
 

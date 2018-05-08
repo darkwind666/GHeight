@@ -58,6 +58,8 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
         NotificationCenter.default.addObserver(self, selector: #selector(ObjectsFoldersViewController.handlePurchaseNotification(_:)),
                                                name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification),
                                                object: nil)
+        
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "gallery_screen")
     }
     
     @objc func handlePurchaseNotification(_ notification: Notification) {
@@ -133,6 +135,7 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
             if showAdsCount >= maxShowAdsCountBeforeProposal {
                 showRemoveAdsProposal = true
                 userdefaults.set(showRemoveAdsProposal, forKey: showRemoveAdsProposalKey)
+                AppAnalyticsHelper.sendAppAnalyticEvent(withName: "show_remove_ad_proposal_gallery")
                 measureScreen.rulerPurchasesHelper.showRemoveAdsProposalAlert(controller: self)
             }
         }
@@ -168,6 +171,8 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "show_object_details_screen")
+        
         if let cell = tableView.cellForRow(at: indexPath) as? UserObjectViewCell {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let editObjectVC = storyboard.instantiateViewController(withIdentifier: "EditObjectViewController") as! EditObjectViewController
@@ -199,10 +204,12 @@ class ObjectsFoldersViewController: UIViewController, UITableViewDelegate, UITab
 extension ObjectsFoldersViewController : APDNativeAdPresentationDelegate {
     
     func nativeAdWillLogImpression(_ nativeAd: APDNativeAd!) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "User_show_ad")
         print("\n ****************** \n nativeAdWillLogUserInteraction nativeAdWillLogImpression at index ", apdNativeArray.index(of: nativeAd)!, "\n ************************* \n")
     }
     
     func nativeAdWillLogUserInteraction(_ nativeAd: APDNativeAd!) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "User_click_on_ad")
         print("\n ****************** \n nativeAdWillLogUserInteraction ", apdNativeArray.index(of: nativeAd)!, "\n ************************* \n")
     }
 }

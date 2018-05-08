@@ -8,12 +8,12 @@
 
 "compareButtonTitle" = "Compare";
 "findSurfaceTitle" = "Find surface on floor";
-"goCloserToSurfaceTitle" = "Go closer to surface to";
+"goCloserToSurfaceTitle" = "Go closer to surface on";
 "pressStartTitle" = "Press Start and place device on head. Then wait signal";
 "startButtonTitle" = "Start";
 "resultTextTitle" = "You height";
 "myHeightTextTitle" = "My height ";
-"iAmHigherThanTitle" = "I am higher than ";
+"iAmHigherThanTitle" = "You higher than ";
 "GHeightWouldLikeToAccessTheCamera" = "GHeight would like to access camera";
 "pleaseGrantPermissionToUseTheCamera" = "Please grant permission to use Camera.";
 "openSettings" = "Open Settings";

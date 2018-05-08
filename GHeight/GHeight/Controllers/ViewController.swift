@@ -86,6 +86,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "main_screen")
+        
         galleryButton.isHidden = true
         goCloserToSurfaceView.isHidden = true
         placePhoneOnYouHeadView.isHidden = true
@@ -142,6 +144,8 @@ class ViewController: UIViewController {
                                                object: nil)
         
         Appodeal.setInterstitialDelegate(self)
+        
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "find_surface_step")
     }
     
     fileprivate func setupBorder(view: UIView) {
@@ -173,6 +177,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startPressed(_ sender: Any) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "start_button_pressed")
         DispatchQueue.main.async { [weak self] in
             self?.placePhoneOnYouHeadCountdown.isHidden = false
             self?.startMeasurementButton.isHidden = true
@@ -181,6 +186,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showCelebrityListPressed(_ sender: Any) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "show_celebrity_pressed")
         if RageProducts.store.isProductPurchased(SettingsController.openFullCelebrityListProductId) || RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
             self.rulerScreenNavigationHelper.showCelebrityListFromRuler(compareHeight: heightLength * self.unit.fator)
         } else {
@@ -189,6 +195,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showSettings(_ sender: Any) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "show_settings_pressed")
         var blockAd = false
         
         if RageProducts.store.isProductPurchased(SettingsController.removeAdProductId) || RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
@@ -204,14 +211,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func galleryButtonPressed(_ sender: Any) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "gallery_pressed")
         self.rulerScreenNavigationHelper.showGalleryScreen()
     }
     
     @IBAction func takeScreenshot() {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "save_height_pressed")
         self.saveUserHeight()
     }
     
     @IBAction func redoPressed(_ sender: Any) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "redo_pressed")
         resultView.isHidden = true
         placePhoneOnYouHeadView.isHidden = false
         placePhoneOnYouHeadCountdown.isHidden = true
@@ -223,11 +233,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buyButtonPressed(_ sender: Any) {
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "buy_from_main_screen_pressed")
         rulerPurchasesHelper.showPurchasesPopUp(controller: self)
     }
     
     @IBAction func sharePressed(_ sender: Any) {
         
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "share_main_screen_pressed")
         var firstActivityItem = ""
         let size = String(heightLength * self.unit.fator)
         
@@ -380,6 +392,7 @@ extension ViewController: ARSCNViewDelegate {
         
         if goCloserToSurfaceView.isHidden == true && placePhoneOnYouHeadView.isHidden == true && resultView.isHidden == true {
             DispatchQueue.main.async {
+                AppAnalyticsHelper.sendAppAnalyticEvent(withName: "closer_to_surface_step")
                 self.findSurfaceView.isHidden = true
                 self.goCloserToSurfaceView.isHidden = false
                 self.goCloserToSurfaceTimer = Timer.scheduledTimer(timeInterval: (self.goCloserToSurfaceTimerInterval), target: self,   selector: (#selector(ViewController.checkDistanceToSurface)), userInfo: nil, repeats: true)
@@ -405,7 +418,7 @@ extension ViewController: ARSCNViewDelegate {
             self.goCloserToSurfaceTimer.invalidate()
             goCloserToSurfaceView.isHidden = true
             placePhoneOnYouHeadView.isHidden = false
-            
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "place_on_head_step")
         } else {
             if distance >= maxCloserDistanceToSurface {
                 goCloserProgress.progress = 0
@@ -452,7 +465,7 @@ extension ViewController: ARSCNViewDelegate {
         
         DispatchQueue.main.async { [weak self] in
             self?.resultValueLabel.text = String(format: "%.2f%@", distance * (self?.unit.fator)!, (self?.unit.unit)!)
-            
+                AppAnalyticsHelper.sendAppAnalyticEvent(withName: "final_result_step")
                 if UIDevice.current.userInterfaceIdiom == .phone {
                     AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
                 } else {

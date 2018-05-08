@@ -39,9 +39,13 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
         let userMeasureModel = CelebrityModel(name: NSLocalizedString("resultTextTitle", comment: ""), height: height, isUserHeight: true)
         celebrities.append(userMeasureModel)
         celebrities.sort { $0.height > $1.height }
+        
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "celebrity_list_screen")
     }
     
     @objc func shareResult() {
+        
+        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "share_result_celebruty_list_pressed")
         
         var firstActivityItem = ""
         let size = String(height)

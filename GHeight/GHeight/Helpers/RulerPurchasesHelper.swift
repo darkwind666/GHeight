@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Crashlytics
 import UIKit
 
 class RulerPurchasesHelper {
@@ -29,23 +30,34 @@ class RulerPurchasesHelper {
         
         if productID == SettingsController.removeUserGalleryProductId  {
             rulerScreen.removeObjectsLimit = true
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "User_buy_objects_limit")
             self.logPurchase(name: "Remove user gallery limit", id: productID, price: 0.99)
         }
         
         if productID == SettingsController.removeAdProductId {
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "User_buy_remove_ad")
             self.logPurchase(name: "Remove ad", id: productID, price: 0.99)
         }
         
         if productID == SettingsController.removeAdsPlusLimitProductId {
-            self.logPurchase(name: "Remove ad and objects limit", id: productID, price: 1.99)
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "User_buy_full_version")
+            self.logPurchase(name: "Buy full version", id: productID, price: 1.99)
         }
         
         if productID == SettingsController.openFullCelebrityListProductId {
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "User_buy_full_celebrity_list")
             self.logPurchase(name: "Open full celebrity list", id: productID, price: 0.99)
         }
     }
     
     func logPurchase(name: String, id: String, price: NSDecimalNumber) {
+        Answers.logPurchase(withPrice: price,
+                            currency: "USD",
+                            success: true,
+                            itemName: name,
+                            itemType: "In app",
+                            itemId: id,
+                            customAttributes: [:])
     }
     
     func loadInAppsPurchases() {
@@ -76,6 +88,7 @@ class RulerPurchasesHelper {
             for (_, product) in self.rulerScreen.products.enumerated() {
                 if product.productIdentifier == SettingsController.removeAdsPlusLimitProductId {
                     RageProducts.store.buyProduct(product)
+                    AppAnalyticsHelper.sendAppAnalyticEvent(withName: "buy_full_version_pressed_remove_ad_proposal")
                     break
                 }
             }
@@ -85,12 +98,15 @@ class RulerPurchasesHelper {
             for (_, product) in self.rulerScreen.products.enumerated() {
                 if product.productIdentifier == SettingsController.removeAdProductId {
                     RageProducts.store.buyProduct(product)
+                    AppAnalyticsHelper.sendAppAnalyticEvent(withName: "buy_remove_ad_version_pressed_remove_ad_proposal")
                     break
                 }
             }
         }))
         
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("noKey", comment: ""), style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("noKey", comment: ""), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "User_cancel_remove_ad")
+        }))
         
         controller?.present(alertController, animated: true, completion: nil)
     }
@@ -101,13 +117,16 @@ class RulerPurchasesHelper {
         
         let removeAdsPlusLimitAction = UIAlertAction(title: NSLocalizedString("removeAdsPlusLimitButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeAdsPlusLimitProductId)
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "buy_full_version_celebrity_list_pressed")
         })
         
         let openFullCelebrityListAction = UIAlertAction(title: NSLocalizedString("openFullCelebrityListTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.openFullCelebrityListProductId)
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "buy_celebrity_list_pressed")
         })
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancelKey", comment: ""), style: .cancel, handler: { (action) -> Void in
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "User_cancel_buy_celebrity_list")
         })
         
         if !RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
@@ -131,25 +150,31 @@ class RulerPurchasesHelper {
         
         let removeAdsPlusLimitAction = UIAlertAction(title: NSLocalizedString("removeAdsPlusLimitButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeAdsPlusLimitProductId)
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "Buy_full_version_pressed")
         })
         
         let openFullCelebrityListAction = UIAlertAction(title: NSLocalizedString("openFullCelebrityListTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.openFullCelebrityListProductId)
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "Buy_celebrity_list_pressed")
         })
         
         let removeAdsAction = UIAlertAction(title: NSLocalizedString("removeAdsButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeAdProductId)
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "Buy_remove_ad_pressed")
         })
         
         let removeLimitAction = UIAlertAction(title: NSLocalizedString("removeLimitButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             self.buyProduct(productId: SettingsController.removeUserGalleryProductId)
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "Buy_remove_limit_pressed")
         })
         
         let restorePurchasesAction = UIAlertAction(title: NSLocalizedString("restorePurchasesButtonTitle", comment: ""), style: .default, handler: { (action) -> Void in
             RageProducts.store.restorePurchases()
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "restore_pressed")
         })
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancelKey", comment: ""), style: .cancel, handler: { (action) -> Void in
+            AppAnalyticsHelper.sendAppAnalyticEvent(withName: "User_cancel_buy_from_settings")
         })
         
         if !RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
@@ -197,6 +222,7 @@ class RulerPurchasesHelper {
                 for (_, product) in self.rulerScreen.products.enumerated() {
                     if product.productIdentifier == SettingsController.removeAdsPlusLimitProductId {
                         RageProducts.store.buyProduct(product)
+                        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "Buy_full_version_from_limit_proposal_pressed")
                         break
                     }
                 }
@@ -206,12 +232,15 @@ class RulerPurchasesHelper {
                 for (_, product) in self.rulerScreen.products.enumerated() {
                     if product.productIdentifier == SettingsController.removeUserGalleryProductId {
                         RageProducts.store.buyProduct(product)
+                        AppAnalyticsHelper.sendAppAnalyticEvent(withName: "Buy_remove_limit_from_limit_proposal_pressed")
                         break
                     }
                 }
             }))
             
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("noKey", comment: ""), style: UIAlertActionStyle.default, handler: nil))
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("noKey", comment: ""), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+                AppAnalyticsHelper.sendAppAnalyticEvent(withName: "User_cancel_buy_from_limit_proposal")
+            }))
             
             rulerScreen.present(alertController, animated: true, completion: nil)
             
