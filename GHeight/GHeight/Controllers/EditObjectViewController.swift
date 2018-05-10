@@ -91,7 +91,7 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBAction func compareHeightPressed(_ sender: Any) {
         
         AppAnalyticsHelper.sendAppAnalyticEvent(withName: "compare_from_edit_object_pressed")
-        
+
         if RageProducts.store.isProductPurchased(SettingsController.openFullCelebrityListProductId) || RageProducts.store.isProductPurchased(SettingsController.removeAdsPlusLimitProductId) {
             AppAnalyticsHelper.sendAppAnalyticEvent(withName: "show_celebrity_from_edit_object")
             let height = Float(self.objectSizeTextField.text!)!

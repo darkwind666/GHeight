@@ -1,0 +1,296 @@
+{
+    "сelebrities":[
+                   {
+                   "name": "Donald Trump",
+                   "height": "188"
+                   },
+                   {
+                   "name": "Justin Bieber",
+                   "height": "171"
+                   },
+                   {
+                   "name": "Tom Cruise",
+                   "height": "172"
+                   },
+                   {
+                   "name": "Arnold Schwarzenegger",
+                   "height": "187"
+                   },
+                   {
+                   "name": "Barack Obama",
+                   "height": "185"
+                   },
+                   {
+                   "name": "Sylvester Stallone",
+                   "height": "175"
+                   },
+                   {
+                   "name": "Brad Pitt",
+                   "height": "180"
+                   },
+                   {
+                   "name": "Taylor Swift",
+                   "height": "176"
+                   },
+                   {
+                   "name": "The Undertaker",
+                   "height": "202"
+                   },
+                   {
+                   "name": "Vin Diesel",
+                   "height": "182"
+                   },
+                   {
+                   "name": "Cristiano Ronaldo",
+                   "height": "185"
+                   },
+                   {
+                   "name": "Jasmine Sanders",
+                   "height": "173"
+                   },
+                   {
+                   "name": "Bruno Mars",
+                   "height": "163"
+                   },
+                   {
+                   "name": "Jason Statham",
+                   "height": "175"
+                   },
+                   {
+                   "name": "Bryan Adams",
+                   "height": "173"
+                   },
+                   {
+                   "name": "Adele",
+                   "height": "173"
+                   },
+                   {
+                   "name": "Christina Aguilera",
+                   "height": "156"
+                   },
+                   {
+                   "name": "Avicii",
+                   "height": "178"
+                   },
+                   {
+                   "name": "David Beckham",
+                   "height": "180"
+                   },
+                   {
+                   "name": "Victoria Beckham",
+                   "height": "163"
+                   },
+                   {
+                   "name": "Monica Bellucci",
+                   "height": "170"
+                   },
+                   {
+                   "name": "Bjork",
+                   "height": "163"
+                   },
+                   {
+                   "name": "Bon Jovi",
+                   "height": "175"
+                   },
+                   {
+                   "name": "Richard Branson",
+                   "height": "180"
+                   },
+                   {
+                   "name": "Chris Brown",
+                   "height": "184"
+                   },
+                   {
+                   "name": "Craig David",
+                   "height": "178"
+                   },
+                   {
+                   "name": "Dido",
+                   "height": "168"
+                   },
+                   {
+                   "name": "Vin Diesel",
+                   "height": "182"
+                   },
+                   {
+                   "name": "Drake",
+                   "height": "182"
+                   },
+                   {
+                   "name": "Dr Dre",
+                   "height": "184"
+                   },
+                   {
+                   "name": "Clint Eastwood",
+                   "height": "192"
+                   },
+                   {
+                   "name": "Eminem",
+                   "height": "172"
+                   },
+                   {
+                   "name": "Flo Rida",
+                   "height": "188"
+                   },
+                   {
+                   "name": "Nelly Furtado",
+                   "height": "157"
+                   },
+                   {
+                   "name": "Selena Gomez",
+                   "height": "164"
+                   },
+                   {
+                   "name": "Ellie Goulding",
+                   "height": "163"
+                   },
+                   {
+                   "name": "Tom Hanks",
+                   "height": "183"
+                   },
+                   {
+                   "name": "Tom Hardy",
+                   "height": "175"
+                   },
+                   {
+                   "name": "Calvin Harris",
+                   "height": "196"
+                   },
+                   {
+                   "name": "Paris Hilton",
+                   "height": "170"
+                   },
+                   {
+                   "name": "Enrique Iglesias",
+                   "height": "187"
+                   },
+                   {
+                   "name": "Carly Rae Jepsen",
+                   "height": "157"
+                   },
+                   {
+                   "name": "Steve Jobs",
+                   "height": "183"
+                   },
+                   {
+                   "name": "Elton John",
+                   "height": "171"
+                   },
+                   {
+                   "name": "Michael Jordan",
+                   "height": "196"
+                   },
+                   {
+                   "name": "Kim Kardashian",
+                   "height": "157"
+                   },
+                   {
+                   "name": "KeSha",
+                   "height": "174"
+                   },
+                   {
+                   "name": "Lady Gaga",
+                   "height": "155"
+                   },
+                   {
+                   "name": "Abraham Lincoln",
+                   "height": "192"
+                   },
+                   {
+                   "name": "Madonna",
+                   "height": "163"
+                   },
+                   {
+                   "name": "Demi Moore",
+                   "height": "164"
+                   },
+                   {
+                   "name": "Kate Moss",
+                   "height": "168"
+                   },
+                   {
+                   "name": "Napoleon",
+                   "height": "169"
+                   },
+                   {
+                   "name": "Passenger",
+                   "height": "179"
+                   },
+                   {
+                   "name": "Katy Perry",
+                   "height": "170"
+                   },
+                   {
+                   "name": "Prince",
+                   "height": "157"
+                   },
+                   {
+                   "name": "Psy",
+                   "height": "170"
+                   },
+                   {
+                   "name": "Chester Bennington",
+                   "height": "177"
+                   },
+                   {
+                   "name": "Rihanna",
+                   "height": "173"
+                   },
+                   {
+                   "name": "Shakira",
+                   "height": "156"
+                   },
+                   {
+                   "name": "Sia",
+                   "height": "164"
+                   },
+                   {
+                   "name": "Frank Sinatra",
+                   "height": "171"
+                   },
+                   {
+                   "name": "Skrillex",
+                   "height": "164"
+                   },
+                   {
+                   "name": "Justin Timberlake",
+                   "height": "182"
+                   },
+                   {
+                   "name": "Ivanka Trump",
+                   "height": "178"
+                   },
+                   {
+                   "name": "Serena Williams",
+                   "height": "175"
+                   },
+                   {
+                   "name": "Mark Zuckerberg",
+                   "height": "171"
+                   },
+                   {
+                   "name": "Bill Gates",
+                   "height": "177"
+                   },
+                   {
+                   "name": "Tim Cook",
+                   "height": "190"
+                   },
+                   {
+                   "name": "Julia Roberts",
+                   "height": "173"
+                   },
+                   {
+                   "name": "Angelina Jolie",
+                   "height": "169"
+                   },
+                   {
+                   "name": "Nicole Kidman",
+                   "height": "179"
+                   },
+                   {
+                   "name": "Elon Musk",
+                   "height": "188"
+                   }
+                   ]
+}

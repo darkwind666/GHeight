@@ -4,8 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,13 +21,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKu-ne-ewV">
-                        <rect key="frame" x="16" y="11" width="144" height="22"/>
+                        <rect key="frame" x="16" y="11" width="177" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="TKu-ne-ewV" secondAttribute="height" multiplier="177:22" id="WA1-G2-QZz"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pp7-ft-VTj">
-                        <rect key="frame" x="160" y="11" width="144" height="21"/>
+                        <rect key="frame" x="193" y="11" width="103" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Pp7-ft-VTj" secondAttribute="height" multiplier="103:21" id="fPe-AM-z4d"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -37,7 +43,6 @@
                     <constraint firstItem="Pp7-ft-VTj" firstAttribute="leading" secondItem="TKu-ne-ewV" secondAttribute="trailing" id="Bbc-z9-vhd"/>
                     <constraint firstAttribute="bottomMargin" secondItem="TKu-ne-ewV" secondAttribute="bottom" id="DB4-s5-82Q"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Pp7-ft-VTj" secondAttribute="trailing" id="GCL-u8-FzO"/>
-                    <constraint firstItem="Pp7-ft-VTj" firstAttribute="width" secondItem="TKu-ne-ewV" secondAttribute="width" id="Vbw-no-tcS"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Pp7-ft-VTj" secondAttribute="bottom" constant="1" id="qzv-B5-I6b"/>
                     <constraint firstItem="Pp7-ft-VTj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="sk3-mS-o1I"/>
                     <constraint firstItem="TKu-ne-ewV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="smv-vL-aV9"/>

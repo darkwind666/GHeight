@@ -13,8 +13,16 @@ class ShareResultHelper {
     static func getCelebritiesList(measureUnit: DistanceUnit) -> [CelebrityModel] {
         
         var celebritiesList = [CelebrityModel]()
+        var resourceName = ""
         
-        if let path = Bundle.main.path(forResource: "Celebrities", ofType: "json") {
+        let langStr = Locale.current.languageCode
+        if langStr == "ru" {
+            resourceName = "CelebritiesRu"
+        } else {
+            resourceName = "CelebritiesEn"
+        }
+        
+        if let path = Bundle.main.path(forResource: resourceName, ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
