@@ -61,8 +61,35 @@ class EditObjectViewController: UIViewController, UITextFieldDelegate, UIImagePi
         objectSizeTextField.text = String(format: "%.2f%", (selectedObject?.height)! * conversionFator)
         
         measureUnitLabel.text = unit.unit
-        
         AppAnalyticsHelper.sendAppAnalyticEvent(withName: "edit_object_screen")
+        compareHeightWithCelebrity(height: (selectedObject?.height)! * conversionFator)
+    }
+    
+    func compareHeightWithCelebrity(height: Float) {
+        var celebrities = ShareResultHelper.getCelebritiesList(measureUnit: unit)
+        let userMeasureModel = CelebrityModel(name: NSLocalizedString("resultTextTitle", comment: ""), height: height, isUserHeight: true)
+        celebrities.append(userMeasureModel)
+        celebrities.sort { $0.height > $1.height }
+        
+        guard let index = celebrities.index(where: {$0.isUserHeight == true}) else { return }
+        
+        if (index + 1) >= celebrities.count {
+            DispatchQueue.main.async { [weak self] in
+                self?.compareButton.setTitle(NSLocalizedString("compareButtonTitle", comment: ""), for: UIControlState.normal)
+            }
+        } else {
+            let celebrityGeight = celebrities[index + 1]
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.compareButton.setTitle(NSLocalizedString("iAmHigherThanTitle", comment: "") + celebrityGeight.name, for: UIControlState.normal)
+                
+                self?.compareButton.titleLabel?.sizeToFit()
+                self?.compareButton.sizeThatFits((self?.compareButton.titleLabel?.intrinsicContentSize)!)
+                
+                self?.compareButton.layoutIfNeeded()
+                self?.view.layoutIfNeeded()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

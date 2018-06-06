@@ -52,10 +52,10 @@ class CelebrityListViewController: UIViewController, UITableViewDelegate, UITabl
         
         guard let index = celebrities.index(where: {$0.isUserHeight == true}) else {return}
         if (index + 1) >= celebrities.count {
-            firstActivityItem = NSLocalizedString("myHeightTextTitle", comment: "") + size + " " + unit.unit + " #GRuler"
+            firstActivityItem = NSLocalizedString("myHeightTextTitle", comment: "") + size + " " + unit.unit + " #GHeight"
         } else {
             let celebrityGeight = celebrities[index + 1]
-            firstActivityItem =  size + " " + unit.unit + NSLocalizedString("iAmHigherThanTitle", comment: "") + celebrityGeight.name + "  #GRuler"
+            firstActivityItem =  size + " " + unit.unit + NSLocalizedString("iAmHigherThanTitle", comment: "") + celebrityGeight.name + "  #GHeight"
         }
         
         let secondActivityItem : NSURL = NSURL(string: RateAppHelper.reviewString)!

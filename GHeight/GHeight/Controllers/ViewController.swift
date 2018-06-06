@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     
     let measureTime = Double(1)
     var timer = Timer()
-    var lowestPlane: SCNNode?
+    var lowestPlane: VirtualPlane?
     
     var unit: DistanceUnit!
     var measurements = [SCNVector3]()
@@ -73,7 +73,9 @@ class ViewController: UIViewController {
     
     var goCloserToSurfaceTimer = Timer()
     let goCloserToSurfaceTimerInterval = Double(0.1)
-    let minCloserDistanceToSurface = Float(0.15)
+    var minCloserDistanceToSurface = Float(0.15)
+    let minCloserDistanceToSurfaceIphone = Float(0.15)
+    let minCloserDistanceToSurfaceIpad = Float(0.2)
     let maxCloserDistanceToSurface = Float(1.6)
     
     let placePhoneCountdownMaxValue = 5
@@ -85,6 +87,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            minCloserDistanceToSurface = minCloserDistanceToSurfaceIphone
+        } else {
+            minCloserDistanceToSurface = minCloserDistanceToSurfaceIpad
+        }
         
         AppAnalyticsHelper.sendAppAnalyticEvent(withName: "main_screen")
         
@@ -251,10 +259,10 @@ class ViewController: UIViewController {
         guard let index = celebrities.index(where: {$0.isUserHeight == true}) else { return }
         
         if (index + 1) >= celebrities.count {
-            firstActivityItem = NSLocalizedString("myHeightTextTitle", comment: "") + size + " " + self.unit.unit + " #GRuler"
+            firstActivityItem = NSLocalizedString("myHeightTextTitle", comment: "") + size + " " + self.unit.unit + " #GHeight"
         } else {
             let celebrityGeight = celebrities[index + 1]
-            firstActivityItem =  size + " " + self.unit.unit + NSLocalizedString("iAmHigherThanTitle", comment: "") + celebrityGeight.name + "  #GRuler"
+            firstActivityItem =  size + " " + self.unit.unit + NSLocalizedString("iAmHigherThanTitle", comment: "") + celebrityGeight.name + "  #GHeight"
         }
         
         let secondActivityItem : NSURL = NSURL(string: RateAppHelper.reviewString)!
@@ -262,7 +270,7 @@ class ViewController: UIViewController {
         let activityViewController : UIActivityViewController = UIActivityViewController(
             activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)
         
-        activityViewController.popoverPresentationController?.sourceView = self.navigationItem.leftBarButtonItem?.customView
+        activityViewController.popoverPresentationController?.sourceView = settingsButton
         activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.unknown
         activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
         
@@ -378,12 +386,7 @@ extension ViewController: ARSCNViewDelegate {
         }
         
         if let lowestPlane = lowestPlane {
-            if planeAnchor.center.z < lowestPlane.worldPosition.z {
-                let planeNode = createPlaneNode(anchor: planeAnchor)
-                node.addChildNode(planeNode)
-                self.lowestPlane = planeNode
-            }
-            
+
         } else {
             let planeNode = createPlaneNode(anchor: planeAnchor)
             node.addChildNode(planeNode)
@@ -449,18 +452,11 @@ extension ViewController: ARSCNViewDelegate {
         resultView.isHidden = false
         startMeasurement = false
         
-        var sumY = Float(0.0)
-        for measure in measurements {
-            sumY += measure.y
-        }
-        
-        let avarageY = Float(sumY / Float(measurements.count))
-        
         guard let plane = lowestPlane else {
             return
         }
         
-        let distance = avarageY - (plane.worldPosition.y)
+        let distance = (measurements.first?.y)! - (plane.worldPosition.y)
         heightLength = distance
         
         DispatchQueue.main.async { [weak self] in
@@ -483,7 +479,7 @@ extension ViewController: ARSCNViewDelegate {
                     } catch let error {
                         print(error.localizedDescription)
                     }
-            }
+               }
             
         }
         
@@ -534,6 +530,8 @@ extension ViewController: ARSCNViewDelegate {
             
             let cameraPos = SCNVector3.positionFromTransform(frame.camera.transform)
             measurements.append(cameraPos)
+            
+            let hitTestArray = sceneView.hitTest(CGPoint(x: 0.5, y:0.5), types: [.estimatedHorizontalPlane, .existingPlane, .existingPlaneUsingExtent,])
         }
     }
     
@@ -566,7 +564,7 @@ extension ViewController: ARSCNViewDelegate {
         
     }
     
-    func createPlaneNode(anchor: ARPlaneAnchor) -> SCNNode {
+    func createPlaneNode(anchor: ARPlaneAnchor) -> VirtualPlane {
         return VirtualPlane(anchor: anchor)
     }
 }
